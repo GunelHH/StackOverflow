@@ -1,0 +1,78 @@
+﻿@model List<Company>
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Company Table</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                       Title
+                                    </th>
+                                    <th >
+                                        About
+                                    </th>
+                                </tr>
+                            </thead>
+                            @if (Model.Count() != 0)
+                            {
+                                <tbody>
+                                    @foreach (Company company in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="~/assets/images/Companies/@company.Image" width="100" height="100" style="object-fit:cover" />
+                                            </td>
+                                            <td>
+                                                @company.Name
+                                            </td>
+                                            <td>
+                                                @company.Title
+                                            </td>
+                                            <td class="text-center">
+                                                @company.About
+                                            </td>
+                                            <td class="text-center" style="cursor:pointer">
+                                                <a asp-area="admin" asp-controller="company" asp-action="delete" asp-route-id="@company.Id"> <i class="fa-regular fa-trash-can"></i></a>
+                                            </td>
+                                            <td class="text-center" style="cursor:pointer">
+                                                <a asp-area="admin" asp-controller="company" asp-action="update" asp-route-id="@company.Id"><i class="fa-solid fa-pen"></i></a>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                    <tr>
+                                        <td><a asp-area="admin" asp-controller="company" asp-action="create" class="btn btn-info">Create Company</a> </td>
+                                    </tr>
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr class="text-info"> <td>No Company Yet</td> </tr>
+                                    <tr>
+                                        <td><a asp-area="admin" asp-controller="company" asp-action="create" class="btn btn-info">Create Company</a> </td>
+                                    </tr>
+
+                                </tbody>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

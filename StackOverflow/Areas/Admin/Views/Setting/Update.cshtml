@@ -1,0 +1,37 @@
+﻿@model Settings
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Update Setting</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Key:</label><br />
+                                <input asp-for="Key" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Key"></span>
+                            </div>
+                            <div>
+                                <label>Value:</label><br />
+                                <textarea asp-for="Value" class="form-control"></textarea><br />
+                                <span class="text-danger" asp-validation-for="Value"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

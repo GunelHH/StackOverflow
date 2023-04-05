@@ -1,0 +1,75 @@
+@import "../utils/Colors.scss";
+
+.sign-in {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #2d2d2d;
+
+  &__left {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 90%;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: #e8bb78 0px 48px 100px 0px;
+    margin-left: 40px;
+  }
+  &__container {
+    box-shadow: #e8bb78 0px 48px 100px 0px;
+    margin: 0 auto;
+    background: white;
+    max-width: 400px;
+    width: 50%;
+    border-radius: 4px;
+    padding: 32px 32px 56px;
+    z-index: 1;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      .sign-in-img {
+        max-width: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+        > img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+      > input {
+        padding: 10px;
+        border: 1px solid #d2d2d2;
+        border-radius: 6px;
+        outline: none;
+      }
+      > input::placeholder {
+        color: $nav-search-icon;
+      }
+      > input:valid {
+        color: $main;
+      }
+      > input[type="text"] {
+      }
+      > input[type="password"] {
+      }
+      > button {
+        padding: 10px;
+        border: 1px solid #d2d2d2;
+        border-radius: 6px;
+        cursor: pointer;
+        background: linear-gradient(
+          90deg,
+          #70a2b1f2 0%,
+          $main 50%,
+          #70a2b1f2 100%
+        );
+        color: white;
+        font-weight: 600;
+      }
+    }
+  }
+}

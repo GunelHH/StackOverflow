@@ -1,0 +1,80 @@
+﻿@model List<AppUser>
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Users Table</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Display Name
+                                    </th>
+                                    <th>
+                                        Login Date
+                                    </th>
+                                    <th class="text-center">
+                                        About
+                                    </th>
+                                    <th class="text-center">
+                                        Location
+                                    </th>
+                                </tr>
+                            </thead>
+                            @if (Model.Count() != 0)
+                            {
+                                <tbody>
+                                    @foreach (AppUser user in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="~/assets/images/User-card/@user.ProfilePhoto" width="100" height="100" style="object-fit:cover" />
+                                            </td>
+                                            <td>
+                                                @user.UserName
+                                            </td>
+                                            <td>
+                                                @user.LoginDate.ToString("dd/mm/yyyy")
+                                            </td>
+                                            <td class="text-center">
+                                                @user.About
+                                            </td>
+                                            <td>
+                                                @user.Location
+                                            </td>
+                                            <td class="text-center" style="cursor:pointer">
+                                                <a asp-area="admin" asp-controller="appuser" asp-action="delete" asp-route-id="@user.Id"> <i class="fa-regular fa-trash-can"></i></a>
+                                            </td>
+                                            <td class="text-center" style="cursor:pointer">
+                                                <a asp-area="admin" asp-controller="appuser" asp-action="update" asp-route-id="@user.Id"><i class="fa-solid fa-pen"></i></a>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                  
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr class="text-info"> <td>No Users Yet</td> </tr>
+
+                                </tbody>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

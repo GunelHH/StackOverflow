@@ -1,0 +1,104 @@
+﻿@model Company
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Update Company</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Image:</label><br />
+                                <img src="~/assets/images/companies/@Model.Image" width="100" height="100" style="object-fit:cover" />
+                                <input asp-for="CompanyPhoto" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="CompanyPhoto"></span>
+                            </div>
+                            <div>
+                                <label>Name:</label><br />
+                                <input asp-for="Name" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+                            <div>
+                                <label>Title:</label><br />
+                                <textarea asp-for="Title" class="form-control"></textarea><br />
+                                <span class="text-danger" asp-validation-for="Title"></span>
+                            </div>
+                            <div>
+                                <label>About Image:</label><br />
+                                <img src="~/assets/images/companies/@Model.AboutImage" width="100" height="100" style="object-fit:cover" />
+                                <input asp-for="AboutPhoto" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="AboutPhoto"></span>
+                            </div>
+                            <div>
+                                <label>About:</label><br />
+                                <input asp-for="About" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="About"></span>
+                            </div>
+                            <div>
+                                <label>Location:</label><br />
+                                <input asp-for="Location" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Location"></span>
+                            </div>
+                            <div>
+                                <label>Origin History:</label><br />
+                                <input asp-for="OriginHistory" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="OriginHistory"></span>
+                            </div>
+                            <div>
+                                <label>Web Site Link:</label><br />
+                                <input asp-for="WebSiteLink" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="WebSiteLink"></span>
+                            </div>
+                            <div>
+                                <label>Web Site Link Name:</label><br />
+                                <input asp-for="WebSiteLinkName" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="WebSiteLinkName"></span>
+                            </div>
+                            <div>
+                                <label>Industry:</label><br />
+                                <input asp-for="Industry" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Industry"></span>
+                            </div>
+                            <div>
+                                <label>Benefits:</label><br />
+                                <input asp-for="Benefits" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Benefits"></span>
+                            </div>
+                            <div>
+                                <label>Video Link:</label><br />
+                                <input asp-for="VideoLink" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="VideoLink"></span>
+                            </div>
+                            <div>
+                                <label>Video Image:</label><br />
+                                <img src="~/assets/images/companies/@Model.VideoImage" width="100" height="100" style="object-fit:cover" />
+                                <input asp-for="VideoPhoto" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="VideoPhoto"></span>
+                            </div>
+                            <div>
+                                <label>Post Image:</label><br />
+                                @if (Model.PostImage != null)
+                                {
+                                    <img src="~/assets/images/companies/@Model.PostImage" width="100" height="100" style="object-fit:cover" />
+                                }
+                                <input asp-for="PostPhoto" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="PostPhoto"></span>
+                            </div>
+                            <div>
+                                <label>Post Description:</label><br />
+                                <input asp-for="PostDesc" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="PostDesc"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

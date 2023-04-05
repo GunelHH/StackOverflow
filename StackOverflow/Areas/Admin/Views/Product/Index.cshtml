@@ -1,0 +1,78 @@
+﻿@model List<Product>
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Products Table</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Logo
+                                    </th>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Button
+                                    </th>
+                                </tr>
+                            </thead>
+                            @if (Model.Count() != 0)
+                            {
+                                <tbody>
+                                    @foreach (Product product in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="~/assets/images/logo/@product.Logo" width="100" height="100" style="object-fit:cover" />
+                                            </td>
+                                            <td>
+                                                <img src="~/assets/images/about/@product.Image" width="100" height="100" style="object-fit:cover" />
+                                            </td>
+                                            <td>
+                                                @product.Desc
+                                            </td>
+                                            <td>
+                                                @product.Button
+                                            </td>
+                                            <td class="text-center" style="cursor:pointer">
+                                                <a asp-area="admin" asp-controller="product" asp-action="delete" asp-route-id="@product.Id"> <i class="fa-regular fa-trash-can"></i></a>
+                                            </td>
+                                            <td class="text-center" style="cursor:pointer">
+                                                <a asp-area="admin" asp-controller="product" asp-action="update" asp-route-id="@product.Id"><i class="fa-solid fa-pen"></i></a>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                    <tr>
+                                        <td><a asp-area="admin" asp-controller="product" asp-action="create" class="btn btn-info">Create </a> </td>
+                                    </tr>
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr class="text-info"> <td>No Product Yet</td> </tr>
+                                    <tr>
+                                        <td><a asp-area="admin" asp-controller="product" asp-action="create" class="btn btn-info">Create </a> </td>
+                                    </tr>
+
+                                </tbody>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

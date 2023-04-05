@@ -1,0 +1,1187 @@
+﻿@model Question
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Font -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+              rel="stylesheet" />
+        <link rel="shortcut icon"
+              href="~/assets/Images/Logo/apple-touch-icon@2.png"
+              type="image/x-icon" />
+
+        <title>Questions - Stack Overflow</title>
+        <link rel="stylesheet" href="~/prism/prism-light.css" />
+        <link rel="stylesheet" href="~/assets/css/style.css" />
+    </head>
+    <body>
+       
+
+        <main class="container">
+            <div class="container__left-sidebar d-640-none">
+                <div class="container__left-sidebar__sticky">
+                    <div class="container__left-sidebar__sticky__nav">
+                        <ul>
+                            <li>
+                                <a href="Index.html">
+                                    <div class="d-flex">
+                                        <div class="d-flex--item">Home</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li class="fw">Public</li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a href="">
+                                            <iconify-icon icon="bx:world"></iconify-icon>
+                                            Questions
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Tags</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Users</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Companies</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li id="collectives" class="sticky-li fw">
+                                        <div class="sticky-li__collectives">Collectives</div>
+                                        <div class="sticky-li__icon">
+                                            <a href="">
+                                                <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a href="">
+                                            <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                            <span>Explore Collectives</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <div class="Teams-title fw">Teams</div>
+                                        <div class="Teams-body">
+                                            <strong>Stack Overflow for Teams</strong>
+                                            - Start collaborating and sharing organizational
+                                            knowledge.
+                                            <img width="139"
+                                                 height="114"
+                                                 src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                                 alt="Stack Overflow For Teams" />
+                                            <a href="">Create a free Team</a>
+                                            <a href="">Why Teams?</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container__main-content p-md-16 w-sm-100">
+                <div class="container__main-content__in">
+                    <div class="container__main-content__in__body">
+                        <div class="container__main-content__in__body__header-top">
+                            <h1>
+                                <a href="#">
+                                   @Model.Title
+                                </a>
+                            </h1>
+                            <div class="container__main-content__in__body__header-top__button">
+                                <a asp-controller="user" asp-action="askquestion">Ask Question</a>
+                            </div>
+                        </div>
+                        <div class="container__main-content__in__body__header-bottom">
+                            <div class="container__main-content__in__body__header-bottom__flex">
+                                <span>Asked</span>
+                                <span>@Model.PostDate.ToString("dd") days ago</span>
+                            </div>
+                            <div class="container__main-content__in__body__header-bottom__flex">
+                                <span>Modified</span>
+                                <span>@Model.EditDate hours ago</span>
+                            </div>
+                            <div class="container__main-content__in__body__header-bottom__flex">
+                                <span>Viewed</span>
+                                <span> times</span>
+                            </div>
+                        </div>
+                        <div class="container__main-content__in__body__main w-md-100">
+                            <div class="container__main-content__in__body__main__question">
+                                <div class="container__main-content__in__body__main__question__flex">
+                                    <div class="container__main-content__in__body__main__question__flex__left">
+                                        <div class="container__main-content__in__body__main__question__flex__left__flex">
+                                            <button>
+                                                <iconify-icon icon="ri:arrow-up-s-fill"></iconify-icon>
+                                            </button>
+                                            <div class="container__main-content__in__body__main__question__flex__left__flex__feedback-count">
+                                                0
+                                            </div>
+                                            <button>
+                                                <iconify-icon icon="ri:arrow-down-s-fill"></iconify-icon>
+                                            </button>
+                                            <a href="#">
+                                                <iconify-icon icon="ic:round-history"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="container__main-content__in__body__main__question__flex__right">
+                                        <div class="container__main-content__in__body__main__question__flex__right__question">
+                                            <div class="container__main-content__in__body__main__question__flex__right__question__bounties">
+                                                <aside class="container__main-content__in__body__main__question__flex__right__question__bounties__aside">
+                                                    <div class="container__main-content__in__body__main__question__flex__right__question__bounties__aside__into">
+                                                        <div class="container__main-content__in__body__main__question__flex__right__question__bounties__aside__into__flex">
+                                                            <div class="container__main-content__in__body__main__question__flex__right__question__bounties__aside__into__flex__icon">
+                                                                <iconify-icon icon="ant-design:clock-circle-outlined"></iconify-icon>
+                                                            </div>
+                                                            <div class="container__main-content__in__body__main__question__flex__right__question__bounties__aside__into__flex__body">
+                                                                <div class="container__main-content__in__body__main__question__flex__right__question__bounties__aside__into__flex__body__into">
+                                                                    <b>
+                                                                        The
+                                                                        <a href="
+                                    3">bounty</a>
+                                                                        expires <span>in 2 hours</span>
+                                                                    </b>
+                                                                    . Answers to this question are eligible for a
+                                                                    <span>50+</span>
+                                                                    reputation bounty.
+                                                                    <a href="#">Mohamad Ghaith Alzin</a>
+                                                                    wants to
+                                                                    <b>draw more attention</b>
+                                                                    to this question:
+                                                                    <blockquote>
+                                                                        <div>
+                                                                            I'm expecting you to tell me even a hack
+                                                                            way to do this because the app that I am
+                                                                            developed is not going to be on Google
+                                                                            Store!
+                                                                        </div>
+                                                                    </blockquote>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </aside>
+                                            </div>
+                                            <p>
+                                                @Model.Desc
+                                            </p>
+                                            @if (Model.Code != null)
+                                            {
+                                                <pre>
+                                                <code class="language-csharp">
+                            
+                       @Model.Code
+                         
+                      </code>
+                    </pre>
+                                            }
+
+                                        </div>
+                                        <div class="container__main-content__in__body__main__question__flex__right__tags">
+                                            <div class="container__main-content__in__body__main__question__flex__right__tags__flex">
+                                                <div class="container__main-content__in__body__main__question__flex__right__tags__flex__item">
+                                                    <ul>
+                                                        @if (Model.questionTags != null)
+                                                        {
+                                                            @foreach (QuestionTag tag in Model.questionTags)
+                                                            {
+                                                                <li><a href="#">@tag.Tag.Name</a></li>
+                                                            }
+
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__main-content__in__body__main__question__flex__right__user">
+                                            <div class="container__main-content__in__body__main__question__flex__right__user__flex">
+                                                <div class="container__main-content__in__body__main__question__flex__right__user__flex__share">
+                                                    <div>
+                                                        <div>
+                                                            <a href="#">Share</a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="#">Edit</a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="#">Follow</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="container__main-content__in__body__main__question__flex__right__user__flex__edit-date">
+                                                    <div class="container__main-content__in__body__main__question__flex__right__user__flex__edit-date--info">
+                                                        <div class="container__main-content__in__body__main__question__flex__right__user__flex__edit-date--info__action-time">
+                                                            <a href="#">edited <span>@(Model.EditDate!=Model.PostDate || Model.EditDate<Model.PostDate ? Model.EditDate.ToString("MMMM dd / HH:mm ")  : "")</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="container__main-content__in__body__main__question__flex__right__user__flex__user">
+                                                    <div class="container__main-content__in__body__main__question__flex__right__user__flex__user__info">
+                                                        <div class="container__main-content__in__body__main__question__flex__right__user__flex__user__info__action-time">
+                                                            asked <span>@Model.PostDate.ToString("MMMM dd") at @Model.PostDate.ToString("hh:mm")</span>
+                                                        </div>
+                                                        <div class="container__main-content__in__body__main__question__flex__right__user__flex__user__info__img">
+                                                            <a href="#">
+                                                                <div>
+                                                                    <img src="~/assets/Images/User-card/test.png"
+                                                                         width="32"
+                                                                         height="32"
+                                                                         alt="" />
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="container__main-content__in__body__main__question__flex__right__user__flex__user__info__details">
+                                                            <a href="#">Mohamad Ghaith Alzin</a>
+                                                            <span>Mohamad Ghaith Alzin</span>
+                                                            <div class="flair">
+                                                                <span class="rep-score">608</span>
+                                                                <span class="silver-badges">
+                                                                    <span class="badge"></span>
+                                                                    <span class="badge-count">5</span>
+                                                                </span>
+                                                                <span class="bronze-badges">
+                                                                    <span class="badge2"></span>
+                                                                    <span class="badge-count">3</span>
+                                                                </span>
+                                                                <span class="gold-badges">
+                                                                    <span class="badge3"></span>
+                                                                    <span class="badge-count">5</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="container__main-content__in__body__main__question__flex__comment-count">2</span>
+                                    <div class="container__main-content__in__body__main__question__flex__comment">
+                                        <div class="container__main-content__in__body__main__question__flex__comment__body">
+                                            <ul id="ulComment">
+                                                <li>
+                                                    <div class="c-count">
+                                                        <div>
+                                                            <span>1</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="main-comment">
+                                                        <div class="into-comment">
+                                                            <span>
+                                                                If you want that level of control over the
+                                                                image capture process, then chances are you
+                                                                simply want to create the activity to take the
+                                                                picture yourself and not delegate that to the
+                                                                default application (which can vary wildly from
+                                                                device to device)
+                                                            </span>
+                                                            <div>
+                                                                –&nbsp;
+                                                                <a href="#">Joachim Sauer</a>
+                                                            </div>
+                                                            <span class="comment-date">
+                                                                <a href="#">
+                                                                    <span>Sep 23 at 8:28</span>
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="reply-comment">
+                                                    <div>
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="reply-comment--into">
+                                                        <div class="reply-comment--into__body">
+                                                            <span>
+                                                                &lp@JoachimSauer Yes, I think I'll end up doing
+                                                                that if there is no way to control the default
+                                                                app.
+                                                            </span>
+                                                            <div>–&nbsp; <a href="#">Joachim Sauer</a></div>
+                                                            <span class="comment-date">
+                                                                <a href="#">
+                                                                    <span>Sep 23 at 9:28</span>
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="container__main-content__in__body__main__question__flex__comment__add-comment parent">
+                                            <form asp-controller="home" asp-action="Comment" method="post">
+                                                <input  style="display:block!important" name="Body" type="text" id="comment" placeholder="Add a comment"/>
+                                                <input type="hidden" name="QuestionId" value="@Model.Id"/>
+                                                <a class="btnComment"   style="display:block!important;top:0 !important;cursor:pointer;" type="submit">Add</a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container__main-content__in__body__main__answer">
+                                <div class="container__main-content__in__body__main__answer__header">
+                                    <div class="container__main-content__in__body__main__answer__header__flex">
+                                        <div class="container__main-content__in__body__main__answer__header__flex__item">
+                                            <h2>2 Answers</h2>
+                                        </div>
+                                        <div class="container__main-content__in__body__main__answer__header__flex__item"></div>
+                                    </div>
+                                </div>
+                                <div class="container__main-content__in__body__main__answer__body">
+                                    <div class="container__main-content__in__body__main__answer__body__layout">
+                                        <div class="container__main-content__in__body__main__answer__body__layout__left">
+                                            <div class="container__main-content__in__body__main__answer__body__layout__left__flex">
+                                                <button>
+                                                    <iconify-icon icon="ri:arrow-up-s-fill"></iconify-icon>
+                                                </button>
+                                                <div class="vote-count">2</div>
+                                                <button>
+                                                    <iconify-icon icon="ri:arrow-down-s-fill"></iconify-icon>
+                                                </button>
+                                                <div class="confirmed">
+                                                    <div class="confirmed--into">
+                                                        <iconify-icon icon="emojione-v1:left-check-mark"></iconify-icon>
+                                                    </div>
+                                                </div>
+                                                <a href="#">
+                                                    <iconify-icon icon="ic:round-history"></iconify-icon>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="container__main-content__in__body__main__answer__body__layout__right">
+                                            <div class="container__main-content__in__body__main__answer__body__layout__right__body">
+                                                <p>
+                                                    First, there is no single "default app of Camera".
+                                                    There are dozens, perhaps hundreds, of default camera
+                                                    apps across the tens of thousands of Android device
+                                                    models. Also, on most older Android versions,
+                                                </p>
+                                            </div>
+                                            <div class="container__main-content__in__body__main__answer__body__layout__right__user">
+                                                <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex">
+                                                    <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__share">
+                                                        <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__share__into">
+                                                            <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__share__into__flex">
+                                                                <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__share__into__flex__item">
+                                                                    <a href="#">Share</a>
+                                                                </div>
+                                                                <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__share__into__flex__item">
+                                                                    <a href="#">Edit</a>
+                                                                </div>
+                                                                <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__share__into__flex__item">
+                                                                    <a href="#">Follow</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__signature">
+                                                        <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__signature__answer-date">
+                                                            answered <span>Sep 23 at 11:09</span>
+                                                        </div>
+                                                        <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__signature__image">
+                                                            <a href="#">
+                                                                <div>
+                                                                    <img src="~/assets/Images/User-card/test.png"
+                                                                         alt="" />
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="container__main-content__in__body__main__answer__body__layout__right__user__flex__signature__info">
+                                                            <a href="#">CommonsWare</a>
+                                                            <div class="flair">
+                                                                <span class="rep-score">608</span>
+                                                                <span class="silver-badges">
+                                                                    <span class="badge"></span>
+                                                                    <span class="badge-count">5</span>
+                                                                </span>
+                                                                <span class="bronze-badges">
+                                                                    <span class="badge2"></span>
+                                                                    <span class="badge-count">3</span>
+                                                                </span>
+                                                                <span class="gold-badges">
+                                                                    <span class="badge3"></span>
+                                                                    <span class="badge-count">5</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__main-content__in__body__main__answer__body__layout__comment">
+                                            <form action="" method="post">
+                                                <label for="c-answer">Add comment</label>
+                                                <input type="text" id="c-answer" />
+                                                <button type="submit">Add</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form method="post" asp-action="Answer" asp-route-id="@Model.Id" class="container__main-content__in__body__main__your-answer">
+                                <h2>Your Answer</h2>
+                                <div class="container__main-content__in__body__main__your-answer--answer">
+                                    <textarea asp-for="Answers.FirstOrDefault().Desc" cols="30" rows="10" style="outline:none"></textarea>
+                                    <span asp-validation-for="Answers.FirstOrDefault().Desc"></span>
+                                    <textarea asp-for="Answers.FirstOrDefault().Code" cols="10" rows="5" placeholder="Your Code" style="outline:none"></textarea>
+                                    <span asp-validation-for="Answers.FirstOrDefault().Code"></span>
+
+                                </div>
+                                <div class="container__main-content__in__body__main__your-answer--submit">
+                                    <button type="submit">Post Your Answer</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="container__main-content__right-sidebar">
+                            <div class="container__main-content__right-sidebar__blog">
+                                <ul>
+                                    <li class="title">The Overflow Blog</li>
+                                    <li class="item">
+                                        <div class="icon">
+                                            <iconify-icon icon="heroicons:pencil-solid"></iconify-icon>
+                                        </div>
+                                        <div class="desc">
+                                            <a href="">This is not your grandfather's Perl</a>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <div class="icon">
+                                            <iconify-icon icon="heroicons:pencil-solid"></iconify-icon>
+                                        </div>
+                                        <div class="desc">
+                                            <a href="">Plug-and-play AI for your own projects (Ep. 482)</a>
+                                        </div>
+                                    </li>
+                                    <li class="title">Featured on Meta</li>
+                                    <li class="item">
+                                        <div class="icon">
+                                            <iconify-icon icon="arcticons:stack-exchange"></iconify-icon>
+                                        </div>
+                                        <div class="desc">
+                                            <a href="">
+                                                Announcing the Stack Overflow Student Ambassador
+                                                Program
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <div class="icon">
+                                            <iconify-icon icon="arcticons:stack-exchange"></iconify-icon>
+                                        </div>
+                                        <div class="desc">
+                                            <a href="">Google Analytics 4 (GA4) upgrade</a>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <div class="icon">
+                                            <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                                        </div>
+                                        <div class="desc">
+                                            <a href="">Staging Ground Workflow: Question Lifecycle</a>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <div class="icon">
+                                            <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                                        </div>
+                                        <div class="desc">
+                                            <a href="">The [option] tag is being burninated</a>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <div class="icon">
+                                            <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                                        </div>
+                                        <div class="desc">
+                                            <a href="">
+                                                Collectives Update: WSO2 launches, and Google Go
+                                                sunsets
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="container__main-content__right-sidebar__custom-filtering">
+                                <h2>Custom Filters</h2>
+                                <ul>
+                                    <li><a href="">Create a custom filter</a></li>
+                                </ul>
+                            </div>
+                            <div class="container__main-content__right-sidebar__watch">
+                                <div class="container__main-content__right-sidebar__watch__watched">
+                                    <div class="container__main-content__right-sidebar__watch__watched__header">
+                                        <h2>Watched Tags on Public Q&A</h2>
+                                        <a href="">edit</a>
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__watch__watched__content">
+                                        <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
+                                            <div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
+                                                <a href="" title="show questions tagged 'c#'">
+                                                    c#
+                                                    <span title="Remove tag" class="delete-tag"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
+                                            <form action="">
+                                                <input type="text" autocomplete="off" />
+                                                <button type="submit">Add</button>
+                                            </form>
+                                        </div>
+                                        <div class="container__main-content__right-sidebar__watch__watched__content__no-content">
+                                            <div class="container__main-content__right-sidebar__watch__watched__content__no-content--icon">
+                                                <iconify-icon icon="wpf:search"></iconify-icon>
+                                            </div>
+                                            <p>Watch tags to curate your list of questions.</p>
+                                            <a>
+                                                <iconify-icon icon="bi:eye-fill"></iconify-icon> Watch
+                                                a tag
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container__main-content__right-sidebar__watch__ignored">
+                                    <div class="container__main-content__right-sidebar__watch__ignored__title">
+                                        <h2>Ignored Tags</h2>
+                                        <a>edit</a>
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__watch__ignored__content">
+                                        <div class="container__main-content__right-sidebar__watch__ignored__content__list display-none">
+                                            <div class="container__main-content__right-sidebar__watch__ignored__content__list__tag">
+                                                <a>
+                                                    c#
+                                                    <span class="delete-tag" title="Remove tag"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="container__main-content__right-sidebar__watch__ignored__content__input display-none">
+                                            <form action="">
+                                                <input type="text" autocomplete="off" />
+                                                <button>Add</button>
+                                            </form>
+                                        </div>
+                                        <button class="container__main-content__right-sidebar__watch__ignored__content--button">
+                                            Add an ignored tag
+                                        </button>
+                                        <div class="container__main-content__right-sidebar__watch__ignored__content__visible display-none">
+                                            <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item">
+                                                <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item--input">
+                                                    <input type="radio" name="visible" />
+                                                </div>
+                                                <label for="">Hide questions in your ignored tags</label>
+                                            </div>
+                                            <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item">
+                                                <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item--input">
+                                                    <input type="radio" checked name="visible" />
+                                                </div>
+                                                <label for="">Gray out questions in your ignored tags</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container__main-content__right-sidebar__collectives">
+                                <div class="container__main-content__right-sidebar__collectives__header">
+                                    <a href="Collectives.html">see all</a>
+                                    Collectives
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective">
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about">
+                                        <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <img src="~/assets/Images/Collectives/intel-brand-logo-blue-background-wallpaper-preview.jpeg"
+                                                     alt="Intel" />
+                                            </div>
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <h1>
+                                                    <a href="">Intel</a>
+                                                </h1>
+                                                <div class="caption">6k Members</div>
+                                            </div>
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <form action="">
+                                                    <input type="hidden" />
+                                                    <button type="submit">Join</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>
+                                        A space for developers to collaborate on Intel software
+                                        tools, libraries, and resources. Share knowledge and connect
+                                        with Intel product experts. Find the information you need to
+                                        drive innovation and simplify development from edge to cloud
+                                        with Intel.
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective">
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about">
+                                        <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <img src="~/assets/Images/Collectives/twilio-icon-512_maskable.png"
+                                                     alt="Twilio" />
+                                            </div>
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <h1>
+                                                    <a href="">Twilio</a>
+                                                </h1>
+                                                <div class="caption">4k Members</div>
+                                            </div>
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <form action="">
+                                                    <input type="hidden" />
+                                                    <button type="submit">Join</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>
+                                        Twilio has democratized channels like voice, text, chat,
+                                        video, and email by virtualizing the world's communications
+                                        infrastructure through APIs that are simple enough for any
+                                        developer, yet robust enough to power the world's most
+                                        demanding applications.
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective">
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about">
+                                        <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <img src="~/assets/Images/Collectives/c24g2bOv_400x400.png"
+                                                     alt="WSO2" />
+                                            </div>
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <h1>
+                                                    <a href="">WSO2</a>
+                                                </h1>
+                                                <div class="caption">1k Members</div>
+                                            </div>
+                                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                                <form action="">
+                                                    <input type="hidden" />
+                                                    <button type="submit">Join</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>
+                                        WSO2 solutions give enterprises the flexibility to deploy
+                                        applications and services on-premises, on private or public
+                                        clouds, or in hybrid environments. Our collective aims to
+                                        enable developers to build value-added services and get to
+                                        market faster.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="container__main-content__right-sidebar__zone"></div>
+                            <div class="container__main-content__right-sidebar__tags">
+                                <h2>Related Tags</h2>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">javascript</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">python</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">java</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">c#</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">php</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">android</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">html</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">jquery</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">c++</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag">
+                                    <a href="">css</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">ios</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">mysql</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">sql</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">r</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">node.js</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">reactjs</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">arrays</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">c</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">asp.net</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">json</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">ruby-on-rails</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">.net</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">sql-server</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">python-3.x</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="container__main-content__right-sidebar__tags__tag more">
+                                    <a href="">swift</a>
+                                    &nbsp;
+                                    <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                        &nbsp;
+                                        <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                            2421817
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <a href="">more related tags</a>
+                            </div>
+                            <div class="container__main-content__right-sidebar__hot-questions">
+                                <h4>
+                                    <a href=""> Hot Network Questions </a>
+                                </h4>
+                                <ul>
+                                    <li>
+                                        <img src="~/assets/Images/StackExchange/apple-touch-icon (1).png"
+                                             alt="Unix&Linux" />
+                                        <a href="">
+                                            Obtain a list of files in Terminal in same order as in
+                                            Finder
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <iconify-icon icon="bx:message"></iconify-icon>
+                                        <a href="">
+                                            Does the U.S. have the legal means to use Russia's frozen
+                                            assets to finance Ukraine's reconstruction?
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <iconify-icon icon="bx:message"></iconify-icon>
+                                        <a href="">
+                                            Does DCT diagonalize the FD discretisation of the
+                                            Laplacian with Neumann boundary conditions?
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <iconify-icon icon="bx:message"></iconify-icon>
+                                        <a href="">
+                                            How often does a full moon happen on the weekend?
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <iconify-icon icon="bx:message"></iconify-icon>
+                                        <a href="">
+                                            How do I get a sufficiently deep field when photographing
+                                            an automobile dashboard?
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <iconify-icon icon="bx:message"></iconify-icon>
+                                        <a href=""> The meaning of "seven's sixteen and a half" </a>
+                                    </li>
+                                    <li>
+                                        <iconify-icon icon="bx:message"></iconify-icon>
+                                        <a href="">
+                                            Is there a security risk to use AES-CBC as stream cipher?
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <iconify-icon icon="bx:message"></iconify-icon>
+                                        <a href="">
+                                            Staying more than 90 days in Schengen area as a French
+                                            citizen, but only have a US passport
+                                        </a>
+                                    </li>
+                                </ul>
+                                <a href="">more hot questions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footer__container p-md-24 p-sm-16">
+                <div class="footer__container__logo d-640-none">
+                    <a href="Index.html">
+                        <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                             alt="Stack Overflow Logo" />
+                    </a>
+                </div>
+                <div class="footer__container__nav flex-lg-col">
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Stack Overflow</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Questions</a></li>
+                            <li><a href="">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Products</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Teams</a></li>
+                            <li><a href="">Advertising</a></li>
+                            <li><a href="">Collectives</a></li>
+                            <li><a href="">Talent</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Company</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">About</a></li>
+                            <li><a href="">Press</a></li>
+                            <li><a href="">Work Here</a></li>
+                            <li><a href="">Legal</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms of Service</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Cookie Settings</a></li>
+                            <li><a href="">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Technology</a></li>
+                            <li><a href="">Culture & recreation</a></li>
+                            <li><a href="">Life & arts</a></li>
+                            <li><a href="">Science</a></li>
+                            <li><a href="">Professional</a></li>
+                            <li><a href="">Business</a></li>
+                            <li class="mt-3"><a href="">API</a></li>
+                            <li><a href="">Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__container__copyright">
+                    <ul>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="https://www.facebook.com">Facebook</a></li>
+                        <li><a href="https://www.twitter.com">Twitter</a></li>
+                        <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                        <li><a href="https://www.Instagram.com">Instagram</a></li>
+                    </ul>
+                    <p>
+                        Site design / logo © 2022 Stack Exchange Inc; user contributions
+                        licensed under
+                        <span>
+                            <a href="">CC BY-SA</a>
+                        </span>
+                        . <span>rev 2022.9.1.42957</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+        <!-- message no reputation -->
+
+        <div class="rep-message">
+            <div class="rep-message__inner">
+                <div class="rep-message__inner--close">x</div>
+                <div class="rep-message__inner--message">
+                    You must have <a href="#">50 reputation</a>
+                    to comment
+                </div>
+            </div>
+        </div>
+        <!-- message no reputation end -->
+    </body>
+    <script src="~/assets/js/script.js"></script>
+    <!-- Prism -->
+    <script src="~/prism/prism-light.js"></script>
+
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js" integrity="sha512-bztGAvCE/3+a1Oh0gUro7BHukf6v7zpzrAb3ReWAVrt+bVNNphcl2tDTKCBr5zk7iEDmQ2Bv401fX3jeVXGIcA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
+
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+            integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+        <script>
+            $(document).ready(function () {
+                $(document).on("click", ".btnComment", function (e) {
+                    e.preventDefault();
+                    var href = $(this).attr("href");
+                    var base = window.location.origin;
+                    var url = `${base}${href}`
+                    var urlForPartial = `${base}/Home/comment`
+
+                    console.log(urlForPartial)
+                    fetch(url).then(res => res.text()).then(data => {
+                      
+                        fetch(urlForPartial).then(res => res.text()).then(data => {
+                           
+
+
+                            $(".parent").empty();
+                            var card = document.querySelector(".parent")
+
+                            $(".parent").append(data);
+
+                        })
+
+                    })
+                })
+            })
+        </script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+    </html>
+

@@ -1,0 +1,178 @@
+.wrapper {
+  font-family: "Roboto", sans-serif;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f1f2f3;
+  width: 100%;
+  flex: 1 0 auto;
+  position: relative; }
+  .wrapper__content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1264px;
+    padding: 80px 24px 24px; }
+    .wrapper__content__flex__logo {
+      text-align: center;
+      font-size: 16px;
+      margin: 0 auto 24px; }
+      .wrapper__content__flex__logo > a {
+        text-decoration: none;
+        color: #0074cc;
+        cursor: pointer; }
+        .wrapper__content__flex__logo > a > iconify-icon {
+          font-size: 40px; }
+    .wrapper__content__flex__other-ways-to-login {
+      max-width: 288px;
+      display: flex;
+      flex-direction: column;
+      margin: -4px;
+      flex: 1 auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 16px; }
+      .wrapper__content__flex__other-ways-to-login > button {
+        font-family: inherit;
+        margin: 4px 0;
+        flex: 1 auto;
+        background: white;
+        color: #3b4045;
+        position: relative;
+        display: inline-block;
+        padding: 0.8em;
+        border: 1px solid #d6d9dc;
+        outline: none;
+        font-size: 13px;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 6px;
+        line-height: 16px; }
+        .wrapper__content__flex__other-ways-to-login > button > iconify-icon {
+          font-size: 20px;
+          vertical-align: baseline;
+          margin-top: -0.3em;
+          margin-bottom: -0.3em;
+          margin-right: 4px; }
+      .wrapper__content__flex__other-ways-to-login > button:nth-child(2) {
+        background: #2f3337;
+        color: white; }
+        .wrapper__content__flex__other-ways-to-login > button:nth-child(2) > iconify-icon {
+          background: white;
+          border-radius: 50%; }
+      .wrapper__content__flex__other-ways-to-login > button:nth-child(3) {
+        background-color: #385499;
+        color: #fff; }
+      .wrapper__content__flex__other-ways-to-login > button:hover {
+        background: #f8f9f9; }
+      .wrapper__content__flex__other-ways-to-login > button:nth-child(2):hover {
+        background: #232629; }
+      .wrapper__content__flex__other-ways-to-login > button:nth-child(3):hover {
+        background: #314a86; }
+    .wrapper__content__flex__form-container {
+      font-family: inherit;
+      max-width: 288px;
+      box-shadow: 0 10px 24px #0000000d, 0 20px 48px #0000000d, 0 1px 4px #0000001a;
+      padding: 24px;
+      margin: 0 auto 24px;
+      background: white;
+      border-radius: 7px; }
+      .wrapper__content__flex__form-container__form {
+        display: flex;
+        flex-direction: column;
+        margin: -6px;
+        margin-left: 0;
+        margin-right: 0; }
+        .wrapper__content__flex__form-container__form__flex-item#password {
+          flex-direction: column-reverse; }
+        .wrapper__content__flex__form-container__form__flex-item {
+          display: flex;
+          flex-direction: column;
+          margin: 6px 0; }
+          .wrapper__content__flex__form-container__form__flex-item > label {
+            margin: 2px 0;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 0 2px; }
+          .wrapper__content__flex__form-container__form__flex-item__input {
+            display: flex;
+            position: relative;
+            margin: 2px 0; }
+            .wrapper__content__flex__form-container__form__flex-item__input > input {
+              -webkit-appearance: none;
+              width: 100%;
+              margin: 0;
+              padding: 0.6em 0.7em;
+              border: 1px solid #babfc4;
+              border-radius: 4px;
+              background-color: white;
+              color: #0c0d0e;
+              font-size: 13px;
+              font-family: inherit;
+              outline: none; }
+            .wrapper__content__flex__form-container__form__flex-item__input > iconify-icon {
+              display: none;
+              vertical-align: bottom;
+              position: absolute;
+              top: 50%;
+              right: 0.7em;
+              margin-top: -9px;
+              pointer-events: none;
+              color: #de4f55; }
+          .wrapper__content__flex__form-container__form__flex-item--alert {
+            margin: 2px 0;
+            padding: 2px;
+            font-size: 12px; }
+          .wrapper__content__flex__form-container__form__flex-item__label {
+            display: flex;
+            margin: 2px 0;
+            position: relative;
+            align-items: center;
+            justify-content: space-between; }
+            .wrapper__content__flex__form-container__form__flex-item__label > label {
+              cursor: pointer;
+              color: #0c0d0e;
+              font-family: inherit;
+              font-size: 15px;
+              font-weight: 600; }
+            .wrapper__content__flex__form-container__form__flex-item__label > a {
+              text-decoration: none;
+              color: #0074cc;
+              cursor: pointer;
+              user-select: auto;
+              font-size: 12px; }
+            .wrapper__content__flex__form-container__form__flex-item__label > a:hover {
+              color: #0a95ff; }
+          .wrapper__content__flex__form-container__form__flex-item > button {
+            margin: 2px 0;
+            color: #ffffff;
+            background-color: #0a95ff;
+            box-shadow: inset 0 1px 0 0 #ffffff66;
+            position: relative;
+            display: inline-block;
+            padding: 0.8em;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+            line-height: 1.2;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none; }
+          .wrapper__content__flex__form-container__form__flex-item > button:hover {
+            background: #0074cc; }
+    .wrapper__content__flex__Sign-up {
+      max-width: 288px;
+      width: 100%;
+      text-align: center;
+      font-size: 13px;
+      padding: 16px;
+      margin-bottom: 24px; }
+      .wrapper__content__flex__Sign-up > a {
+        color: #0074cc;
+        text-decoration: none; }
+      .wrapper__content__flex__Sign-up > a:hover {
+        color: #0a95ff; }

@@ -1,0 +1,45 @@
+﻿@model Quote
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Update Quote</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Icon:</label><br />
+                                <input asp-for="Icon" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Icon"></span>
+                            </div>
+                            <div>
+                                <label>Description:</label><br />
+                                <textarea asp-for="Desc" class="form-control"></textarea><br />
+                                <span class="text-danger" asp-validation-for="Desc"></span>
+                            </div>
+                            <div>
+                                <label>Job:</label><br />
+                                <textarea asp-for="Job" class="form-control"></textarea><br />
+                                <span class="text-danger" asp-validation-for="Job"></span>
+                            </div>
+                            <div>
+                                <label>Company:</label><br />
+                                <textarea asp-for="Company" class="form-control"></textarea><br />
+                                <span class="text-danger" asp-validation-for="Company"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

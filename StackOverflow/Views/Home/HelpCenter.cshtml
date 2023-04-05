@@ -1,0 +1,514 @@
+﻿@model Contact
+
+@{
+    Layout = null;
+}
+@if (!User.Identity.IsAuthenticated)
+{
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Font -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+              rel="stylesheet" />
+        <link rel="shortcut icon"
+              href="~/assets/Images/Logo/apple-touch-icon@2.png"
+              type="image/x-icon" />
+        <title>Help Center - Contact Us - Stack Overflow</title>
+        <link rel="stylesheet" href="~/assets/css/style.css" />
+    </head>
+    <body>
+        <!-- nav -->
+        <header>
+            <nav class="">
+                <!-- <div class="nav-all"> -->
+                <!-- <div class="container"> -->
+                <div class="nav-all">
+                    <div class="nav-burger display-none d-block">
+                        <span class="nav-burger__icon"></span>
+                        <span class="nav-burger__icon"></span>
+                        <span class="nav-burger__icon"></span>
+                    </div>
+                    <div class="nav-burger-toggle l-0">
+                        <ul>
+                            <li><a asp-controller="home" asp-action="index">Home</a></li>
+                            <li>
+                                Public
+                                <ul>
+                                    <li>
+                                        <a asp-controller="home" asp-action="questions">
+                                            <iconify-icon icon="bx:world"></iconify-icon>
+                                            Questions
+                                        </a>
+                                    </li>
+                                    <li><a asp-controller="home" asp-action="tags">Tags</a></li>
+                                    <li><a asp-controller="home" asp-action="users">Users</a></li>
+                                    <li><a asp-controller="home" asp-action="companies">Companies</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                Collectives
+                                <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                            Explore Collectives
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Teams
+                                <div class="teams">
+                                    <div class="teams-title">
+                                        <h4>Stack Overflow for Teams -</h4>
+                                    </div>
+                                    <div class="teams-desc">
+                                        <p>
+                                            Start collaborating and sharing organizational knowledge.
+                                        </p>
+                                    </div>
+                                    <div class="teams-image">
+                                        <img src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                             alt="Stack Overflow For Teams" />
+                                    </div>
+                                    <div class="teams-button">
+                                        <a href="">Create a free Team</a>
+                                    </div>
+                                    <div class="teams-why">
+                                        <a href="">Why Teams?</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-logo">
+                        <a href="Index.html" class="nav-logo__image nav-logo-md-width">
+                            <img class="d-640-none"
+                                 src="~/assets/Images/Logo/1280px-Stack_Overflow_logo.svg.png"
+                                 alt="Stackoverflow Logo" />
+                            <img class="display-none d-block sm-img"
+                                 src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                                 alt="Stackoverflow Logo" />
+                        </a>
+                    </div>
+                    <div class="nav-links">
+                        <ul>
+                            <li class="d-md-none"><a href="About.html">About</a></li>
+                            <li id="products">
+                                <a href="">Products</a>
+                            </li>
+
+                            <div class="products-toggle">
+                                <div class="popover-arrow"></div>
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <span> Stack Overflow </span>
+                                            <span> Public questions & answers </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span> Stack Overflow for Teams</span>
+                                            <span>
+                                                Where deleveopers & technologists share private
+                                                knowledge with coworkers
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span>Talent</span>
+                                            <span> Build your employer brand</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span> Advertising </span>
+                                            <span> Reach developers & technologists worldwide </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href=""> About the company </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <li class="d-md-none"><a href="ForTeams.html">For Teams</a></li>
+                        </ul>
+                    </div>
+                    <form action="" class="search">
+                        <div class="nav-search d-640-none input-sm">
+                            <input class="nav-search__input"
+                                   type="text"
+                                   placeholder="Search..." />
+                            <iconify-icon icon="charm:search"></iconify-icon>
+
+                            <div class="popover-arrow__search"></div>
+                            <div class="nav-search__input-group">
+                                <div class="nav-search__input-group__searchable flex-md-col">
+                                    <div class="nav-search__input-group__searchable--flex">
+                                        <div class="nav-search__input-group__searchable--flex--item">
+                                            <span>[tag]</span>
+                                            <span>search within a tag</span>
+                                        </div>
+                                        <div class="nav-search__input-group__searchable--flex--item">
+                                            <span>user:1234</span>
+                                            <span>search by author</span>
+                                        </div>
+                                        <div class="nav-search__input-group__searchable--flex--item">
+                                            <span>"words here"</span>
+                                            <span>exact phrase</span>
+                                        </div>
+                                        <div class="nav-search__input-group__searchable--flex--item">
+                                            <span>collective:"Name"</span>
+                                            <span>collective content</span>
+                                        </div>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex">
+                                        <div class="nav-search__input-group__searchable--flex--item">
+                                            <span>answers:0</span>
+                                            <span>unanswered questions </span>
+                                        </div>
+                                        <div class="nav-search__input-group__searchable--flex--item">
+                                            <span>score:3</span>
+                                            <span>post with a 3+ score</span>
+                                        </div>
+                                        <div class="nav-search__input-group__searchable--flex--item">
+                                            <span>is:question</span>
+                                            <span>type of post</span>
+                                        </div>
+                                        <div class="nav-search__input-group__searchable--flex--item">
+                                            <span>isaccepted:yes</span>
+                                            <span>search within status</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search__input-group__more">
+                                    <div class="nav-search__input-group__more--flex">
+                                        <div class="nav-search__input-group__more--flex--item">
+                                            <a href="">Ask a question</a>
+                                        </div>
+                                        <div class="nav-search__input-group__more--flex--item">
+                                            <a href="">Search help</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <ul>
+                        <li class="display-none d-sm-if icon-sm">
+                            <a href="#" class="display-none d-sm-if">
+                                <iconify-icon icon="charm:search"></iconify-icon>
+                            </a>
+                        </li>
+                        <li><a class="mtb-sm-6" href="LogIn.html">Log in </a></li>
+                        <li><a class="mtb-sm-6" href="SignUp.html">Sign up</a></li>
+                    </ul>
+                </div>
+                <!-- </div> -->
+                <!-- </div> -->
+            </nav>
+        </header>
+
+        <!-- nav end -->
+        <main class="container">
+            <div class="container__left-sidebar d-640-none">
+                <div class="container__left-sidebar__sticky">
+                    <div class="container__left-sidebar__sticky__nav">
+                        <ul>
+                            <li>
+                                <a href="Index.html">
+                                    <div class="d-flex">
+                                        <div class="d-flex--item">Home</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li class="fw">Public</li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a href="">
+                                            <iconify-icon icon="bx:world"></iconify-icon>
+                                            Questions
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Tags</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Users</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Companies</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li id="collectives" class="sticky-li fw">
+                                        <div class="sticky-li__collectives">Collectives</div>
+                                        <div class="sticky-li__icon">
+                                            <a href="">
+                                                <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a href="">
+                                            <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                            <span>Explore Collectives</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <div class="Teams-title fw">Teams</div>
+                                        <div class="Teams-body">
+                                            <strong>Stack Overflow for Teams</strong>
+                                            - Start collaborating and sharing organizational
+                                            knowledge.
+                                            <img width="139"
+                                                 height="114"
+                                                 src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                                 alt="Stack Overflow For Teams" />
+                                            <a href="">Create a free Team</a>
+                                            <a href="">Why Teams?</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container__main-content plr-md-16 w-sm-100">
+                <div class="container__main-content__bar">
+                    <div class="container__main-content__bar__subheader">
+                        <h1><a href="">Help Center</a> > Contact</h1>
+                    </div>
+                    <div class="container__main-content__bar__custom-content">
+                        <p>
+                            If you have a question about a Stack Exchange site, the best place
+                            to ask is on <a href="">Meta Stack Exchange</a> or the site's own
+                            meta - which is in the top bar under the
+                            <img src="https://i.stack.imgur.com/9UIqe.png"
+                                 width="18"
+                                 alt="Help icon" />.
+                        </p>
+                        <p>You might find these links useful:</p>
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com">Facebook Help Center</a>
+                            </li>
+                            <li><a href="https://www.yahoo.com">Yahoo! Help Central</a></li>
+                            <li><a href="https://www.google.com">Google Contact</a></li>
+                            <li><a href="https://www.ubuntu.com">Ubuntu Contact</a></li>
+                        </ul>
+                        <p>
+                            If you need to delete your account, merge accounts, or have an
+                            issue that can't be addressed by meta, please use the form below:
+                        </p>
+                    </div>
+                    <hr />
+
+                    <p style="color:white;background-color:skyblue">@ViewBag.Success</p>
+                    <div class="container__main-content__bar__contact">
+                        <div class="container__main-content__bar__contact__all w-md-100">
+                            <div class="container__main-content__bar__contact__all--contact-form w-md-100 f-md-none">
+                                <h2>Contact Support</h2>
+
+
+                                <form asp-controller="home" asp-action="helpcenter" method="post">
+                                    <div class="form-flex">
+                                        <label for="topic">What can we help you with?</label>
+                                        <div class="item">
+                                            <div class="select">
+                                                <select asp-for="reason">
+                                                    <option value="">Please select a topic</option>
+                                                    <option value="1">I lost my password</option>
+                                                    <option value="2">
+                                                        I need to add or remove login credentials
+                                                    </option>
+                                                    <option value="3">
+                                                        I need to delete my user profile
+                                                    </option>
+                                                    <option value="4">
+                                                        I need to merge user profiles
+                                                    </option>
+                                                    <option value="5">
+                                                        My question or answer was denied
+                                                    </option>
+                                                    <option value="6">
+                                                        My question or answer did not meet quality standards
+                                                    </option>
+                                                    <option value="7">My question was closed</option>
+                                                    <option value="8">
+                                                        I would like to advertise on Stack Exchange
+                                                    </option>
+                                                    <option value="10">
+                                                        Stack Exchange content is being reproduced without
+                                                        attribution
+                                                    </option>
+                                                    <option value="11">
+                                                        I want to appeal a suspension
+                                                    </option>
+                                                    <option value="12">
+                                                        I want to report a Code of Conduct violation
+                                                    </option>
+                                                    <option value="13">Collectives</option>
+                                                    <option value="14">
+                                                        I want to send a DMCA Notice or Counterclaim
+                                                    </option>
+                                                    <option value="9">Other</option>
+                                                </select>
+                                                <span style="color:red" asp-validation-for="reason"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-flex">
+                                        <label for="email">Your email</label>
+                                        <input asp-for="email" placeholder="your email" />
+                                        <span style="color:red" asp-validation-for="email"></span>
+
+                                    </div>
+                                    <div class="form-flex">
+                                        <label for="details">
+                                            <span>Please describe your problem</span>
+                                        </label>
+                                        <textarea asp-for="message"></textarea>
+                                        <span style="color:red" asp-validation-for="message"></span>
+
+                                        <span class="form-flex__character">Enter at least 15 characters</span>
+                                    </div>
+                                    <div class="g-recaptcha"></div>
+                                    <div class="form--button">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="container__main-content__bar__contact__all--search-form w-md-100 f-md-none">
+                                <h2>Search the Help Center</h2>
+                                <form action="">
+                                    <input type="text"
+                                           maxlength="300"
+                                           placeholder="Search help pages" />
+                                    <input type="submit" value="Search" disabled />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footer__container p-md-24 p-sm-16">
+                <div class="footer__container__logo d-640-none">
+                    <a href="Index.html">
+                        <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                             alt="Stack Overflow Logo" />
+                    </a>
+                </div>
+                <div class="footer__container__nav flex-lg-col">
+                    <div class="footer__container__nav--col">
+                        <h5>
+                            <a href="Index.html">Stack Overflow</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Questions</a></li>
+                            <li><a href="">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5>
+                            <a href="Index.html">Products</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Teams</a></li>
+                            <li><a href="">Advertising</a></li>
+                            <li><a href="">Collectives</a></li>
+                            <li><a href="">Talent</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5>
+                            <a href="Index.html">Company</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">About</a></li>
+                            <li><a href="">Press</a></li>
+                            <li><a href="">Work Here</a></li>
+                            <li><a href="">Legal</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms of Service</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Cookie Settings</a></li>
+                            <li><a href="">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5>
+                            <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Technology</a></li>
+                            <li><a href="">Culture & recreation</a></li>
+                            <li><a href="">Life & arts</a></li>
+                            <li><a href="">Science</a></li>
+                            <li><a href="">Professional</a></li>
+                            <li><a href="">Business</a></li>
+                            <li class="mt-3"><a href="">API</a></li>
+                            <li><a href="">Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__container__copyright">
+                    <ul>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="https://www.facebook.com">Facebook</a></li>
+                        <li><a href="https://www.twitter.com">Twitter</a></li>
+                        <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                        <li><a href="https://www.Instagram.com">Instagram</a></li>
+                    </ul>
+                    <p>
+                        Site design / logo © 2022 Stack Exchange Inc; user contributions
+                        licensed under
+                        <span>
+                            <a href="">CC BY-SA</a>
+                        </span>
+                        . <span>rev 2022.9.1.42957</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+    <script src="~/assets/js/script.js"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+
+}

@@ -1,0 +1,666 @@
+﻿@model List<Company>
+
+@if (!User.Identity.IsAuthenticated)
+{
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Font -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+              rel="stylesheet" />
+        <link rel="shortcut icon"
+              href="~/assets/Images/Logo/apple-touch-icon@2.png"
+              type="image/x-icon" />
+        <title>Best Companies Hiring Developers - Stack Overflow</title>
+        <link rel="stylesheet" href="~/assets/css/style.css" />
+    </head>
+    <body>
+        <main class="container">
+            <div class="container__left-sidebar d-640-none">
+                <div class="container__left-sidebar__sticky">
+                    <div class="container__left-sidebar__sticky__nav">
+                        <ul>
+                            <li>
+                                <a asp-controller="home" asp-action="index">
+                                    <div class="d-flex">
+                                        <div class="d-flex--item">Home</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li class="fw">Public</li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a asp-controller="home" asp-action="questions">
+                                            <iconify-icon icon="bx:world"></iconify-icon>
+                                            Questions
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a asp-controller="home" asp-action="tags">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Tags</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a asp-controller="home" asp-action="users">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Users</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a asp-controller="home" asp-action="companies">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Companies</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li id="collectives" class="sticky-li fw">
+                                        <div class="sticky-li__collectives">Collectives</div>
+                                        <div class="sticky-li__icon">
+                                            <a href="">
+                                                <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a href="">
+                                            <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                            <span>Explore Collectives</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <div class="Teams-title fw">Teams</div>
+                                        <div class="Teams-body">
+                                            <strong>Stack Overflow for Teams</strong>
+                                            - Start collaborating and sharing organizational
+                                            knowledge.
+                                            <img width="139"
+                                                 height="114"
+                                                 src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                                 alt="Stack Overflow For Teams" />
+                                            <a href="">Create a free Team</a>
+                                            <a href="">Why Teams?</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container__main-content w-sm-100 plr-sm-12">
+                <h1>Companies</h1>
+                <p>Learn about what it's like to work at companies</p>
+                <div class="container__main-content__content">
+                    <form method="get" class="container__main-content__content__search-form">
+                        <div class="container__main-content__content__search-form__inputs">
+                            <div class="container__main-content__content__search-form__inputs--search-companies">
+                                <div class="container__main-content__content__search-form__inputs--search-companies__body">
+                                    <label for="c"> Search all companies </label>
+                                    <input value="" id="c"
+                                           type="text"
+                                           name="search"
+                                           placeholder="Search all companies"
+                                           autocomplete="off"
+                                           maxlength="120" />
+                                    <iconify-icon icon="fe:search"></iconify-icon>
+                                    <span><iconify-icon icon="bi:x"></iconify-icon></span>
+                                </div>
+                            </div>
+                            <div class="container__main-content__content__search-form__inputs--search-by-location">
+                                <div class="container__main-content__content__search-form__inputs--search-by-location__body">
+                                    <label for="l"> Search company by location </label>
+                                    <input type="text"
+                                           placeholder="Search company by location"
+                                           id="l"
+                                           maxlength="120"
+                                           autocomplete="off" />
+                                    <span><iconify-icon icon="bi:x"></iconify-icon></span>
+                                </div>
+                            </div>
+                            <div class="container__main-content__content__search-form__inputs--search-button">
+                                <div class="container__main-content__content__search-form__inputs--search-button__body">
+                                    <button type="submit">Search</button>
+                                </div>
+                            </div>
+                            <div class="container__main-content__content__search-form__inputs--line"></div>
+                            <div class="container__main-content__content__search-form__inputs--filter">
+                                <button type="button">
+                                    <span>Filter by tag</span>
+                                </button>
+                                <div class="container__main-content__content__search-form__inputs--filter--popover">
+                                    <div class="container__main-content__content__search-form__inputs--filter--popover--arrow"></div>
+                                    <fieldset class="container__main-content__content__search-form__inputs--filter--popover--fields">
+                                        <div class="container__main-content__content__search-form__inputs--filter--popover--fields__body">
+                                            <div class="container__main-content__content__search-form__inputs--filter--popover--fields__body__flex">
+                                                <label for="filter-input">
+                                                    Company tech stack
+                                                    <p>Add up to ten tech tags</p>
+                                                </label>
+                                                <div class="container__main-content__content__search-form__inputs--filter--popover--fields__body__flex__wrapper">
+                                                    <input type="text" placeholder="e.g. html, c#" />
+                                                    <div class="container__main-content__content__search-form__inputs--filter--popover--fields__body__flex__wrapper__input">
+                                                        <input type="text"
+                                                               placeholder="e.g. html, c#"
+                                                               id="filter-input"
+                                                               autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="container__main-content__content__search-form__inputs--filter--popover--buttons">
+                                        <button class="disabled" type="button">Apply filter</button>
+                                        <button id="cancel" type="submit">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container__main-content__content__search-form__count">
+                            <div class="container__main-content__content__search-form__count__title">
+                                <span>143 companies</span>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="container__main-content__content__companies">
+                        <div class="container__main-content__content__companies__body">
+                            <div class="container__main-content__content__companies__body__list">
+                                @foreach (Company company in Model)
+                                {
+                                    <div class="container__main-content__content__companies__body__list__company">
+                                        <div class="container__main-content__content__companies__body__list__company--x">
+                                            <iconify-icon icon="bi:x"></iconify-icon>
+                                        </div>
+                                        <div class="container__main-content__content__companies__body__list__company--main">
+                                            <div class="container__main-content__content__companies__body__list__company--main--image">
+                                                <a asp-controller="home" asp-action="CompanyDetail" asp-route-id="@company.Id">
+                                                    <img src="~/assets/Images/Companies/@company.Image"
+                                                         alt="@company.Name" />
+                                                </a>
+                                            </div>
+                                            <div class="container__main-content__content__companies__body__list__company--main--desc">
+                                                <h2>
+                                                    <a href="">Fullscript</a>
+                                                </h2>
+                                                <div class="container__main-content__content__companies__body__list__company--main--desc__info">
+                                                    <div class="container__main-content__content__companies__body__list__company--main--desc__info--location">
+                                                        <iconify-icon icon="bytesize:location"></iconify-icon>
+                                                        @company.Location
+                                                    </div>
+                                                    <div class="container__main-content__content__companies__body__list__company--main--desc__info--features">
+                                                        <iconify-icon icon="icons8:organization"></iconify-icon>
+                                                        @company.Industry
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    @(company.About.Count()>300 ? company.About.Substring(0,300) + "..." : company.About)
+                                                </p>
+                                                <div class="container__main-content__content__companies__body__list__company--main--desc--tags">
+                                                    <a href="">kubernetes</a>
+                                                    <a href="">c#</a>
+                                                    <a href="">java</a>
+                                                    <span>New content</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+                                <div class="container__main-content__sidebar pagination-left">
+                                    <a href="" class="pagination-item" title="Go to page 1">Prev</a>
+                                    <div class="pagination-item is-selected">1</div>
+                                    <a href="" class="pagination-item" title="Go to page 2">2</a>
+                                    <a href="" class="pagination-item" title="Go to page 3">3</a>
+                                    <a href="" class="pagination-item" title="Go to page 4">4</a>
+                                    <a href="" class="pagination-item" title="Go to page 5">5</a>
+                                    <div class="clear">...</div>
+                                    <a href="" class="pagination-item" title="Go to page 12345">12345</a>
+                                    <a href="" class="pagination-item" title="Go to page 2">Next</a>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footer__container p-md-24 p-sm-16">
+                <div class="footer__container__logo d-640-none">
+                    <a href="Index.html">
+                        <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                             alt="Stack Overflow Logo" />
+                    </a>
+                </div>
+                <div class="footer__container__nav flex-lg-col">
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Stack Overflow</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Questions</a></li>
+                            <li><a href="">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Products</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Teams</a></li>
+                            <li><a href="">Advertising</a></li>
+                            <li><a href="">Collectives</a></li>
+                            <li><a href="">Talent</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Company</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">About</a></li>
+                            <li><a href="">Press</a></li>
+                            <li><a href="">Work Here</a></li>
+                            <li><a href="">Legal</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms of Service</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Cookie Settings</a></li>
+                            <li><a href="">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Technology</a></li>
+                            <li><a href="">Culture & recreation</a></li>
+                            <li><a href="">Life & arts</a></li>
+                            <li><a href="">Science</a></li>
+                            <li><a href="">Professional</a></li>
+                            <li><a href="">Business</a></li>
+                            <li class="mt-3"><a href="">API</a></li>
+                            <li><a href="">Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__container__copyright">
+                    <ul>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="https://www.facebook.com">Facebook</a></li>
+                        <li><a href="https://www.twitter.com">Twitter</a></li>
+                        <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                        <li><a href="https://www.Instagram.com">Instagram</a></li>
+                    </ul>
+                    <p>
+                        Site design / logo © 2022 Stack Exchange Inc; user contributions
+                        licensed under
+                        <span>
+                            <a href="">CC BY-SA</a>
+                        </span>
+                        . <span>rev 2022.9.1.42957</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+    </body>
+    <script src="~/assets/js/script.js"></script>
+    <script src="~/assets/js/sections/companies.js"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+}
+else
+{
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+              rel="stylesheet" />
+        <link rel="shortcut icon"
+              href="~/assets/Images/Logo/apple-touch-icon@2.png"
+              type="image/x-icon" />
+        <title>Best Companies Hiring Developers - Stack Overflow</title>
+        <link rel="stylesheet" href="~/assets/css/style.css" />
+    </head>
+    <body>
+        <main class="container">
+            <div class="container__left-sidebar d-640-none">
+                <div class="container__left-sidebar__sticky">
+                    <div class="container__left-sidebar__sticky__nav">
+                        <ul>
+                            <li>
+                                <a asp-controller="home" asp-action="questions">
+                                    <div class="d-flex">
+                                        <div class="d-flex--item">Home</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li class="fw">Public</li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a asp-controller="home" asp-action="questions">
+                                            <iconify-icon icon="bx:world"></iconify-icon>
+                                            Questions
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a asp-controller="home" asp-action="tags">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Tags</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a asp-controller="home" asp-action="users">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Users</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a asp-controller="home" asp-action="companies">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Companies</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li id="collectives" class="sticky-li fw">
+                                        <div class="sticky-li__collectives">Collectives</div>
+                                        <div class="sticky-li__icon">
+                                            <a href="">
+                                                <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a href="">
+                                            <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                            <span>Explore Collectives</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <div class="Teams-title fw">Teams</div>
+                                        <div class="Teams-body">
+                                            <strong>Stack Overflow for Teams</strong>
+                                            - Start collaborating and sharing organizational
+                                            knowledge.
+                                            <img width="139"
+                                                 height="114"
+                                                 src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                                 alt="Stack Overflow For Teams" />
+                                            <a href="">Create a free Team</a>
+                                            <a href="">Why Teams?</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container__main-content w-sm-100 plr-sm-12">
+                <h1>Companies</h1>
+                <p>Learn about what it's like to work at companies</p>
+                <div class="container__main-content__content">
+                    <form action="" class="container__main-content__content__search-form">
+                        <div class="container__main-content__content__search-form__inputs">
+                            <div class="container__main-content__content__search-form__inputs--search-companies">
+                                <div class="container__main-content__content__search-form__inputs--search-companies__body">
+                                    <label for="c"> Search all companies </label>
+                                    <input id="c"
+                                           type="text"
+                                           placeholder="Search all companies"
+                                           autocomplete="off"
+                                           maxlength="120" />
+                                    <iconify-icon icon="fe:search"></iconify-icon>
+                                    <span><iconify-icon icon="bi:x"></iconify-icon></span>
+                                </div>
+                            </div>
+                            <div class="container__main-content__content__search-form__inputs--search-by-location">
+                                <div class="container__main-content__content__search-form__inputs--search-by-location__body">
+                                    <label for="l"> Search company by location </label>
+                                    <input type="text"
+                                           placeholder="Search company by location"
+                                           id="l"
+                                           maxlength="120"
+                                           autocomplete="off" />
+                                    <span><iconify-icon icon="bi:x"></iconify-icon></span>
+                                </div>
+                            </div>
+                            <div class="container__main-content__content__search-form__inputs--search-button">
+                                <div class="container__main-content__content__search-form__inputs--search-button__body">
+                                    <button>Search</button>
+                                </div>
+                            </div>
+                            <div class="container__main-content__content__search-form__inputs--line"></div>
+                            <div class="container__main-content__content__search-form__inputs--filter">
+                                <button type="button">
+                                    <span>Filter by tag</span>
+                                </button>
+                                <div class="container__main-content__content__search-form__inputs--filter--popover">
+                                    <div class="container__main-content__content__search-form__inputs--filter--popover--arrow"></div>
+                                    <fieldset class="container__main-content__content__search-form__inputs--filter--popover--fields">
+                                        <div class="container__main-content__content__search-form__inputs--filter--popover--fields__body">
+                                            <div class="container__main-content__content__search-form__inputs--filter--popover--fields__body__flex">
+                                                <label for="filter-input">
+                                                    Company tech stack
+                                                    <p>Add up to ten tech tags</p>
+                                                </label>
+                                                <div class="container__main-content__content__search-form__inputs--filter--popover--fields__body__flex__wrapper">
+                                                    <input type="text" placeholder="e.g. html, c#" />
+                                                    <div class="container__main-content__content__search-form__inputs--filter--popover--fields__body__flex__wrapper__input">
+                                                        <input type="text"
+                                                               placeholder="e.g. html, c#"
+                                                               id="filter-input"
+                                                               autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="container__main-content__content__search-form__inputs--filter--popover--buttons">
+                                        <button class="disabled" type="button">Apply filter</button>
+                                        <button id="cancel" type="button">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container__main-content__content__search-form__count">
+                            <div class="container__main-content__content__search-form__count__title">
+                                <span>143 companies</span>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="container__main-content__content__companies">
+                        <div class="container__main-content__content__companies__body">
+                            <div class="container__main-content__content__companies__body__list">
+                                @foreach (Company company in Model)
+                                {
+                                    <div class="container__main-content__content__companies__body__list__company">
+                                        <div class="container__main-content__content__companies__body__list__company--x">
+                                            <iconify-icon icon="bi:x"></iconify-icon>
+                                        </div>
+                                        <div class="container__main-content__content__companies__body__list__company--main">
+                                            <div class="container__main-content__content__companies__body__list__company--main--image">
+                                                <a asp-controller="home" asp-action="CompanyDetail" asp-route-id="@company.Id">
+                                                    <img src="~/assets/Images/Companies/@company.Image"
+                                                         alt="@company.Name" />
+                                                </a>
+                                            </div>
+                                            <div class="container__main-content__content__companies__body__list__company--main--desc">
+                                                <h2>
+                                                    <a href="">Fullscript</a>
+                                                </h2>
+                                                <div class="container__main-content__content__companies__body__list__company--main--desc__info">
+                                                    <div class="container__main-content__content__companies__body__list__company--main--desc__info--location">
+                                                        <iconify-icon icon="bytesize:location"></iconify-icon>
+                                                        @company.Location
+                                                    </div>
+                                                    <div class="container__main-content__content__companies__body__list__company--main--desc__info--features">
+                                                        <iconify-icon icon="icons8:organization"></iconify-icon>
+                                                        @company.Industry
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    @(company.About.Count()>300 ? company.About.Substring(0,300) + "..." : company.About)
+                                                </p>
+                                                <div class="container__main-content__content__companies__body__list__company--main--desc--tags">
+                                                    <a href="">kubernetes</a>
+                                                    <a href="">c#</a>
+                                                    <a href="">java</a>
+                                                    <span>New content</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="container__main-content__sidebar pagination-left">
+                                <a href="" class="pagination-item" title="Go to page 1">Prev</a>
+                                <div class="pagination-item is-selected">1</div>
+                                <a href="" class="pagination-item" title="Go to page 2">2</a>
+                                <a href="" class="pagination-item" title="Go to page 3">3</a>
+                                <a href="" class="pagination-item" title="Go to page 4">4</a>
+                                <a href="" class="pagination-item" title="Go to page 5">5</a>
+                                <div class="clear">...</div>
+                                <a href="" class="pagination-item" title="Go to page 12345">12345</a>
+                                <a href="" class="pagination-item" title="Go to page 2">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        footer
+        <footer class="footer">
+            <div class="footer__container p-md-24 p-sm-16">
+                <div class="footer__container__logo d-640-none">
+                    <a href="Index.html">
+                        <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                             alt="Stack Overflow Logo" />
+                    </a>
+                </div>
+                <div class="footer__container__nav flex-lg-col">
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Stack Overflow</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Questions</a></li>
+                            <li><a href="">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Products</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Teams</a></li>
+                            <li><a href="">Advertising</a></li>
+                            <li><a href="">Collectives</a></li>
+                            <li><a href="">Talent</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Company</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">About</a></li>
+                            <li><a href="">Press</a></li>
+                            <li><a href="">Work Here</a></li>
+                            <li><a href="">Legal</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms of Service</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Cookie Settings</a></li>
+                            <li><a href="">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Technology</a></li>
+                            <li><a href="">Culture & recreation</a></li>
+                            <li><a href="">Life & arts</a></li>
+                            <li><a href="">Science</a></li>
+                            <li><a href="">Professional</a></li>
+                            <li><a href="">Business</a></li>
+                            <li class="mt-3"><a href="">API</a></li>
+                            <li><a href="">Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__container__copyright">
+                    <ul>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="https://www.facebook.com">Facebook</a></li>
+                        <li><a href="https://www.twitter.com">Twitter</a></li>
+                        <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                        <li><a href="https://www.Instagram.com">Instagram</a></li>
+                    </ul>
+                    <p>
+                        Site design / logo © 2022 Stack Exchange Inc; user contributions
+                        licensed under
+                        <span>
+                            <a href="">CC BY-SA</a>
+                        </span>
+                        . <span>rev 2022.9.1.42957</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+    <script src="~/assets/js/script.js"></script>
+    <script src="~/assets/js/sections/companies.js"></script>
+    <script src="~/assets/js/sections/profile.js"></script>
+
+
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+    </html>
+}
+
+
+
+

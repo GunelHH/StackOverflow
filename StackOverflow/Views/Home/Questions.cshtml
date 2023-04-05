@@ -1,0 +1,2145 @@
+﻿@model List<Question>
+
+
+@if (!User.Identity.IsAuthenticated)
+{
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Font -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+              rel="stylesheet" />
+        <link rel="shortcut icon"
+              href="~/assets/Images/Logo/apple-touch-icon@2.png"
+              type="image/x-icon" />
+        <title>Newest Questions - Stack Overflow</title>
+        <link rel="stylesheet" href="~/assets/css/style.css" />
+    </head>
+    <body>
+        <main class="container">
+            <div class="container__left-sidebar d-640-none">
+                <div class="container__left-sidebar__sticky">
+                    <div class="container__left-sidebar__sticky__nav">
+                        <ul>
+                            <li>
+                                <a href="Index.html">
+                                    <div class="d-flex">
+                                        <div class="d-flex--item">Home</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li class="fw">Public</li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a href="">
+                                            <iconify-icon icon="bx:world"></iconify-icon>
+                                            Questions
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Tags</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Users</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="sticky-li">
+                                        <a href="">
+                                            <div class="d-flex">
+                                                <div class="d-flex--item">Companies</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li id="collectives" class="sticky-li fw">
+                                        <div class="sticky-li__collectives">Collectives</div>
+                                        <div class="sticky-li__icon">
+                                            <a href="">
+                                                <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li id="p-o" class="sticky-li">
+                                        <a href="">
+                                            <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                            <span>Explore Collectives</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <div class="Teams-title fw">Teams</div>
+                                        <div class="Teams-body">
+                                            <strong>Stack Overflow for Teams</strong>
+                                            - Start collaborating and sharing organizational
+                                            knowledge.
+                                            <img width="139"
+                                                 height="114"
+                                                 src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                                 alt="Stack Overflow For Teams" />
+                                            <a href="">Create a free Team</a>
+                                            <a href="">Why Teams?</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container__main-content p-md-16 w-sm-100">
+                <div class="container__main-content__questions">
+                    <div class="container__main-content__questions__title">
+                        <h1>All Questions</h1>
+                        <div class="container__main-content__questions__title--button">
+                            <a href=""> Ask Question </a>
+                        </div>
+                    </div>
+                    <div class="container__main-content__questions__about">
+                        <div class="container__main-content__questions__about__flex ai-sm-strech flex-md-col">
+                            <div class="container__main-content__questions__about__flex__item">
+
+                                @Model.Count() questions
+                            </div>
+                            <div class="container__main-content__questions__about__flex__item">
+                                <div class="container__main-content__questions__about__flex__item__filter">
+                                    <!-- <div
+                                      class="container__main-content__questions__about__flex__item__filter__all"
+                                    > -->
+                                    <div class="container__main-content__questions__about__flex__item__filter--navigation">
+                                        <a class="is-selected" href="">
+                                            <div class="link">Newest</div>
+                                        </a>
+                                        <a href="">
+                                            <div class="link">Active</div>
+                                        </a>
+                                        <a class="d-11-none d-77-none d-607-none" href="">
+                                            <div class="link">Bountied</div>
+                                            <div class="bounties-count">273</div>
+                                        </a>
+                                        <a class="d-11-none d-77-none d-607-none" href="">
+                                            <div class="link">Unanswered</div>
+                                        </a>
+                                        <button class="more-button">More</button>
+                                    </div>
+                                    <div class="container__main-content__questions__about__flex__item__filter--popover display-none l-lg-11 l-md-11 l-sm-38 l-sm-6">
+                                        <div class="popover-arrow"></div>
+                                        <ul>
+                                            <li><a href=""> Frequent </a></li>
+                                            <li><a href=""> Score </a></li>
+                                            <li class="line"></li>
+                                            <li><span>Unanswered (my tags)</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="container__main-content__questions__about__flex__item__filter--filter">
+                                        <button class="filter-button">
+                                            <iconify-icon icon="bi:filter"></iconify-icon>
+                                            Filter
+                                        </button>
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <form id="filter" class="display-none" action="">
+                            <input type="hidden" name="" />
+                            <div class="content">
+                                <div class="all">
+                                    <div class="filter-method">
+                                        <div class="flex">
+                                            <div class="item">
+                                                <fieldset>
+                                                    <legend>Filter by</legend>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="checkbox" name="" id="" />
+                                                            </div>
+                                                            <label for="">No answers</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="checkbox" name="" id="" />
+                                                            </div>
+                                                            <label for="">No accepted answer</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="checkbox" name="" id="" />
+                                                            </div>
+                                                            <label for="">Has bounty</label>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="item">
+                                                <fieldset>
+                                                    <legend>Sorted by</legend>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="radio" name="" id="" />
+                                                            </div>
+                                                            <label for="">Newest</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="radio" name="" id="" />
+                                                            </div>
+                                                            <label for="">Recent activity</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="radio" name="" id="" />
+                                                            </div>
+                                                            <label for="">Highest score</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="radio" name="" id="" />
+                                                            </div>
+                                                            <label for="">Most frequent</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="radio" name="" id="" />
+                                                            </div>
+                                                            <label for="">Bounty ending soon</label>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="item">
+                                                <fieldset>
+                                                    <legend>Tagged with</legend>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="radio" name="" id="" />
+                                                            </div>
+                                                            <label for="">My watched tags</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="field-flex">
+                                                            <div class="input">
+                                                                <input type="radio" name="" id="" />
+                                                            </div>
+                                                            <label for="">The following tags:</label>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <div class="search">
+                                                    <input type="text"
+                                                           placeholder="e.g. javascript or python" />
+                                                    <div class="result">
+                                                        <span></span>
+                                                        <input type="text"
+                                                               placeholder="e.g. javascript or python" />
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="apply">
+                                        <div class="flex">
+                                            <div class="item">
+                                                <button id="apply" type="submit">Apply filter</button>
+                                            </div>
+                                            <div class="item">
+                                                <button id="cancel" type="button">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="container__main-content__questions--questions">
+                        @foreach (Question question in Model)
+                        {
+                            <div class="flex fd-md-col">
+                                <div class="stats">
+                                    <div class="item">
+                                        <span>0</span>
+                                        <span>votes</span>
+                                    </div>
+                                    <div class="item">
+                                        <span>0</span>
+                                        <span>answers</span>
+                                    </div>
+                                    <div class="item">
+                                        <span>2</span>
+                                        <span>views</span>
+                                    </div>
+                                    <div class="item"></div>
+                                    <div class="item"></div>
+                                </div>
+                                <div class="content">
+                                    <h3>
+                                        <a asp-route-id="@question.Id" asp-controller="home" asp-action="questiondetail">
+                                            @question.Title
+                                        </a>
+                                    </h3>
+                                    <div class="excerpt">
+                                        @(question.Desc.Count()>200 ? question.Desc.Substring(0,200) : question.Desc)
+                                    </div>
+                                    <div class="meta">
+                                        <div class="tags">
+                                            @*<a href="">
+                                                    <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
+                                                    amazon-web-services
+                                                </a>
+                                                <a href="">
+                                                    <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
+                                                    aws-lambda
+                                                </a>
+                                                <a href="">
+                                                    <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
+                                                    amazon-cloudformation
+                                                </a>
+                                                <a href="">
+                                                    <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
+                                                    amazon-cloudwatch
+                                                </a>*@
+                                        </div>
+                                        <div class="user-card-minimal">
+                                            <a class="user-card" href="">
+                                                <div class="image">
+                                                    <img width="16"
+                                                         height="16"
+                                                         src="~/assets/Images/User-card/@question.AppUser.ProfilePhoto"
+                                                         alt="User-card" />
+                                                </div>
+                                            </a>
+                                            <div class="user-card-info">
+                                                <div class="name">
+                                                    <a href="">@question.AppUser.UserName</a>
+                                                </div>
+                                                <ul class="awards">
+                                                    <li><span>1</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="user-card-time">
+                                                asked
+                                                <span>@question.PostDate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <br />
+                    <div class="container__main-content__sidebar pagination-right">
+                        <a href=""
+                           class="pagination-item is-selected"
+                           title="Show 15 items per page">15</a>
+                        <a href="" class="pagination-item" title="Show 30 items per page">30</a>
+                        <a href="" class="pagination-item" title="Show 50 items per page">50</a>
+                        <span>per page</span>
+                    </div>
+                    <div class="container__main-content__sidebar pagination-left">
+                        @if (ViewBag.Page > 1)
+                        {
+                            <a asp-controller="home" asp-action="questions" asp-route-page="@ViewBag.Page-1" class="pagination-item" title="Go to page 1">Prev</a>
+                        }
+                        @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                        {
+                            <a class="pagination-item @(ViewBag.Page==i ? "is-selected" : "")" asp-controller="home" asp-action="questions" asp-route-page="@i">@i</a>
+                        }
+                        @if (ViewBag.TotalPage > 3)
+                        {
+                            <div class="clear">...</div>
+                        }
+                        @if (ViewBag.Page < ViewBag.TotalPage)
+                        {
+                            <a asp-controller="home" asp-action="questions" asp-route-page="@(ViewBag.Page+1)" class="pagination-item" title="Go to page 2">Next</a>
+                        }
+                    </div>
+                </div>
+                <div class="container__main-content__right-sidebar">
+                    <div class="container__main-content__right-sidebar__blog">
+                        <ul>
+                            <li class="title">The Overflow Blog</li>
+                            <li class="item">
+                                <div class="icon">
+                                    <iconify-icon icon="heroicons:pencil-solid"></iconify-icon>
+                                </div>
+                                <div class="desc">
+                                    <a href="">This is not your grandfather's Perl</a>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="icon">
+                                    <iconify-icon icon="heroicons:pencil-solid"></iconify-icon>
+                                </div>
+                                <div class="desc">
+                                    <a href="">Plug-and-play AI for your own projects (Ep. 482)</a>
+                                </div>
+                            </li>
+                            <li class="title">Featured on Meta</li>
+                            <li class="item">
+                                <div class="icon">
+                                    <iconify-icon icon="arcticons:stack-exchange"></iconify-icon>
+                                </div>
+                                <div class="desc">
+                                    <a href="">Announcing the Stack Overflow Student Ambassador Program</a>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="icon">
+                                    <iconify-icon icon="arcticons:stack-exchange"></iconify-icon>
+                                </div>
+                                <div class="desc">
+                                    <a href="">Google Analytics 4 (GA4) upgrade</a>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="icon">
+                                    <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                                </div>
+                                <div class="desc">
+                                    <a href="">Staging Ground Workflow: Question Lifecycle</a>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="icon">
+                                    <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                                </div>
+                                <div class="desc">
+                                    <a href="">The [option] tag is being burninated</a>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="icon">
+                                    <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                                </div>
+                                <div class="desc">
+                                    <a href="">Collectives Update: WSO2 launches, and Google Go sunsets</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="container__main-content__right-sidebar__custom-filtering">
+                        <h2>Custom Filters</h2>
+                        <ul>
+                            <li><a href="">Create a custom filter</a></li>
+                        </ul>
+                    </div>
+                    <div class="container__main-content__right-sidebar__watch">
+                        <div class="container__main-content__right-sidebar__watch__watched">
+                            <div class="container__main-content__right-sidebar__watch__watched__header">
+                                <h2>Watched Tags on Public Q&A</h2>
+                                <a href="">edit</a>
+                            </div>
+                            <div class="container__main-content__right-sidebar__watch__watched__content">
+                                <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
+                                    <div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
+                                        <a href="" title="show questions tagged 'c#'">
+                                            c#
+                                            <span title="Remove tag" class="delete-tag"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
+                                    <form action="">
+                                        <input type="text" autocomplete="off" />
+                                        <button type="submit">Add</button>
+                                    </form>
+                                </div>
+                                <div class="container__main-content__right-sidebar__watch__watched__content__no-content">
+                                    <div class="container__main-content__right-sidebar__watch__watched__content__no-content--icon">
+                                        <iconify-icon icon="wpf:search"></iconify-icon>
+                                    </div>
+                                    <p>Watch tags to curate your list of questions.</p>
+                                    <a>
+                                        <iconify-icon icon="bi:eye-fill"></iconify-icon> Watch a
+                                        tag
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container__main-content__right-sidebar__watch__ignored">
+                            <div class="container__main-content__right-sidebar__watch__ignored__title">
+                                <h2>Ignored Tags</h2>
+                                <a>edit</a>
+                            </div>
+                            <div class="container__main-content__right-sidebar__watch__ignored__content">
+                                <div class="container__main-content__right-sidebar__watch__ignored__content__list display-none">
+                                    <div class="container__main-content__right-sidebar__watch__ignored__content__list__tag">
+                                        <a>
+                                            c#
+                                            <span class="delete-tag" title="Remove tag"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="container__main-content__right-sidebar__watch__ignored__content__input display-none">
+                                    <form action="">
+                                        <input type="text" autocomplete="off" />
+                                        <button>Add</button>
+                                    </form>
+                                </div>
+                                <button class="container__main-content__right-sidebar__watch__ignored__content--button">
+                                    Add an ignored tag
+                                </button>
+                                <div class="container__main-content__right-sidebar__watch__ignored__content__visible display-none">
+                                    <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item">
+                                        <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item--input">
+                                            <input type="radio" name="visible" />
+                                        </div>
+                                        <label for="">Hide questions in your ignored tags</label>
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item">
+                                        <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item--input">
+                                            <input type="radio" checked name="visible" />
+                                        </div>
+                                        <label for="">Gray out questions in your ignored tags</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container__main-content__right-sidebar__collectives">
+                        <div class="container__main-content__right-sidebar__collectives__header">
+                            <a href="Collectives.html">see all</a>
+                            Collectives
+                        </div>
+                        <div class="container__main-content__right-sidebar__collectives__collective">
+                            <div class="container__main-content__right-sidebar__collectives__collective--about">
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <img src="~/assets/Images/Collectives/intel-brand-logo-blue-background-wallpaper-preview.jpeg"
+                                             alt="Intel" />
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <h1>
+                                            <a href="">Intel</a>
+                                        </h1>
+                                        <div class="caption">6k Members</div>
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <form action="">
+                                            <input type="hidden" />
+                                            <button type="submit">Join</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <span>
+                                A space for developers to collaborate on Intel software tools,
+                                libraries, and resources. Share knowledge and connect with Intel
+                                product experts. Find the information you need to drive
+                                innovation and simplify development from edge to cloud with
+                                Intel.
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__collectives__collective">
+                            <div class="container__main-content__right-sidebar__collectives__collective--about">
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <img src="~/assets/Images/Collectives/twilio-icon-512_maskable.png"
+                                             alt="Twilio" />
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <h1>
+                                            <a href="">Twilio</a>
+                                        </h1>
+                                        <div class="caption">4k Members</div>
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <form action="">
+                                            <input type="hidden" />
+                                            <button type="submit">Join</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <span>
+                                Twilio has democratized channels like voice, text, chat, video,
+                                and email by virtualizing the world's communications
+                                infrastructure through APIs that are simple enough for any
+                                developer, yet robust enough to power the world's most demanding
+                                applications.
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__collectives__collective">
+                            <div class="container__main-content__right-sidebar__collectives__collective--about">
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <img src="~/assets/Images/Collectives/c24g2bOv_400x400.png"
+                                             alt="WSO2" />
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <h1>
+                                            <a href="">WSO2</a>
+                                        </h1>
+                                        <div class="caption">1k Members</div>
+                                    </div>
+                                    <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                        <form action="">
+                                            <input type="hidden" />
+                                            <button type="submit">Join</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <span>
+                                WSO2 solutions give enterprises the flexibility to deploy
+                                applications and services on-premises, on private or public
+                                clouds, or in hybrid environments. Our collective aims to enable
+                                developers to build value-added services and get to market
+                                faster.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="container__main-content__right-sidebar__zone"></div>
+                    <div class="container__main-content__right-sidebar__tags">
+                        <h2>Related Tags</h2>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">javascript</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">python</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">java</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">c#</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">php</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">android</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">html</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">jquery</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">c++</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag">
+                            <a href="">css</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">ios</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">mysql</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">sql</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">r</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">node.js</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">reactjs</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">arrays</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">c</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">asp.net</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">json</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">ruby-on-rails</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">.net</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">sql-server</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">python-3.x</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+                        <div class="container__main-content__right-sidebar__tags__tag more">
+                            <a href="">swift</a>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                                &nbsp;
+                                <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                    2421817
+                                </span>
+                            </span>
+                        </div>
+
+                        <a href="">more related tags</a>
+                    </div>
+                    <div class="container__main-content__right-sidebar__hot-questions">
+                        <h4>
+                            <a href=""> Hot Network Questions </a>
+                        </h4>
+                        <ul>
+                            <li>
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (1).png"
+                                     alt="Unix&Linux" />
+                                <a href="">
+                                    Obtain a list of files in Terminal in same order as in Finder
+                                </a>
+                            </li>
+                            <li>
+                                <iconify-icon icon="bx:message"></iconify-icon>
+                                <a href="">
+                                    Does the U.S. have the legal means to use Russia's frozen
+                                    assets to finance Ukraine's reconstruction?
+                                </a>
+                            </li>
+                            <li>
+                                <iconify-icon icon="bx:message"></iconify-icon>
+                                <a href="">
+                                    Does DCT diagonalize the FD discretisation of the Laplacian
+                                    with Neumann boundary conditions?
+                                </a>
+                            </li>
+                            <li>
+                                <iconify-icon icon="bx:message"></iconify-icon>
+                                <a href="">
+                                    How often does a full moon happen on the weekend?
+                                </a>
+                            </li>
+                            <li>
+                                <iconify-icon icon="bx:message"></iconify-icon>
+                                <a href="">
+                                    How do I get a sufficiently deep field when photographing an
+                                    automobile dashboard?
+                                </a>
+                            </li>
+                            <li>
+                                <iconify-icon icon="bx:message"></iconify-icon>
+                                <a href=""> The meaning of "seven's sixteen and a half" </a>
+                            </li>
+                            <li>
+                                <iconify-icon icon="bx:message"></iconify-icon>
+                                <a href="">
+                                    Is there a security risk to use AES-CBC as stream cipher?
+                                </a>
+                            </li>
+                            <li>
+                                <iconify-icon icon="bx:message"></iconify-icon>
+                                <a href="">
+                                    Staying more than 90 days in Schengen area as a French
+                                    citizen, but only have a US passport
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="">more hot questions</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footer__container p-md-24 p-sm-16">
+                <div class="footer__container__logo d-640-none">
+                    <a href="Index.html">
+                        <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                             alt="Stack Overflow Logo" />
+                    </a>
+                </div>
+                <div class="footer__container__nav flex-lg-col">
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Stack Overflow</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Questions</a></li>
+                            <li><a href="">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Products</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Teams</a></li>
+                            <li><a href="">Advertising</a></li>
+                            <li><a href="">Collectives</a></li>
+                            <li><a href="">Talent</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">Company</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">About</a></li>
+                            <li><a href="">Press</a></li>
+                            <li><a href="">Work Here</a></li>
+                            <li><a href="">Legal</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms of Service</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Cookie Settings</a></li>
+                            <li><a href="">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Technology</a></li>
+                            <li><a href="">Culture & recreation</a></li>
+                            <li><a href="">Life & arts</a></li>
+                            <li><a href="">Science</a></li>
+                            <li><a href="">Professional</a></li>
+                            <li><a href="">Business</a></li>
+                            <li class="mt-3"><a href="">API</a></li>
+                            <li><a href="">Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__container__copyright">
+                    <ul>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="https://www.facebook.com">Facebook</a></li>
+                        <li><a href="https://www.twitter.com">Twitter</a></li>
+                        <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                        <li><a href="https://www.Instagram.com">Instagram</a></li>
+                    </ul>
+                    <p>
+                        Site design / logo © 2022 Stack Exchange Inc; user contributions
+                        licensed under
+                        <span>
+                            <a href="">CC BY-SA</a>
+                        </span>
+                        . <span>rev 2022.9.1.42957</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+    </body>
+
+    <script src="~/assets/js/script.js"></script>
+    <script src="~/assets/js/sections/questions.js"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+}
+else
+{
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+          rel="stylesheet" />
+    <link rel="shortcut icon"
+          href="~/assets/Images/Logo/apple-touch-icon@2.png"
+          type="image/x-icon" />
+    <title>Newest Questions - Stack Overflow</title>
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+</head>
+<body>
+    <main class="container">
+        <div class="container__left-sidebar d-640-none">
+            <div class="container__left-sidebar__sticky">
+                <div class="container__left-sidebar__sticky__nav">
+                    <ul>
+                        <li>
+                            <a href="Index.html">
+                                <div class="d-flex">
+                                    <div class="d-flex--item">Home</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="fw">Public</li>
+                                <li id="p-o" class="sticky-li">
+                                    <a href="">
+                                        <iconify-icon icon="bx:world"></iconify-icon>
+                                        Questions
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a href="">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Tags</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a href="">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Users</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a href="">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Companies</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li id="collectives" class="sticky-li fw">
+                                    <div class="sticky-li__collectives">Collectives</div>
+                                    <div class="sticky-li__icon">
+                                        <a href="">
+                                            <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li id="p-o" class="sticky-li">
+                                    <a href="">
+                                        <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                        <span>Explore Collectives</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <div class="Teams-title fw">Teams</div>
+                                    <div class="Teams-body">
+                                        <strong>Stack Overflow for Teams</strong>
+                                        - Start collaborating and sharing organizational
+                                        knowledge.
+                                        <img width="139"
+                                             height="114"
+                                             src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                             alt="Stack Overflow For Teams" />
+                                        <a href="">Create a free Team</a>
+                                        <a href="">Why Teams?</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container__main-content p-md-16 w-sm-100">
+            <div class="container__main-content__questions">
+                <div class="container__main-content__questions__title">
+                    <h1>All Questions</h1>
+                    <div class="container__main-content__questions__title--button">
+                        <a asp-controller="user" asp-action="AskQuestion"> Ask Question </a>
+                    </div>
+                </div>
+                <div class="container__main-content__questions__about">
+                    <div class="container__main-content__questions__about__flex ai-sm-strech flex-md-col">
+                        <div class="container__main-content__questions__about__flex__item">
+                            22,977,237 questions
+                        </div>
+                        <div class="container__main-content__questions__about__flex__item">
+                            <div class="container__main-content__questions__about__flex__item__filter">
+                                <!-- <div
+                                  class="container__main-content__questions__about__flex__item__filter__all"
+                                > -->
+                                <div class="container__main-content__questions__about__flex__item__filter--navigation">
+                                    <a class="is-selected" href="">
+                                        <div class="link">Newest</div>
+                                    </a>
+                                    <a href="">
+                                        <div class="link">Active</div>
+                                    </a>
+                                    <a class="d-11-none d-77-none d-607-none" href="">
+                                        <div class="link">Bountied</div>
+                                        <div class="bounties-count">273</div>
+                                    </a>
+                                    <a class="d-11-none d-77-none d-607-none" href="">
+                                        <div class="link">Unanswered</div>
+                                    </a>
+                                    <button class="more-button">More</button>
+                                </div>
+                                <div class="container__main-content__questions__about__flex__item__filter--popover display-none l-lg-11 l-md-11 l-sm-38 l-sm-6">
+                                    <div class="popover-arrow"></div>
+                                    <ul>
+                                        <li><a href=""> Frequent </a></li>
+                                        <li><a href=""> Score </a></li>
+                                        <li class="line"></li>
+                                        <li><span>Unanswered (my tags)</span></li>
+                                    </ul>
+                                </div>
+                                <div class="container__main-content__questions__about__flex__item__filter--filter">
+                                    <button class="filter-button">
+                                        <iconify-icon icon="bi:filter"></iconify-icon>
+                                        Filter
+                                    </button>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <form id="filter" class="display-none" action="">
+                        <input type="hidden" name="" />
+                        <div class="content">
+                            <div class="all">
+                                <div class="filter-method">
+                                    <div class="flex">
+                                        <div class="item">
+                                            <fieldset>
+                                                <legend>Filter by</legend>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="checkbox" name="" id="" />
+                                                        </div>
+                                                        <label for="">No answers</label>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="checkbox" name="" id="" />
+                                                        </div>
+                                                        <label for="">No accepted answer</label>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="checkbox" name="" id="" />
+                                                        </div>
+                                                        <label for="">Has bounty</label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="item">
+                                            <fieldset>
+                                                <legend>Sorted by</legend>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="radio" name="" id="" />
+                                                        </div>
+                                                        <label for="">Newest</label>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="radio" name="" id="" />
+                                                        </div>
+                                                        <label for="">Recent activity</label>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="radio" name="" id="" />
+                                                        </div>
+                                                        <label for="">Highest score</label>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="radio" name="" id="" />
+                                                        </div>
+                                                        <label for="">Most frequent</label>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="radio" name="" id="" />
+                                                        </div>
+                                                        <label for="">Bounty ending soon</label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="item">
+                                            <fieldset>
+                                                <legend>Tagged with</legend>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="radio" name="" id="" />
+                                                        </div>
+                                                        <label for="">My watched tags</label>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="field-flex">
+                                                        <div class="input">
+                                                            <input type="radio" name="" id="" />
+                                                        </div>
+                                                        <label for="">The following tags:</label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <div class="search">
+                                                <input type="text"
+                                                       placeholder="e.g. javascript or python" />
+                                                <div class="result">
+                                                    <span></span>
+                                                    <input type="text"
+                                                           placeholder="e.g. javascript or python" />
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="apply">
+                                    <div class="flex">
+                                        <div class="item">
+                                            <button id="apply" type="submit">Apply filter</button>
+                                        </div>
+                                        <div class="item">
+                                            <button id="cancel" type="button">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="container__main-content__questions--questions">
+                    @foreach (Question question in Model)
+                    {
+                        <div class="flex fd-md-col">
+                            <div class="stats">
+                                <div class="item">
+                                    <span>0</span>
+                                    <span>votes</span>
+                                </div>
+                                <div class="item">
+                                    <span>0</span>
+                                    <span>answers</span>
+                                </div>
+                                <div class="item">
+                                    <span>2</span>
+                                    <span>views</span>
+                                </div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <a asp-route-id="@question.Id" asp-controller="home" asp-action="questiondetail">
+                                        @question.Title
+                                    </a>
+                                </h3>
+                                <div class="excerpt">
+                                    @(question.Desc.Count()>200 ? question.Desc.Substring(0,200) : question.Desc)
+                                </div>
+                                <div class="meta">
+                                    <div class="tags">
+                                        @*<a href="">
+                                                <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
+                                                amazon-web-services
+                                            </a>
+                                            <a href="">
+                                                <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
+                                                aws-lambda
+                                            </a>
+                                            <a href="">
+                                                <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
+                                                amazon-cloudformation
+                                            </a>
+                                            <a href="">
+                                                <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
+                                                amazon-cloudwatch
+                                            </a>*@
+                                    </div>
+                                    <div class="user-card-minimal">
+                                        <a class="user-card" href="">
+                                            <div class="image">
+                                                <img width="16"
+                                                     height="16"
+                                                     src="~/assets/Images/User-card/@question.AppUser.ProfilePhoto"
+                                                     alt="User-card" />
+                                            </div>
+                                        </a>
+                                        <div class="user-card-info">
+                                            <div class="name">
+                                                <a href="">@question.AppUser.UserName</a>
+                                            </div>
+                                            <ul class="awards">
+                                                <li><span>1</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="user-card-time">
+                                            asked
+                                            <span>@question.PostDate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <br />
+                <div class="container__main-content__sidebar pagination-right">
+                    <a href=""
+                       class="pagination-item is-selected"
+                       title="Show 15 items per page">15</a>
+                    <a href="" class="pagination-item" title="Show 30 items per page">30</a>
+                    <a href="" class="pagination-item" title="Show 50 items per page">50</a>
+                    <span>per page</span>
+                </div>
+                <div class="container__main-content__sidebar pagination-left">
+                    @if (ViewBag.Page > 1)
+                    {
+                        <a asp-controller="home" asp-action="questions" asp-route-page="@ViewBag.Page-1" class="pagination-item" title="Go to page 1">Prev</a>
+                    }
+                    @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                    {
+                        <a class="pagination-item @(ViewBag.Page==i ? "is-selected" : "")" asp-controller="home" asp-action="questions" asp-route-page="@i">@i</a>
+                    }
+                    @if (ViewBag.TotalPage > 3)
+                    {
+                        <div class="clear">...</div>
+                    }
+                    @if (ViewBag.Page < ViewBag.TotalPage)
+                    {
+                        <a asp-controller="home" asp-action="questions" asp-route-page="@(ViewBag.Page+1)" class="pagination-item" title="Go to page 2">Next</a>
+                    }
+                </div>
+            </div>
+            <div class="container__main-content__right-sidebar">
+                <div class="container__main-content__right-sidebar__blog">
+                    <ul>
+                        <li class="title">The Overflow Blog</li>
+                        <li class="item">
+                            <div class="icon">
+                                <iconify-icon icon="heroicons:pencil-solid"></iconify-icon>
+                            </div>
+                            <div class="desc">
+                                <a href="">This is not your grandfather's Perl</a>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="icon">
+                                <iconify-icon icon="heroicons:pencil-solid"></iconify-icon>
+                            </div>
+                            <div class="desc">
+                                <a href="">Plug-and-play AI for your own projects (Ep. 482)</a>
+                            </div>
+                        </li>
+                        <li class="title">Featured on Meta</li>
+                        <li class="item">
+                            <div class="icon">
+                                <iconify-icon icon="arcticons:stack-exchange"></iconify-icon>
+                            </div>
+                            <div class="desc">
+                                <a href="">Announcing the Stack Overflow Student Ambassador Program</a>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="icon">
+                                <iconify-icon icon="arcticons:stack-exchange"></iconify-icon>
+                            </div>
+                            <div class="desc">
+                                <a href="">Google Analytics 4 (GA4) upgrade</a>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="icon">
+                                <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                            </div>
+                            <div class="desc">
+                                <a href="">Staging Ground Workflow: Question Lifecycle</a>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="icon">
+                                <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                            </div>
+                            <div class="desc">
+                                <a href="">The [option] tag is being burninated</a>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="icon">
+                                <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                            </div>
+                            <div class="desc">
+                                <a href="">Collectives Update: WSO2 launches, and Google Go sunsets</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container__main-content__right-sidebar__custom-filtering">
+                    <h2>Custom Filters</h2>
+                    <ul>
+                        <li><a href="">Create a custom filter</a></li>
+                    </ul>
+                </div>
+                <div class="container__main-content__right-sidebar__watch">
+                    <div class="container__main-content__right-sidebar__watch__watched">
+                        <div class="container__main-content__right-sidebar__watch__watched__header">
+                            <h2>Watched Tags on Public Q&A</h2>
+                            <a href="">edit</a>
+                        </div>
+                        <div class="container__main-content__right-sidebar__watch__watched__content">
+                            <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
+                                <div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
+                                    <a href="" title="show questions tagged 'c#'">
+                                        c#
+                                        <span title="Remove tag" class="delete-tag"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
+                                <form action="">
+                                    <input type="text" autocomplete="off" />
+                                    <button type="submit">Add</button>
+                                </form>
+                            </div>
+                            <div class="container__main-content__right-sidebar__watch__watched__content__no-content">
+                                <div class="container__main-content__right-sidebar__watch__watched__content__no-content--icon">
+                                    <iconify-icon icon="wpf:search"></iconify-icon>
+                                </div>
+                                <p>Watch tags to curate your list of questions.</p>
+                                <a>
+                                    <iconify-icon icon="bi:eye-fill"></iconify-icon> Watch a
+                                    tag
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container__main-content__right-sidebar__watch__ignored">
+                        <div class="container__main-content__right-sidebar__watch__ignored__title">
+                            <h2>Ignored Tags</h2>
+                            <a>edit</a>
+                        </div>
+                        <div class="container__main-content__right-sidebar__watch__ignored__content">
+                            <div class="container__main-content__right-sidebar__watch__ignored__content__list display-none">
+                                <div class="container__main-content__right-sidebar__watch__ignored__content__list__tag">
+                                    <a>
+                                        c#
+                                        <span class="delete-tag" title="Remove tag"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="container__main-content__right-sidebar__watch__ignored__content__input display-none">
+                                <form action="">
+                                    <input type="text" autocomplete="off" />
+                                    <button>Add</button>
+                                </form>
+                            </div>
+                            <button class="container__main-content__right-sidebar__watch__ignored__content--button">
+                                Add an ignored tag
+                            </button>
+                            <div class="container__main-content__right-sidebar__watch__ignored__content__visible display-none">
+                                <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item">
+                                    <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item--input">
+                                        <input type="radio" name="visible" />
+                                    </div>
+                                    <label for="">Hide questions in your ignored tags</label>
+                                </div>
+                                <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item">
+                                    <div class="container__main-content__right-sidebar__watch__ignored__content__visible--item--input">
+                                        <input type="radio" checked name="visible" />
+                                    </div>
+                                    <label for="">Gray out questions in your ignored tags</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container__main-content__right-sidebar__collectives">
+                    <div class="container__main-content__right-sidebar__collectives__header">
+                        <a href="Collectives.html">see all</a>
+                        Collectives
+                    </div>
+                    <div class="container__main-content__right-sidebar__collectives__collective">
+                        <div class="container__main-content__right-sidebar__collectives__collective--about">
+                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <img src="~/assets/Images/Collectives/intel-brand-logo-blue-background-wallpaper-preview.jpeg"
+                                         alt="Intel" />
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <h1>
+                                        <a href="">Intel</a>
+                                    </h1>
+                                    <div class="caption">6k Members</div>
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <form action="">
+                                        <input type="hidden" />
+                                        <button type="submit">Join</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <span>
+                            A space for developers to collaborate on Intel software tools,
+                            libraries, and resources. Share knowledge and connect with Intel
+                            product experts. Find the information you need to drive
+                            innovation and simplify development from edge to cloud with
+                            Intel.
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__collectives__collective">
+                        <div class="container__main-content__right-sidebar__collectives__collective--about">
+                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <img src="~/assets/Images/Collectives/twilio-icon-512_maskable.png"
+                                         alt="Twilio" />
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <h1>
+                                        <a href="">Twilio</a>
+                                    </h1>
+                                    <div class="caption">4k Members</div>
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <form action="">
+                                        <input type="hidden" />
+                                        <button type="submit">Join</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <span>
+                            Twilio has democratized channels like voice, text, chat, video,
+                            and email by virtualizing the world's communications
+                            infrastructure through APIs that are simple enough for any
+                            developer, yet robust enough to power the world's most demanding
+                            applications.
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__collectives__collective">
+                        <div class="container__main-content__right-sidebar__collectives__collective--about">
+                            <div class="container__main-content__right-sidebar__collectives__collective--about--flex">
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <img src="~/assets/Images/Collectives/c24g2bOv_400x400.png"
+                                         alt="WSO2" />
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <h1>
+                                        <a href="">WSO2</a>
+                                    </h1>
+                                    <div class="caption">1k Members</div>
+                                </div>
+                                <div class="container__main-content__right-sidebar__collectives__collective--about--flex--item">
+                                    <form action="">
+                                        <input type="hidden" />
+                                        <button type="submit">Join</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <span>
+                            WSO2 solutions give enterprises the flexibility to deploy
+                            applications and services on-premises, on private or public
+                            clouds, or in hybrid environments. Our collective aims to enable
+                            developers to build value-added services and get to market
+                            faster.
+                        </span>
+                    </div>
+                </div>
+                <div class="container__main-content__right-sidebar__zone"></div>
+                <div class="container__main-content__right-sidebar__tags">
+                    <h2>Related Tags</h2>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">javascript</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">python</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">java</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">c#</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">php</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">android</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">html</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">jquery</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">c++</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag">
+                        <a href="">css</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">ios</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">mysql</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">sql</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">r</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">node.js</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">reactjs</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">arrays</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">c</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">asp.net</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">json</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">ruby-on-rails</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">.net</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">sql-server</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">python-3.x</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+                    <div class="container__main-content__right-sidebar__tags__tag more">
+                        <a href="">swift</a>
+                        &nbsp;
+                        <span class="container__main-content__right-sidebar__tags__tag--multiplier">
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--x">x</span>
+                            &nbsp;
+                            <span class="container__main-content__right-sidebar__tags__tag--multiplier--count">
+                                2421817
+                            </span>
+                        </span>
+                    </div>
+
+                    <a href="">more related tags</a>
+                </div>
+                <div class="container__main-content__right-sidebar__hot-questions">
+                    <h4>
+                        <a href=""> Hot Network Questions </a>
+                    </h4>
+                    <ul>
+                        <li>
+                            <img src="~/assets/Images/StackExchange/apple-touch-icon (1).png"
+                                 alt="Unix&Linux" />
+                            <a href="">
+                                Obtain a list of files in Terminal in same order as in Finder
+                            </a>
+                        </li>
+                        <li>
+                            <iconify-icon icon="bx:message"></iconify-icon>
+                            <a href="">
+                                Does the U.S. have the legal means to use Russia's frozen
+                                assets to finance Ukraine's reconstruction?
+                            </a>
+                        </li>
+                        <li>
+                            <iconify-icon icon="bx:message"></iconify-icon>
+                            <a href="">
+                                Does DCT diagonalize the FD discretisation of the Laplacian
+                                with Neumann boundary conditions?
+                            </a>
+                        </li>
+                        <li>
+                            <iconify-icon icon="bx:message"></iconify-icon>
+                            <a href="">
+                                How often does a full moon happen on the weekend?
+                            </a>
+                        </li>
+                        <li>
+                            <iconify-icon icon="bx:message"></iconify-icon>
+                            <a href="">
+                                How do I get a sufficiently deep field when photographing an
+                                automobile dashboard?
+                            </a>
+                        </li>
+                        <li>
+                            <iconify-icon icon="bx:message"></iconify-icon>
+                            <a href=""> The meaning of "seven's sixteen and a half" </a>
+                        </li>
+                        <li>
+                            <iconify-icon icon="bx:message"></iconify-icon>
+                            <a href="">
+                                Is there a security risk to use AES-CBC as stream cipher?
+                            </a>
+                        </li>
+                        <li>
+                            <iconify-icon icon="bx:message"></iconify-icon>
+                            <a href="">
+                                Staying more than 90 days in Schengen area as a French
+                                citizen, but only have a US passport
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="">more hot questions</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer__container p-md-24 p-sm-16">
+            <div class="footer__container__logo d-640-none">
+                <a href="Index.html">
+                    <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                         alt="Stack Overflow Logo" />
+                </a>
+            </div>
+            <div class="footer__container__nav flex-lg-col">
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Stack Overflow</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Products</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Teams</a></li>
+                        <li><a href="">Advertising</a></li>
+                        <li><a href="">Collectives</a></li>
+                        <li><a href="">Talent</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Company</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">About</a></li>
+                        <li><a href="">Press</a></li>
+                        <li><a href="">Work Here</a></li>
+                        <li><a href="">Legal</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Terms of Service</a></li>
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Cookie Settings</a></li>
+                        <li><a href="">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Technology</a></li>
+                        <li><a href="">Culture & recreation</a></li>
+                        <li><a href="">Life & arts</a></li>
+                        <li><a href="">Science</a></li>
+                        <li><a href="">Professional</a></li>
+                        <li><a href="">Business</a></li>
+                        <li class="mt-3"><a href="">API</a></li>
+                        <li><a href="">Data</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__container__copyright">
+                <ul>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="https://www.facebook.com">Facebook</a></li>
+                    <li><a href="https://www.twitter.com">Twitter</a></li>
+                    <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                    <li><a href="https://www.Instagram.com">Instagram</a></li>
+                </ul>
+                <p>
+                    Site design / logo © 2022 Stack Exchange Inc; user contributions
+                    licensed under
+                    <span>
+                        <a href="">CC BY-SA</a>
+                    </span>
+                    . <span>rev 2022.9.1.42957</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+</body>
+
+<script src="~/assets/js/script.js"></script>
+<script src="~/assets/js/sections/questions.js"></script>
+<script src="~/assets/js/sections/profile.js"></script>
+
+
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+}
+
+
+@section Scripts{
+    <script>
+        const pagButtons = document.querySelectorAll(".pagination-item");
+
+        pagButtons.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+
+
+                let questions = document.getElementsByClassName('container__main-content__questions--questions');
+                const href = e.currentTarget.getAttribute("href");
+
+                //fetch(href)
+                //    .then(res => res.text())
+                //    .then(data => { questions.innerHTML = data })
+
+            })
+        })
+    </script>
+}
+
+
+

@@ -1,0 +1,33 @@
+﻿@model MainCard
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Update Card</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Icon:</label><br />
+                                <input asp-for="Icon" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Icon"></span>
+                            </div>
+                            <div>
+                                <label>Sentence:</label><br />
+                                <textarea asp-for="Sentence" class="form-control"></textarea><br />
+                                <span class="text-danger" asp-validation-for="Sentence"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,91 @@
+@import "../utils/Colors.scss";
+
+// footer start
+.footer {
+  background: $footer-bg;
+  color: $footer-color;
+  &__container {
+    flex-flow: row wrap;
+    max-width: 1264px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 12px 12px;
+    display: flex;
+    &__logo {
+      flex: 0 0 64px;
+
+      margin: -12px 0 32px;
+      > a {
+        > img {
+          width: 60px;
+          height: 50px;
+          object-fit: cover;
+        }
+      }
+    }
+    &__nav {
+      flex-wrap: wrap;
+      flex: 2 1 auto;
+      font-size: 14px;
+      display: flex;
+      &--col {
+        padding: 0 12px 24px 0;
+        line-height: 26px;
+        flex: 1 0 auto;
+        > h5 {
+          text-transform: uppercase;
+          font-weight: bold;
+          margin-bottom: 12px;
+          font-size: 14px;
+
+          > a {
+            color: #babfc4;
+            text-decoration: none;
+          }
+        }
+        ul {
+          > li {
+            > a {
+              padding: 4px 0;
+              color: $footer-links;
+              text-decoration: none;
+            }
+            > a:hover {
+              color: #9fa6ad;
+            }
+          }
+        }
+      }
+    }
+    &__copyright {
+      flex: 1 1 150px;
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      > ul {
+        display: flex;
+        > li {
+          margin-right: 10px;
+          > a {
+            text-decoration: none;
+            color: $footer-links;
+            padding: 4px 0;
+          }
+          > a:hover {
+            color: #9fa6ad;
+          }
+        }
+      }
+      > p {
+        margin-top: auto;
+        margin-bottom: 24px;
+        span {
+          > a {
+            color: $footer-color;
+          }
+        }
+      }
+    }
+  }
+}
+//  footer start end

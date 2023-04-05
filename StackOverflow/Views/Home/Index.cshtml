@@ -1,0 +1,1095 @@
+﻿@model HomeVM
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Font -->
+        @*<style>
+              @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+            </style>*@
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+              rel="stylesheet" />
+
+        <title>Stack Overflow - Where Developers Learn,Share,& Buil...</title>
+        <link rel="shortcut icon"
+              href="~/assets/Images/Logo/768px-Stack_Overflow_icon.svg.png"
+              type="image/x-icon" />
+        <link rel="stylesheet" href="~/assets/css/style.css" />
+    </head>
+    <body class="index-body">
+        <main>
+            <!-- main section -->
+            <div class="main-all">
+                <div class="p-0">
+                    <div class="main">
+                        <div class="main-cards flex-md-col">
+                            <img class="left"
+                                 src="~/assets/Images/main-section/illo-code.svg"
+                                 alt="animation" />
+                            <img class="right"
+                                 src="~/assets/Images/main-section/illo-code.svg"
+                                 alt="animation" />
+
+                            <div class="main-cards__card">
+                                <div class="main-cards__card--left">
+                                    @Html.Raw(Model.MainCards.FirstOrDefault().Icon)
+                                    <h2>
+                                        @Model.MainCards.FirstOrDefault().Sentence
+                                    </h2>
+                                    <a id="card-left" href="SignUp.html">Join the community</a>
+                                    <p>
+                                        or
+                                        <a href="Questions.html">search content</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="main-cards__card">
+                                <div class="main-cards__card--right">
+                                    @Html.Raw(Model.MainCards.LastOrDefault().Icon)
+                                    <h2>
+                                        @Model.MainCards.LastOrDefault().Sentence
+                                    </h2>
+                                    <div class="main-cards__card--right__center-content">
+                                        <span id="left-line" class="line"></span>
+                                        <span id="getstarted">Get started</span>
+                                        <span id="right-line" class="line"></span>
+                                    </div>
+                                    <div class="main-cards__card--right__buttons flex-md-col">
+                                        <a id="for-large-organizations" href="">
+                                            For large organizations
+                                            <iconify-icon icon="icons8:organization"
+                                                          flip="horizontal"></iconify-icon>
+                                        </a>
+                                        <a id="for-small-teams" href="">
+                                            For small teams
+                                            <iconify-icon icon="ic:round-group"
+                                                          flip="horizontal"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-title">
+                            <h1>
+                                Every
+                                <span class="main-title__animation">
+                                    <span class="transform-words">@Model.mainSentences.FirstOrDefault().ChangableWords</span>
+                                    <span class="transform-words display-none">data scientist</span>
+                                    <span class="transform-words display-none">system admin</span>
+                                    <span class="transform-words display-none">mobile developer</span>
+                                    <span class="transform-words display-none">game developer</span>
+                                </span>
+                                <br class="d-block display-none" />
+                                has a <br class="d-640-none" />tab open to
+                                <br class="display-none d-block" />
+                                Stack Overflow
+                            </h1>
+                        </div>
+                        <span class="main-hr"></span>
+                        <div class="main-statistics flex-lg-col">
+                            @foreach (Statistic statistic in Model.statistics)
+                            {
+                                <div class="main-statistics__flex-item">
+                                    <div class="main-statistics__flex-item__title">
+                                        @statistic.Title
+                                    </div>
+                                    <div class="main-statistics__flex-item__desc">
+                                        @statistic.Desc
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="main-all__left-top d-640-none"></div>
+                <div class="main-all__right-top d-640-none"></div>
+                <div class="main-all__left-top--in d-640-none"></div>
+                <div class="main-all__right-top--in d-640-none"></div>
+                <div class="main-all__middle-left d-640-none"></div>
+                <div class="main-all__middle-right d-640-none"></div>
+                <div class="main-all__bottom-left d-640-none"></div>
+                <div class="main-all__bottom-right d-640-none"></div>
+            </div>
+            <!-- Big Cards start -->
+            <section class="second-section">
+                <!-- <div> -->
+                <div class="big-cards flex-lg-col">
+                    <div class="big-cards__card">
+                        <div class="big-cards__card__wrapper">
+                            <a class="image" href="">
+                                <img src="~/assets/Images/Logo/1280px-Stack_Overflow_logo.svg.png"
+                                     alt="Stack Overflow" />
+                            </a>
+                            <img src="~/assets/Images/Cards/illo-public.svg"
+                                 alt="Stack World" />
+                            <h2>
+                                A public platform building the definitive collection of coding
+                                questions & answers
+                            </h2>
+                            <p>
+                                A community-based space to find and contribute answers to
+                                technical challenges, and one of the most popular websites in
+                                the world.
+                            </p>
+                            <a class="button" href="SignUp.html">Join the community</a>
+                            <p>or <a href="Questions.html">search content</a></p>
+                        </div>
+                    </div>
+                    <div class="big-cards__card">
+                        <div class="big-cards__card__wrapper">
+                            <a class="image" href="">
+                                <img src="~/assets/Images/Logo/teams-logo-compact.png"
+                                     alt="Stack Overflow" />
+                            </a>
+                            <img src="~/assets/Images/Cards/illo-teams.svg" alt="Stack World" />
+                            <h2>
+                                A private collaboration & knowledge sharing SaaS platform for
+                                companies
+                            </h2>
+                            <p>
+                                A web-based platform to increase productivity, decrease cycle
+                                times, accelerate time to market, and protect institutional
+                                knowledge.
+                            </p>
+                            <div class="big-cards__card__wrapper__right__center-content">
+                                <span id="left-line" class="line"></span>
+                                <span id="getstarted">Get started</span>
+                                <span id="right-line" class="line"></span>
+                            </div>
+                            <div class="big-cards__card__wrapper__right__buttons flex-md-col">
+                                <a id="for-large-organizations" href="">
+                                    For large organizations
+                                    <iconify-icon icon="icons8:organization"
+                                                  flip="horizontal"></iconify-icon>
+                                </a>
+                                <a id="for-small-teams" href="">
+                                    For small teams
+                                    <iconify-icon icon="ic:round-group"
+                                                  flip="horizontal"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </section>
+            <!-- Big cards end -->
+            <!-- Carousel  -->
+            <section class="carousel">
+                <div class="carousel__section">
+                    <p>
+                        Thousands of organizations around the globe use Stack Overflow for
+                        Teams
+                    </p>
+                    <div class="carousel__section__carousel">
+                        <!-- Radio buttons -->
+                        <input name="radio-btn" type="radio" id="radio1" checked />
+                        <input name="radio-btn" type="radio" id="radio2" />
+                        <input name="radio-btn" type="radio" id="radio3" />
+                        <input name="radio-btn" type="radio" id="radio4" />
+                        <!-- Radio buttons end -->
+                        <!-- Images -->
+                        <div class="carousel__section__carousel__item first">
+                            <img id="barkbox"
+                                 src="~/assets/Images/Carousel/barkbox-alt.svg"
+                                 alt="" />
+                            <img id="bloomberg"
+                                 src="~/assets/Images/Carousel/bloomberg-alt.svg"
+                                 alt="" />
+                            <img id="box" src="~/assets/Images/Carousel/box-alt.svg" alt="" />
+                            <img id="chevron"
+                                 src="~/assets/Images/Carousel/chevron-alt.svg"
+                                 alt="" />
+                        </div>
+                        <div class="carousel__section__carousel__item">
+                            <img id="dialpad"
+                                 src="~/assets/Images/Carousel/dialpad-alt.svg"
+                                 alt="" />
+                            <img id="expensify"
+                                 src="~/assets/Images/Carousel/expensify-alt.svg"
+                                 alt="" />
+                            <img id="instacart"
+                                 src="~/assets/Images/Carousel/instacart-alt.svg"
+                                 alt="" />
+                            <img id="intercom"
+                                 src="~/assets/Images/Carousel/intercom-alt.svg"
+                                 alt="" />
+                        </div>
+                        <div class="carousel__section__carousel__item">
+                            <img id="logitech"
+                                 src="~/assets/Images/Carousel/logitech-alt.svg"
+                                 alt="" />
+                            <img id="microsoft"
+                                 src="~/assets/Images/Carousel/microsoft-alt.svg"
+                                 alt="" />
+                            <img id="overstock"
+                                 src="~/assets/Images/Carousel/overstock-alt.svg"
+                                 alt="" />
+                            <img id="philips"
+                                 src="~/assets/Images/Carousel/philips-alt.svg"
+                                 alt="" />
+                        </div>
+                        <div class="carousel__section__carousel__item">
+                            <img id="verizon"
+                                 src="~/assets/Images/Carousel/verizon-media-alt.svg"
+                                 alt="" />
+                            <img id="wisetech"
+                                 src="~/assets/Images/Carousel/wisetech-global-alt.svg"
+                                 alt="" />
+                        </div>
+                        <!-- Images end -->
+                        <!-- Button auto -->
+                        <div class="carousel__section__carousel__nav-auto auto">
+                            <div id="auto-btn1"></div>
+                            <div id="auto-btn2"></div>
+                            <div id="auto-btn3"></div>
+                            <div id="auto-btn4"></div>
+                        </div>
+                        <!-- Button auto end -->
+                        <!-- Button manual  -->
+                        <div class="carousel__section__carousel__nav-manual">
+                            <label for="radio1" class="manual-btn"></label>
+                            <label for="radio2" class="manual-btn"></label>
+                            <label for="radio3" class="manual-btn"></label>
+                            <label for="radio4" class="manual-btn"></label>
+                        </div>
+
+                        <!-- Button manual  end -->
+                    </div>
+                </div>
+            </section>
+            <!-- Carousel end -->
+            <!-- For teams -->
+            <section class="for-teams p-md-12">
+                <!-- <div class=""> -->
+                <div class="stack-forteams">
+                    <div class="stack-forteams__images flex-md-col">
+                        <div class="stack-forteams__images--image d-640-none">
+                            <img src="~/assets/Images/Teams/illo-question.png"
+                                 alt="Stack Questions" />
+                        </div>
+                        <div class="stack-forteams__images--image">
+                            <img src="~/assets/Images/Teams/illo-for-you.png"
+                                 alt="Stack Overflow For You" />
+                        </div>
+                        <div class="stack-forteams__images--image d-640-none">
+                            <img src="~/assets/Images/Teams/illo-home-search.png"
+                                 alt="Stack Overflow Home search" />
+                        </div>
+                    </div>
+                    <div class="stack-forteams__main">
+                        <div class="stack-forteams__main__features">
+                            <img src="~/assets/Images/Logo/For-Teams.png"
+                                 alt="Stack Overflow For Teams" />
+                            <p>
+                                Capture your company's knowledge and context in a discoverable
+                                format to
+                                <span>unblock your team</span>
+                            </p>
+                            <a href="">Take a tour for Teams</a>
+                            <div class="stack-forteams__main__features__all flex-md-col">
+                                <div class="stack-forteams__main__features__all--feature fb-md">
+                                    <iconify-icon icon="emojione:white-heavy-check-mark"></iconify-icon>
+                                    <h3>Increase productivity</h3>
+                                    <p>
+                                        If somebody somewhere has the right answer, suddenly you
+                                        have it too. Collaborate better in a remote-first world.
+                                    </p>
+                                </div>
+                                <div class="stack-forteams__main__features__all--feature fb-md">
+                                    <iconify-icon icon="emojione:white-heavy-check-mark"></iconify-icon>
+                                    <h3>Accelerate time to market</h3>
+                                    <p>
+                                        Shorten the time between initial idea and complete product.
+                                        Take delays and misinformation out of the equation.
+                                    </p>
+                                </div>
+                                <div class="stack-forteams__main__features__all--feature fb-md">
+                                    <iconify-icon icon="emojione:white-heavy-check-mark"></iconify-icon>
+                                    <h3>Protect institutional knowledge</h3>
+                                    <p>
+                                        People come and people go, but if you capture their
+                                        contributions in one central place, that expertise sticks
+                                        around.
+                                    </p>
+                                </div>
+                            </div>
+                            <h2>Ensure your company stays on course</h2>
+                            <p>Here are just a few types of technologists that we help.</p>
+                        </div>
+                        <div class="stack-forteams__main__professions">
+                            <div class="stack-forteams__main__professions__all">
+
+                                @{
+                                    int count = 0;
+                                }
+                                @foreach (Technologist technologist in Model.technologists)
+                                {
+                                    count++;
+                                    if (count == 3)
+                                    {
+                                        <div class="stack-forteams__main__professions__all__profession box">
+                                            @Html.Raw(technologist.Icon)
+                                            <h3>@technologist.Name</h3>
+                                            <p>
+                                                Help engineers be more efficient and streamline knowledge
+                                                sharing <br />
+                                                using a tool they already love and trust.
+                                            </p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="stack-forteams__main__professions__all__profession">
+                                            @Html.Raw(technologist.Icon)
+                                            <h3>@technologist.Name</h3>
+                                            <p>
+                                                Help engineers be more efficient and streamline knowledge
+                                                sharing <br />
+                                                using a tool they already love and trust.
+                                            </p>
+                                        </div>
+                                    }
+
+
+                                }
+                            </div>
+                        </div>
+                        <div class="stack-forteams__main__prices p-md-0">
+                            <div class="stack-forteams__main__prices__all">
+                                <div class="stack-forteams__main__prices__all__switch">
+                                    <label for="switch">Annual billing discount</label>
+                                    <div class="stack-forteams__main__prices__all__switch--toggle">
+                                        <input id="switch" type="checkbox" checked />
+                                        <div class="stack-forteams__main__prices__all__switch--toggle--indicator"></div>
+                                    </div>
+                                </div>
+                                <div class="stack-forteams__main__prices__all__cards m-md-0 flex-md-col">
+                                    <!-- <div class="col-lg-3"> -->
+                                    <div class="stack-forteams__main__prices__all__cards__card">
+                                        <div class="stack-forteams__main__prices__all__cards__card--into">
+                                            <h2 class="first">Free</h2>
+                                            <div style="border-color: #f2740d" class="free">
+                                                <p>Free</p>
+                                                <span>No credit card required</span>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="mdi:bullhorn-variant"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">
+                                                        ChatOps integrations - Slack & Microsoft Teams
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="fluent:shield-keyhole-24-filled"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        Your own private space hosted on stackoverflow.com
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="bi:archive-fill"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        Your own private space hosted on stackoverflow.com
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="button button-first">
+                                                <a class="first-a" href="">Create a free Team</a>
+                                            </div>
+                                            <p>Always free up to 50 teammates</p>
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                    <!-- <div class="col-lg-3"> -->
+                                    <div class="stack-forteams__main__prices__all__cards__card">
+                                        <div class="stack-forteams__main__prices__all__cards__card--into">
+                                            <h2 class="second">Basic</h2>
+                                            <div class="free">
+                                                <p>$ <span id="spn-six">7</span> USD</p>
+                                                <span>per teammate / month</span>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="bxs:key"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">
+                                                        Single sign-on (SSO) with SAML + Okta integration
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="mdi:bullhorn-variant"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">
+                                                        ChatOps integrations - Slack & Microsoft Teams
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="fluent:shield-keyhole-24-filled"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        Your own private space hosted on stackoverflow.com
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="bi:archive-fill"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        Your own private space hosted on stackoverflow.com
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="button button-second">
+                                                <a class="second-a" href="">Get Started</a>
+                                            </div>
+                                            <p>Up to 250 teammates</p>
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                    <!-- <div class="col-lg-3"> -->
+                                    <div class="stack-forteams__main__prices__all__cards__card">
+                                        <div class="recommended p-lg-static">
+                                            <span>RECOMMENDED</span>
+                                            <iconify-icon icon="icons8:organization"
+                                                          flip="horizontal"></iconify-icon>
+                                        </div>
+                                        <div class="stack-forteams__main__prices__all__cards__card--into">
+                                            <h2 class="third">Business</h2>
+                                            <div class="free">
+                                                <p>$ <span id="spn-twelve">14</span> USD</p>
+                                                <span>per teammate / month</span>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon third">
+                                                    <iconify-icon icon="ant-design:plus-outlined"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">All the features of Basic plus…</p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="fluent:document-bullet-list-24-filled"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">Long-form knowledge with Articles</p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="ri:links-fill"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">
+                                                        Additional integrations — ChatOps, Jira, GitHub &
+                                                        Okta
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="bxs:collection"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>Group content together into Collections</p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="bi:file-bar-graph-fill"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>Usage and adoption metrics</p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="material-symbols:health-and-safety"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>Priority customer support</p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="ant-design:tool-filled"
+                                                                  flip="horizontal"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>Content Health tools</p>
+                                                </div>
+                                            </div>
+                                            <div class="button button-third">
+                                                <a class="third-a" href="">Get started</a>
+                                            </div>
+                                            <p>Unlimited teammates</p>
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                    <!-- <div class="col-lg-3"> -->
+                                    <div class="stack-forteams__main__prices__all__cards__card">
+                                        <div class="stack-forteams__main__prices__all__cards__card--into">
+                                            <h2 class="fourth">Enterprise</h2>
+                                            <div class="free">
+                                                <p>Custom Pricing</p>
+                                                <span>Let's talk about what you need</span>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon third">
+                                                    <iconify-icon icon="ant-design:plus-outlined"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">Premium features of Business plus…</p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="bi:people-fill"
+                                                                  flip="horizontal"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">
+                                                        Unlimited Teams within your instance
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="fa6-solid:mountain-sun"
+                                                                  flip="horizontal"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p class="m-0">
+                                                        Flexible hosting options — cloud or on-premises
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="dashicons:editor-code-duplicate"
+                                                                  flip="horizontal"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>Robust read and write API</p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="heroicons:chat-bubble-left-solid"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        Your own customer success and community building
+                                                        representative
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="options">
+                                                <div class="icon">
+                                                    <iconify-icon icon="material-symbols:health-and-safety"></iconify-icon>
+                                                </div>
+                                                <div>
+                                                    <p>99.5% uptime SLA and priority support</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="button button-fourth">
+                                                <a class="fourth-a" href="">Request a demo</a>
+                                            </div>
+                                            <p>Unlimited teammates</p>
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stack-forteams__main__advantages flex-md-col">
+                            <div class="stack-forteams__main__advantages__flex-item">
+                                <div class="stack-forteams__main__advantages__flex-item__advantage">
+                                    <span>A Forrester Consulting study shows</span>
+                                    <strong>179% return on investment</strong>
+                                    <span> with Stack Overflow for Teams.</span>
+                                </div>
+                            </div>
+                            <div class="stack-forteams__main__advantages__flex-item">
+                                <div class="stack-forteams__main__advantages__flex-item__advantage">
+                                    <span>The world's largest telecom firm</span>
+                                    <strong>saved $10M</strong>
+                                    <span>
+                                        in deflected support cases with our centralized knowledge
+                                        base.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="stack-forteams__main__advantages__flex-item">
+                                <div class="stack-forteams__main__advantages__flex-item__advantage">
+                                    <span>
+                                        Subject-matter experts at software platform Unqork
+                                        had
+                                    </span>
+                                    <strong>27% more time</strong>
+                                    <span>to work on projects after using Teams.</span>
+                                </div>
+                            </div>
+
+                            <div class="stack-forteams__main__advantages__flex-item">
+                                <div class="stack-forteams__main__advantages__flex-item__advantage">
+                                    <a href="">
+                                        <span>
+                                            You can save time and money with Stack Overflow for
+                                            Teams.
+                                        </span>
+                                        <span>Calculate your ROI</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stack-forteams__main__improve flex-md-col plr-md-24">
+                            <div class="stack-forteams__main__improve__flex-item d-lg-none">
+                                <a href="">
+                                    <img src="~/assets/Images/Teams/illo-integrations-left (1).png"
+                                         alt="Stack Overflow for Teams" />
+                                    <div class="stack-forteams__main__improve__flex-item__subheading">
+                                        <iconify-icon icon="logos:microsoft-teams"></iconify-icon>
+                                        Microsoft Teams
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="stack-forteams__main__improve__flex-item">
+                                <h2>Integrates with and improves other tools</h2>
+                                <p class="fs-md-17">
+                                    All plans come with integrations for ChatOps tools
+                                    <a href="">Slack</a> & <a href="">Microsoft Teams</a>
+                                    in order to cut down on pings, limit distractions and make the
+                                    tools even more powerful. Business and Enterprise customers
+                                    get access to Jira, GitHub & Okta integrations.
+                                </p>
+                                <div class="stack-forteams__main__improve__flex-item__communities">
+                                    <a href="">
+                                        <iconify-icon icon="logos:slack-icon"></iconify-icon>
+                                    </a>
+                                    <div id="slack"
+                                         class="stack-forteams__main__improve__flex-item__communities--pop-over">
+                                        Slack
+                                        <div class="stack-forteams__main__improve__flex-item__communities--pop-over--arrow"></div>
+                                    </div>
+                                    <a href="">
+                                        <iconify-icon icon="logos:microsoft-teams"></iconify-icon>
+                                    </a>
+                                    <div id="microsoft"
+                                         class="stack-forteams__main__improve__flex-item__communities--pop-over">
+                                        Microsoft Teams
+                                        <div class="stack-forteams__main__improve__flex-item__communities--pop-over--arrow"></div>
+                                    </div>
+                                    <a href="">
+                                        <iconify-icon icon="logos:github-icon"></iconify-icon>
+                                    </a>
+                                    <div id="Github"
+                                         class="stack-forteams__main__improve__flex-item__communities--pop-over">
+                                        GitHub
+                                        <div class="stack-forteams__main__improve__flex-item__communities--pop-over--arrow"></div>
+                                    </div>
+                                    <a href="">
+                                        <iconify-icon icon="logos:jira"></iconify-icon>
+                                    </a>
+                                    <div id="jira"
+                                         class="stack-forteams__main__improve__flex-item__communities--pop-over">
+                                        Jira
+                                        <div class="stack-forteams__main__improve__flex-item__communities--pop-over--arrow"></div>
+                                    </div>
+                                    <a href="">
+                                        <iconify-icon icon="simple-icons:okta"></iconify-icon>
+                                    </a>
+                                    <div id="okta"
+                                         class="stack-forteams__main__improve__flex-item__communities--pop-over">
+                                        Okta
+                                        <div class="stack-forteams__main__improve__flex-item__communities--pop-over--arrow"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stack-forteams__main__improve__flex-item d-lg-none">
+                                <a href="">
+                                    <div class="stack-forteams__main__improve__flex-item__subheading">
+                                        <iconify-icon icon="logos:slack-icon"></iconify-icon>
+                                        Slack
+                                    </div>
+                                    <img src="~/assets/Images/Teams/illo-integrations-right.png"
+                                         alt="Stack Overflow for Teams" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="stack-forteams__main__tier">
+                            Some of the premium features available with paid tiers
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <div class="for-teams__top-left d-640-none"></div>
+                <div class="for-teams__top-right d-640-none"></div>
+                <div class="for-teams__bottom-left d-640-none"></div>
+                <div class="for-teams__bottom-right d-640-none"></div>
+            </section>
+            <!-- for teams end -->
+            <!-- Tiers start -->
+            <section class="tiers">
+                <div class="tiers__cover">
+                    <div class="tiers__cover__tier">
+                        <iconify-icon class="icon"
+                                      icon="uim:key-skeleton-alt"></iconify-icon>
+                        Robust read and write API
+                    </div>
+                </div>
+                <div class="tiers__cover">
+                    <div class="tiers__cover__tier">
+                        <iconify-icon class="icon"
+                                      icon="ph:lock-key-duotone"></iconify-icon>
+                        Single sign-on with AD or SAML
+                    </div>
+                </div>
+                <div class="tiers__cover">
+                    <div class="tiers__cover__tier">
+                        <iconify-icon class="icon"
+                                      icon="akar-icons:people-group"></iconify-icon>
+                        Your own customer success representative
+                    </div>
+                </div>
+                <div class="tiers__cover">
+                    <div class="tiers__cover__tier">
+                        <iconify-icon class="icon"
+                                      icon="teenyicons:headset-outline"></iconify-icon>
+                        99.5% uptime SLA and priority support
+                    </div>
+                </div>
+            </section>
+            <!-- Tiers end -->
+            <!-- Quotes -->
+
+            <section class="quotes t-md-center p-md-5 quotes-p-m">
+                @foreach (Quote quote in Model.quotes)
+                {
+                    <div class="quotes__quote p-md-8 mb-md-32">
+                        @Html.Raw(quote.Icon)
+                        <p>
+                            @quote.Desc
+                        </p>
+                        <div class="quotes__quote--from">
+                            <strong>@quote.Job</strong><br />
+                            @quote.Company
+                        </div>
+                    </div>
+                }
+
+            </section>
+            <!-- quotes end -->
+            <!-- Additional products -->
+            <section>
+                <div class="additional">
+                    <div class="additional__image">
+                        <img src="~/assets/Images/Logo/1280px-Stack_Overflow_logo.svg.png"
+                             alt="Stack Overflow" />
+                    </div>
+                    <h2>
+                        Additional products that reach and engage developers &
+                        technologists…
+                    </h2>
+                    <div class="additional__companies">
+                        <a href="">
+                            <img src="~/assets/Images/Logo/Advertising.png" alt="Advertising" />
+                            <p>
+                                Reach the world's largest audience of developers and
+                                technologists
+                            </p>
+                        </a>
+                        <a href="">
+                            <img src="~/assets/Images/Logo/Collectives.png" alt="Collectives" />
+                            <p>
+                                Connecting communities with the specific technologies they use
+                                the most
+                            </p>
+                        </a>
+                        <a href="">
+                            <img src="~/assets/Images/Logo/Talent.png" alt="Talent" />
+                            <p>Build your employer brand</p>
+                        </a>
+                    </div>
+                    <a href="About.html">About the company</a>
+                    <br />
+                    <br />
+                    <a href="">
+                        Want to work Here?
+                        <span>Current job openings</span>
+                    </a>
+                </div>
+            </section>
+            <!-- Additional products  end-->
+            <!-- Exchange -->
+            <svg width="0" height="0">
+                <defs>
+                    <clipPath id="myCurve" clipPathUnits="objectBoundingBox">
+                        <path d="M 0,1
+									L 0,0
+									L 1,0
+									L 1,1
+									C .65 .9, .35 .9, 0 1
+									Z" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <section class="exchange mlr-md-32">
+                <div class="exchange__all">
+                    <div class="exchange__all__flex-item d-640-none">
+                        <div class="exchange__all__flex-item__item">
+                            <a id="command" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon.png"
+                                     alt="command icon" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Ask Defferent
+                            </div>
+                            <a id="Unix" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (1).png"
+                                     alt=" Unix & Linux" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Unix & Linux
+                            </div>
+                            <a id="Artificial" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (2).png"
+                                     alt=" Artificial Intelligence" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Artificial Intelligence
+                            </div>
+                            <a id="Softwareeng" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (5).png"
+                                     alt="Software Engineering" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Software Engineering
+                            </div>
+                            <a id="Ubuntu" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (4).png"
+                                     alt="Ask Ubuntu" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Ask Ubuntu
+                            </div>
+                            <a id="Salesforce" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (3).png"
+                                     alt="Salesforce" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Salesforce
+                            </div>
+                        </div>
+                        <img src="~/assets/Images/back-ground/illo-se.svg"
+                             alt="background-image" />
+                    </div>
+                    <div class="exchange__all__flex-item min-width pt-md">
+                        <div class="exchange__all__flex-item__image">
+                            <img src="~/assets/Images/StackExchange/logo.png"
+                                 alt="Stack Exchange" />
+                        </div>
+                        <h2 class="fs-md-30">
+                            Explore technical topics and other disciplines across 170+ Q&A
+                            communities
+                        </h2>
+                        <p class="fs-md-17">
+                            From <a href="">Server Fault</a> to <a href="">Super User</a> ,
+                            much of the Stack Exchange network continues our mission to
+                            empower the world to develop technology through collective
+                            knowledge. Other sites on the Stack Exchange network further
+                            encourage knowledge sharing across topics such as cooking and
+                            medicine.
+                        </p>
+                        <a href="">Explore the network</a>
+                    </div>
+                    <div class="exchange__all__flex-item d-640-none">
+                        <div class="exchange__all__flex-item__item">
+                            <a id="Fault" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (11).png"
+                                     alt="Server Fault" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Server Fault
+                            </div>
+                            <a id="Super" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (10).png"
+                                     alt="Super User" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Super User
+                            </div>
+                            <a id="Administrator" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (9).png"
+                                     alt="Database Administrators" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Database Administrators
+                            </div>
+                            <a id="Quantum" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (8).png"
+                                     alt="Quantum Computing" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Quantum Computing
+                            </div>
+                            <a id="Game" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (7).png"
+                                     alt="Game Development" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Game Development
+                            </div>
+                            <a id="Networkeng" href="">
+                                <img src="~/assets/Images/StackExchange/apple-touch-icon (6).png"
+                                     alt="Network Engineering" />
+                            </a>
+                            <div class="exchange__all__flex-item__item--popover">
+                                Network Engineering
+                            </div>
+                        </div>
+                        <img src="~/assets/Images/back-ground/illo-se.svg"
+                             alt="background image" />
+                    </div>
+                </div>
+            </section>
+            <!-- Exchange end  -->
+
+            <section class="private-community flex-md-col">
+                <iconify-icon class="icon" icon="ph:lock-key-duotone"></iconify-icon>
+                <p>
+                    Build a <strong> private community</strong> to share technical or
+                    non-technical knowledge.
+                </p>
+                <a href="">Create a free Team</a>
+            </section>
+
+            <!-- main section end -->
+        </main>
+
+
+
+        <footer class="footer">
+            <div class="footer__container p-md-24 p-sm-16">
+                <div class="footer__container__logo d-640-none">
+                    <a asp-controller="home" asp-action="index">
+                        <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                             alt="Stack Overflow Logo" />
+                    </a>
+                </div>
+                <div class="footer__container__nav flex-lg-col">
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a asp-controller="home" asp-action="index">Stack Overflow</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Questions</a></li>
+                            <li><a href="">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a asp-controller="home" asp-action="index">Products</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Teams</a></li>
+                            <li><a href="">Advertising</a></li>
+                            <li><a href="">Collectives</a></li>
+                            <li><a href="">Talent</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a asp-controller="home" asp-action="about">Company</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a asp-controller="home" asp-action="about">About</a></li>
+                            <li><a href="">Press</a></li>
+                            <li><a href="">Work Here</a></li>
+                            <li><a href="">Legal</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms of Service</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Cookie Settings</a></li>
+                            <li><a href="">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__container__nav--col">
+                        <h5 class="mb-md-8">
+                            <a asp-controller="home" asp-action="index">STACK EXCHANGE NETWORK</a>
+                        </h5>
+                        <ul class="nav-md-ul">
+                            <li><a href="">Technology</a></li>
+                            <li><a href="">Culture & recreation</a></li>
+                            <li><a href="">Life & arts</a></li>
+                            <li><a href="">Science</a></li>
+                            <li><a href="">Professional</a></li>
+                            <li><a href="">Business</a></li>
+                            <li class="mt-3"><a href="">API</a></li>
+                            <li><a href="">Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__container__copyright">
+                    <ul>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="https://www.facebook.com">Facebook</a></li>
+                        <li><a href="https://www.twitter.com">Twitter</a></li>
+                        <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                        <li><a href="https://www.Instagram.com">Instagram</a></li>
+                    </ul>
+                    <p>
+                        Site design / logo © 2022 Stack Exchange Inc; user contributions
+                        licensed under
+                        <span>
+                            <a href="">CC BY-SA</a>
+                        </span>
+                        . <span>rev 2022.9.1.42957</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script src="~/assets/js/script.js"></script>
+    <script src="~/assets/js/sections/index.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+            integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+
+}

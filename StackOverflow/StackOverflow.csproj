@@ -1,0 +1,132 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\assets\" />
+    <Content Remove="wwwroot\admin\" />
+    <Content Remove="wwwroot\admin\assets\" />
+    <Content Remove="wwwroot\error\" />
+    <Content Remove="wwwroot\error\css\" />
+    <Content Remove="wwwroot\prism\" />
+    <Content Remove="wwwroot\assets\Images\tag\" />
+    <Content Remove="wwwroot\assets\confirm\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="wwwroot\assets\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="wwwroot\admin\" />
+    <Folder Include="wwwroot\admin\assets\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="wwwroot\error\" />
+    <Folder Include="wwwroot\error\css\" />
+    <Folder Include="DAL\" />
+    <Folder Include="Models\Base\" />
+    <Folder Include="Areas\Admin\Views\Awards\" />
+    <Folder Include="Areas\Admin\Views\MainCard\" />
+    <Folder Include="Areas\Admin\Views\MainSentence\" />
+    <Folder Include="Areas\Admin\Views\Product\" />
+    <Folder Include="Areas\Admin\Views\Quote\" />
+    <Folder Include="Areas\Admin\Views\Setting\" />
+    <Folder Include="Areas\Admin\Views\Statistic\" />
+    <Folder Include="Areas\Admin\Views\Technologist\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="wwwroot\prism\" />
+    <Folder Include="Areas\Admin\Views\Answer\" />
+    <Folder Include="Areas\Admin\Views\AppUser\" />
+    <Folder Include="Areas\Admin\Views\Badge\" />
+    <Folder Include="Areas\Admin\Views\Comment\" />
+    <Folder Include="Areas\Admin\Views\BadgeUser\" />
+    <Folder Include="Areas\Admin\Views\Company\" />
+    <Folder Include="Areas\Admin\Views\CompanyUserFollow\" />
+    <Folder Include="Areas\Admin\Views\Question\" />
+    <Folder Include="Areas\Admin\Views\QuestionTag\" />
+    <Folder Include="Areas\Admin\Views\QuestionUserFollow\" />
+    <Folder Include="Areas\Admin\Views\SocialMedia\" />
+    <Folder Include="Areas\Admin\Views\SocialMediaUser\" />
+    <Folder Include="Areas\Admin\Views\Tag\" />
+    <Folder Include="Areas\Admin\Views\TagCompany\" />
+    <Folder Include="Areas\Admin\Views\AdminAccount\" />
+    <Folder Include="wwwroot\assets\Images\tag\" />
+    <Folder Include="wwwroot\assets\confirm\" />
+    <Folder Include="Areas\Admin\Views\Contact\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Controllers\" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    <None Remove="Views\" />
+    <None Remove="Views\Shared\" />
+    <None Remove="Models\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Views\Home\" />
+    <None Remove="Views\Account\" />
+    <None Remove="Views\User\" />
+    <None Remove="Areas\" />
+    <None Remove="Areas\Admin\" />
+    <None Remove="Areas\Admin\Controllers\" />
+    <None Remove="Areas\Admin\Views\" />
+    <None Remove="Areas\Admin\Views\Dashboard\" />
+    <None Remove="Areas\Admin\Views\Shared\" />
+    <None Remove="Views\Error\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="DAL\" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Models\Base\" />
+    <None Remove="Areas\Admin\Views\Awards\" />
+    <None Remove="Areas\Admin\Views\MainCard\" />
+    <None Remove="Areas\Admin\Views\MainSentence\" />
+    <None Remove="Areas\Admin\Views\Product\" />
+    <None Remove="Areas\Admin\Views\Quote\" />
+    <None Remove="Areas\Admin\Views\Setting\" />
+    <None Remove="Areas\Admin\Views\Statistic\" />
+    <None Remove="Areas\Admin\Views\Technologist\" />
+    <None Remove="Utilities\" />
+    <None Remove="Areas\Admin\Views\Answer\" />
+    <None Remove="Areas\Admin\Views\AppUser\" />
+    <None Remove="Areas\Admin\Views\Badge\" />
+    <None Remove="Areas\Admin\Views\Comment\" />
+    <None Remove="Areas\Admin\Views\BadgeUser\" />
+    <None Remove="Areas\Admin\Views\Company\" />
+    <None Remove="Areas\Admin\Views\CompanyUserFollow\" />
+    <None Remove="Areas\Admin\Views\Question\" />
+    <None Remove="Areas\Admin\Views\QuestionTag\" />
+    <None Remove="Areas\Admin\Views\QuestionUserFollow\" />
+    <None Remove="Areas\Admin\Views\SocialMedia\" />
+    <None Remove="Areas\Admin\Views\SocialMediaUser\" />
+    <None Remove="Areas\Admin\Views\Tag\" />
+    <None Remove="Areas\Admin\Views\TagCompany\" />
+    <None Remove="Areas\Admin\Views\AdminAccount\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Areas\Admin\Views\Contact\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.29">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.29" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+</Project>

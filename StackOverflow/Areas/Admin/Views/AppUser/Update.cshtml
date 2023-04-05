@@ -1,0 +1,69 @@
+﻿@model AppUser
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Update User</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Image:</label><br />
+                                <img src="~/assets/images/User-card/@Model.ProfilePhoto" width="100" height="100" style="object-fit:cover" />
+                                <input asp-for="ProfileImg" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="ProfileImg"></span>
+                            </div>
+                            <div>
+                                <label>User Name:</label><br />
+                                <input asp-for="UserName" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="UserName"></span>
+                            </div>
+                            <div>
+                                <label>Email:</label><br />
+                                <input asp-for="Email" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Email"></span>
+                            </div>
+                            <div>
+                                <label>Login Date:</label><br />
+                                <input asp-for="LoginDate" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="LoginDate"></span>
+                            </div>
+                            <div>
+                                <label>About:</label><br />
+                                <textarea asp-for="About" class="form-control"></textarea><br />
+                                <span class="text-danger" asp-validation-for="About"></span>
+                            </div>
+                            <div>
+                                <label>Location:</label><br />
+                                <input asp-for="Location" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Location"></span>
+                            </div>
+                            <div>
+                                <label>Reputation:</label><br />
+                                <input asp-for="Reputation" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Reputation"></span>
+                            </div>
+                            <div>
+                                <label>Badge count:</label><br />
+                                <input asp-for="BadgeCount" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="BadgeCount"></span>
+                            </div>
+                            <div>
+                                <label>Social Media Link:</label><br />
+                                <input asp-for="SocialMediaLink" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="SocialMediaLink"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

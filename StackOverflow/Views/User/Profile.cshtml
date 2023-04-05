@@ -1,0 +1,910 @@
+﻿@model AppUser 
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+          rel="stylesheet" />
+    <link rel="shortcut icon"
+          href="~/assets/Images/Logo/apple-touch-icon@2.png"
+          type="image/x-icon" />
+    <title>User Name Surname - Stack Overflow</title>
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+</head>
+<body>
+    <!-- nav -->
+    <header>
+        <nav class="">
+            <!-- <div class="nav-all"> -->
+            <!-- <div class="container"> -->
+            <div class="nav-all">
+                <div class="nav-burger display-none d-block">
+                    <span class="nav-burger__icon"></span>
+                    <span class="nav-burger__icon"></span>
+                    <span class="nav-burger__icon"></span>
+                </div>
+                <div class="nav-burger-toggle l-0">
+                    <ul style="width: 240px">
+                        <li><a href="Index.html">Home</a></li>
+                        <li>
+                            Public
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <iconify-icon icon="bx:world"></iconify-icon>
+                                        Questions
+                                    </a>
+                                </li>
+                                <li><a asp-controller="home" asp-action="tags">Tags</a></li>
+                                <li><a asp-controller="home" asp-action="users">Users</a></li>
+                                <li><a asp-controller="home" asp-action="companies">Companies</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            Collectives
+                            <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                        Explore Collectives
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Teams
+                            <div class="teams">
+                                <div class="teams-title">
+                                    <h4>Stack Overflow for Teams -</h4>
+                                </div>
+                                <div class="teams-desc">
+                                    <p style="margin-bottom: 14px">
+                                        Start collaborating and sharing organizational knowledge.
+                                    </p>
+                                </div>
+                                <div class="teams-image d-640-none">
+                                    <img src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                         alt="Stack Overflow For Teams" />
+                                </div>
+                                <div class="teams-button">
+                                    <a href="">Create a free Team</a>
+                                </div>
+                                <div class="teams-why">
+                                    <a href="">Why Teams?</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-logo">
+                    <a href="Index.html" class="nav-logo__image nav-logo-md-width">
+                        <img class="d-640-none"
+                             src="~/assets/Images/Logo/1280px-Stack_Overflow_logo.svg.png"
+                             alt="Stackoverflow Logo" />
+                        <img class="display-none d-block sm-img"
+                             src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                             alt="Stackoverflow Logo" />
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li id="products">
+                            <a href="">Products</a>
+                        </li>
+
+                        <div class="products-toggle">
+                            <div class="popover-arrow"></div>
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <span> Stack Overflow </span>
+                                        <span> Public questions & answers </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span> Stack Overflow for Teams</span>
+                                        <span>
+                                            Where deleveopers & technologists share private
+                                            knowledge with coworkers
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>Talent</span>
+                                        <span> Build your employer brand</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span> Advertising </span>
+                                        <span> Reach developers & technologists worldwide </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href=""> About the company </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+                <form action="" class="search">
+                    <div class="nav-seacrh-select">
+                        <select name="" id="">
+                            <option value="All">All</option>
+                            <option value="All">Public</option>
+                        </select>
+                    </div>
+                    <div class="nav-search d-640-none input-sm">
+                        <input class="nav-search__input input-authenticate"
+                               type="text"
+                               placeholder="Search..." />
+                        <iconify-icon icon="charm:search"></iconify-icon>
+
+                        <div class="popover-arrow__search"></div>
+                        <div class="nav-search__input-group">
+                            <div class="nav-search__input-group__searchable flex-md-col">
+                                <div class="nav-search__input-group__searchable--flex">
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>[tag]</span>
+                                        <span>search within a tag</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>user:1234</span>
+                                        <span>search by author</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>"words here"</span>
+                                        <span>exact phrase</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>collective:"Name"</span>
+                                        <span>collective content</span>
+                                    </div>
+                                </div>
+                                <div class="nav-search__input-group__searchable--flex">
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>answers:0</span>
+                                        <span>unanswered questions </span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>score:3</span>
+                                        <span>post with a 3+ score</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>is:question</span>
+                                        <span>type of post</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>isaccepted:yes</span>
+                                        <span>search within status</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nav-search__input-group__more">
+                                <div class="nav-search__input-group__more--flex">
+                                    <div class="nav-search__input-group__more--flex--item">
+                                        <a href="">Ask a question</a>
+                                    </div>
+                                    <div class="nav-search__input-group__more--flex--item">
+                                        <a href="">Search help</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <ul class="nav-all-ul">
+                    <li class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <div class="profile-photo" title="User Name">
+                                <img src="~/assets/Images/User-card/test.png"
+                                     alt="user's user avatar"
+                                     width="24"
+                                     height="24" />
+                            </div>
+                            <span>User Name Surname</span>
+                            <div class="user-card-info">
+                                <ul>
+                                    <li class="reputation" title="Your reputation: 1">
+                                        1
+                                        <span>, 1 reputation</span>
+                                    </li>
+                                    <li class="badges" title="Your badge: 1"></li>
+                                </ul>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <iconify-icon icon="bi:inbox-fill"></iconify-icon>
+                        </a>
+                    </li>
+                    <li class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <iconify-icon icon="pepicons:trophy-print"></iconify-icon>
+                        </a>
+                    </li>
+                    <li id="help-icon" class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <iconify-icon icon="bi:question-circle-fill"></iconify-icon>
+                        </a>
+                    </li>
+                    <li class="presentation">
+                        <div class="help-questions display-none">
+                            <div class="help-questions__content">
+                                <ul>
+                                    <li>
+                                        <a href="Index.html">
+                                            Tour<span>
+                                                Start here for a quick overview of the site
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            Help Center<span>
+                                                Detailed answers to any questions you might have
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            Meta<span>
+                                                Discuss the workings and policies of this site
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="About.html">
+                                            About Us<span>
+                                                Learn more about Stack Overflow the company
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Business<span> Learn more about our products </span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="burger-icon" class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <iconify-icon icon="cib:stackexchange"></iconify-icon>
+                        </a>
+                    </li>
+                    <li class="presentation">
+                        <div class="log-out display-none">
+                            <div class="log-out__header">
+                                <h3><a href="">current community</a></h3>
+                            </div>
+                            <div class="log-out__modal-content">
+                                <ul class="log-out__modal-content__ul">
+                                    <li class="log-out__modal-content__ul__main">
+                                        <div class="log-out__modal-content__ul__main--logo">
+                                            <a href="">
+                                                <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                                <span> Stack Overflow </span>
+                                            </a>
+                                        </div>
+                                        <div class="log-out__modal-content__ul__main--links">
+                                            <a href="">help</a>
+                                            <a href="">chat</a>
+                                            <a asp-controller="account" asp-action="logout">log out</a>
+                                        </div>
+                                    </li>
+                                    <li class="log-out__modal-content__ul__related-sites">
+                                        <a href="">
+                                            <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                                            <span> Meta Stack Overflow </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="log-out__header">
+                                <h3><a href="">your communities</a></h3>
+                                <a href="">edit</a>
+                            </div>
+                            <div class="log-out__modal-content">
+                                <ul class="last-ul">
+                                    <li>
+                                        <a href="">
+                                            <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                            <span>Stack Overflow</span>
+                                            <span>1</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- </div> -->
+            <!-- </div> -->
+        </nav>
+    </header>
+    <!-- nav end -->
+
+    <main class="container">
+        <div class="container__left-sidebar d-640-none">
+            <div class="container__left-sidebar__sticky">
+                <div class="container__left-sidebar__sticky__nav">
+                    <ul>
+                        <li>
+                            <a href="Index.html">
+                                <div class="d-flex">
+                                    <div class="d-flex--item">Home</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="fw">Public</li>
+                                <li id="p-o" class="sticky-li">
+                                    <a href="">
+                                        <iconify-icon icon="bx:world"></iconify-icon>
+                                        Questions
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a href="">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Tags</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a href="">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Users</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a href="">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Companies</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li id="collectives" class="sticky-li fw">
+                                    <div class="sticky-li__collectives">Collectives</div>
+                                    <div class="sticky-li__icon">
+                                        <a href="">
+                                            <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li id="p-o" class="sticky-li">
+                                    <a href="">
+                                        <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                        <span>Explore Collectives</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <div class="Teams-title fw">Teams</div>
+                                    <div class="Teams-body">
+                                        <strong>Stack Overflow for Teams</strong>
+                                        - Start collaborating and sharing organizational
+                                        knowledge.
+                                        <img width="139"
+                                             height="114"
+                                             src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                             alt="Stack Overflow For Teams" />
+                                        <a href="">Create a free Team</a>
+                                        <a href="">Why Teams?</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container__main-content w-sm-100">
+            <div class="container__main-content__all">
+                <div class="container__main-content__all__header">
+                    <div class="container__main-content__all__header__left">
+                        <a href=""
+                           class="container__main-content__all__header__left__flex-item">
+                            <div class="container__main-content__all__header__left__flex-item__images d-none-980">
+                                <div class="container__main-content__all__header__left__flex-item__images--into">
+                                    <img width="128"
+                                         height="128"
+                                         src="~/assets/Images/User-card/test.png"
+                                         alt="User profile-photo" />
+                                </div>
+                            </div>
+                            <div class="container__main-content__all__header__left__flex-item__images display-none d-none d-block-980">
+                                <div class="container__main-content__all__header__left__flex-item__images--into">
+                                    <img width="96"
+                                         height="96"
+                                         src="~/assets/Images/User-card/test.png"
+                                         alt="User profile-photo" />
+                                </div>
+                            </div>
+                            <div class="container__main-content__all__header__left__flex-item__images display-none d-block">
+                                <div class="container__main-content__all__header__left__flex-item__images--into">
+                                    <img width="64"
+                                         height="64"
+                                         src="~/assets/Images/User-card/test.png"
+                                         alt="User profile-photo" />
+                                </div>
+                            </div>
+                        </a>
+                        <div class="container__main-content__all__header__left__flex-item">
+                            <div class="container__main-content__all__header__left__flex-item__user-name">
+                                <div class="container__main-content__all__header__left__flex-item__user-name--name fs-sm-24">
+                                    Name Surname
+                                </div>
+                                <div class="container__main-content__all__header__left__flex-item__user-name--degree"></div>
+                            </div>
+                            <ul class="container__main-content__all__header__left__flex-item__user-activity fs-sm-11">
+                                <li class="container__main-content__all__header__left__flex-item__user-activity__item">
+                                    <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex">
+                                        <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex--icon">
+                                            <iconify-icon icon="ic:sharp-cake"></iconify-icon>
+                                        </div>
+                                        <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex--desc">
+                                            Member for <span>7 Months</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="container__main-content__all__header__left__flex-item__user-activity__item">
+                                    <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex">
+                                        <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex--icon">
+                                            <iconify-icon icon="ant-design:clock-circle-twotone"></iconify-icon>
+                                        </div>
+                                        <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex--desc">
+                                            Last seen this week
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="container__main-content__all__header__left__flex-item__user-activity__item">
+                                    <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex">
+                                        <button class="container__main-content__all__header__left__flex-item__user-activity__item__flex__button">
+                                            <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex__button--icon">
+                                                <iconify-icon icon="bx:calendar"></iconify-icon>
+                                            </div>
+                                            <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex__button--desc">
+                                                Visited 43 days, 5 consecutive
+                                            </div>
+                                        </button>
+                                        <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex__popover display-none">
+                                            <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex__popover--arrow"></div>
+                                            <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex__popover__body">
+                                                <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex__popover__body--into">
+                                                    <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex__popover__body--into--header">
+                                                        <a href="" class="prev">
+                                                            <span>Prev</span>
+                                                        </a>
+                                                        <a href="" class="next">
+                                                            <span>Next</span>
+                                                        </a>
+                                                        <div class="container__main-content__all__header__left__flex-item__user-activity__item__flex__popover__body--into--header--title">
+                                                            <span>September</span>
+                                                            &nbsp;
+                                                            <span>2022</span>
+                                                        </div>
+                                                    </div>
+                                                    <table class="container__main-content__all__header__left__flex-item__user-activity__item__flex__popover__body--into--datapicker">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="week-end">
+                                                                    <span title="Sunday">Su</span>
+                                                                </th>
+                                                                <th>
+                                                                    <span title="Monday">Mo</span>
+                                                                </th>
+                                                                <th>
+                                                                    <span title="Tuesday">Tu</span>
+                                                                </th>
+                                                                <th>
+                                                                    <span title="Wednesday">We</span>
+                                                                </th>
+                                                                <th>
+                                                                    <span title="Thursday">Th</span>
+                                                                </th>
+                                                                <th>
+                                                                    <span title="Friday">Fr</span>
+                                                                </th>
+                                                                <th class="week-end">
+                                                                    <span title="Saturday">Sa</span>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>&nbsp;</td>
+                                                                <td>&nbsp;</td>
+                                                                <td>&nbsp;</td>
+                                                                <td>&nbsp;</td>
+                                                                <td class="selectable" title="2022-0-1">
+                                                                    <span>1</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-2">
+                                                                    <span>2</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-3">
+                                                                    <span>3</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="visited selectable"
+                                                                    title="2022-0-4">
+                                                                    <span>4</span>
+                                                                </td>
+                                                                <td class="selectable visited"
+                                                                    title="2022-0-5">
+                                                                    <span>5</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-6">
+                                                                    <span>6</span>
+                                                                </td>
+                                                                <td class="selectable visited"
+                                                                    title="2022-0-7">
+                                                                    <span>7</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-8">
+                                                                    <span>8</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-9">
+                                                                    <span>9</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-10">
+                                                                    <span>10</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="selectable" title="2022-0-11">
+                                                                    <span>11</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-12">
+                                                                    <span>12</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-13">
+                                                                    <span>13</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-14">
+                                                                    <span>14</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-15">
+                                                                    <span>15</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-16">
+                                                                    <span>16</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-17">
+                                                                    <span>17</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="selectable" title="2022-0-18">
+                                                                    <span>18</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-19">
+                                                                    <span>19</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-20">
+                                                                    <span>20</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-21">
+                                                                    <span>21</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-22">
+                                                                    <span>22</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-23">
+                                                                    <span>23</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-24">
+                                                                    <span>24</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="selectable" title="2022-0-25">
+                                                                    <span>25</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-26">
+                                                                    <span>26</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-27">
+                                                                    <span>27</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-28">
+                                                                    <span>28</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-29">
+                                                                    <span>29</span>
+                                                                </td>
+                                                                <td class="selectable" title="2022-0-30">
+                                                                    <span>30</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="container__main-content__all__header__right">
+                        <a asp-controller="user" asp-action="editprofile">
+                            <iconify-icon icon="heroicons:pencil-solid"></iconify-icon>
+                            Edit profile
+                        </a>
+                    </div>
+                </div>
+                <div class="container__main-content__all__center">
+                    <div class="container__main-content__all__center__navigation">
+                        <a asp-controller="user" asp-action="profile" class="is-selected">Profile</a>
+                        <a asp-controller="user" asp-action="Activity" >Activity</a>
+                        <a asp-controller="user" asp-action="settings" >Settings</a>
+                    </div>
+                </div>
+                <div class="container__main-content__all__main">
+                    <div class="container__main-content__all__main__body fd-md-col">
+                        <div class="container__main-content__all__main__body__left order-md-1">
+                            <div class="container__main-content__all__main__body__left__grid">
+                                <div class="container__main-content__all__main__body__left__grid--top d-none-980">
+                                    <div class="container__main-content__all__main__body__left__grid--top__title">
+                                        Stats
+                                    </div>
+                                    <div class="container__main-content__all__main__body__left__grid--top__body">
+                                        <div class="container__main-content__all__main__body__left__grid--top__body--flex">
+                                            <div class="container__main-content__all__main__body__left__grid--top__body--flex__item">
+                                                <div class="container__main-content__all__main__body__left__grid--top__body--flex__item--count">
+                                                    1
+                                                </div>
+                                                reputation
+                                            </div>
+                                            <div class="container__main-content__all__main__body__left__grid--top__body--flex__item">
+                                                <div class="container__main-content__all__main__body__left__grid--top__body--flex__item--count"
+                                                     title="Estimated number of times people viewed your helpful posts
+(based on page views of your questions
+and questions where you wrote highly-ranked answers)">
+                                                    0
+                                                </div>
+                                                reached
+                                            </div>
+                                            <div class="container__main-content__all__main__body__left__grid--top__body--flex__item">
+                                                <div class="container__main-content__all__main__body__left__grid--top__body--flex__item--count">
+                                                    0
+                                                </div>
+                                                answers
+                                            </div>
+                                            <div class="container__main-content__all__main__body__left__grid--top__body--flex__item">
+                                                <div class="container__main-content__all__main__body__left__grid--top__body--flex__item--count">
+                                                    0
+                                                </div>
+                                                questions
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container__main-content__all__main__body__left__grid--bottom">
+                                    <div class="container__main-content__all__main__body__left__grid--bottom__title">
+                                        <div>Communities</div>
+                                        <a href="">Edit</a>
+                                    </div>
+                                    <div class="container__main-content__all__main__body__left__grid--bottom__profiles">
+                                        <ul>
+                                            <li>
+                                                <a href="">
+                                                    <div class="icon">
+                                                        <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                                    </div>
+                                                    <div class="name">
+                                                        <div>Stack Overflow</div>
+                                                    </div>
+                                                    <div class="count">1</div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container__main-content__all__main__body__right">
+                            <div class="container__main-content__all__main__body__right__grid">
+                                <div class="container__main-content__all__main__body__right__grid--stats display-none d-block-980">
+                                    <div class="container__main-content__all__main__body__left__grid--top">
+                                        <div class="container__main-content__all__main__body__left__grid--top__title">
+                                            Stats
+                                        </div>
+                                        <div class="container__main-content__all__main__body__left__grid--top__body">
+                                            <div class="container__main-content__all__main__body__left__grid--top__body--flex jc-md-between fs-sm-11">
+                                                <div class="container__main-content__all__main__body__left__grid--top__body--flex__item f-md-1">
+                                                    <div class="container__main-content__all__main__body__left__grid--top__body--flex__item--count">
+                                                        1
+                                                    </div>
+                                                    reputation
+                                                </div>
+                                                <div class="container__main-content__all__main__body__left__grid--top__body--flex__item f-md-1">
+                                                    <div class="container__main-content__all__main__body__left__grid--top__body--flex__item--count"
+                                                         title="Estimated number of times people viewed your helpful posts
+(based on page views of your questions
+and questions where you wrote highly-ranked answers)">
+                                                        0
+                                                    </div>
+                                                    reached
+                                                </div>
+                                                <div class="container__main-content__all__main__body__left__grid--top__body--flex__item f-md-1">
+                                                    <div class="container__main-content__all__main__body__left__grid--top__body--flex__item--count">
+                                                        0
+                                                    </div>
+                                                    answers
+                                                </div>
+                                                <div class="container__main-content__all__main__body__left__grid--top__body--flex__item f-md-1">
+                                                    <div class="container__main-content__all__main__body__left__grid--top__body--flex__item--count">
+                                                        0
+                                                    </div>
+                                                    questions
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container__main-content__all__main__body__right__grid__item">
+                                    <div class="container__main-content__all__main__body__right__grid__item--title">
+                                        About
+                                    </div>
+                                    <div class="container__main-content__all__main__body__right__grid__item--desc">
+                                        <p>
+                                            Your about me section is currently blank. Would you like
+                                            to add one?
+                                            <a href="">Edit profile</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="container__main-content__all__main__body__right__grid__item">
+                                    <div id="badges"
+                                         class="container__main-content__all__main__body__right__grid__item--title">
+                                        <div>Badges</div>
+                                    </div>
+                                    <div class="container__main-content__all__main__body__right__grid__item--desc">
+                                        <p>
+                                            You have not earned any
+                                            <a href="">badges</a>.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="container__main-content__all__main__body__right__grid__item">
+                                    <div class="container__main-content__all__main__body__right__grid__item--title">
+                                        Posts
+                                    </div>
+                                    <div id="posts"
+                                         class="container__main-content__all__main__body__right__grid__item--desc">
+                                        <iconify-icon icon="icon-park-twotone:layers"></iconify-icon>
+                                        <p>Just getting started? Try answering a question!</p>
+                                        <p>
+                                            Your most helpful questions, answers and tags will
+                                            appear here. Start by
+                                            <a href="Questions.html">answering a question</a>
+                                            or
+                                            <a href="Tags.html">selecting tags</a>
+                                            that match topics you're interested in.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer__container p-md-24 p-sm-16">
+            <div class="footer__container__logo d-640-none">
+                <a href="Index.html">
+                    <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                         alt="Stack Overflow Logo" />
+                </a>
+            </div>
+            <div class="footer__container__nav flex-lg-col">
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Stack Overflow</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Products</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Teams</a></li>
+                        <li><a href="">Advertising</a></li>
+                        <li><a href="">Collectives</a></li>
+                        <li><a href="">Talent</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Company</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">About</a></li>
+                        <li><a href="">Press</a></li>
+                        <li><a href="">Work Here</a></li>
+                        <li><a href="">Legal</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Terms of Service</a></li>
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Cookie Settings</a></li>
+                        <li><a href="">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Technology</a></li>
+                        <li><a href="">Culture & recreation</a></li>
+                        <li><a href="">Life & arts</a></li>
+                        <li><a href="">Science</a></li>
+                        <li><a href="">Professional</a></li>
+                        <li><a href="">Business</a></li>
+                        <li class="mt-3"><a href="">API</a></li>
+                        <li><a href="">Data</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__container__copyright">
+                <ul>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="https://www.facebook.com">Facebook</a></li>
+                    <li><a href="https://www.twitter.com">Twitter</a></li>
+                    <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                    <li><a href="https://www.Instagram.com">Instagram</a></li>
+                </ul>
+                <p>
+                    Site design / logo © 2022 Stack Exchange Inc; user contributions
+                    licensed under
+                    <span>
+                        <a href="">CC BY-SA</a>
+                    </span>
+                    . <span>rev 2022.9.1.42957</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+</body>
+<script src="~/assets/js/script.js"></script>
+<script src="~/assets/js/sections/profile.js"></script>
+
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>

@@ -1,0 +1,79 @@
+﻿@model List<Question>
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Question Table</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Title
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Views
+                                    </th>
+                                    <th>
+                                        Post Date
+                                    </th> 
+                                </tr>
+                            </thead>
+                            @if (Model.Count() != 0)
+                            {
+                                <tbody>
+                                    @foreach (Question question in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                              @question.Title
+                                            </td>
+                                            <td>
+                                                @question.Desc
+                                            </td>
+                                            <td>
+                                                @question.Views
+                                            </td>
+                                            <td class="text-center">
+                                                @question.PostDate
+                                            </td>
+                                            <td class="text-center" style="cursor:pointer">
+                                                <a asp-area="admin" asp-controller="question" asp-action="delete" asp-route-id="@question.Id"> <i class="fa-regular fa-trash-can"></i></a>
+                                            </td>
+                                            <td class="text-center" style="cursor:pointer">
+                                                <a asp-area="admin" asp-controller="question" asp-action="update" asp-route-id="@question.Id"><i class="fa-solid fa-pen"></i></a>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                    <tr>
+                                        <td><a asp-area="admin" asp-controller="question" asp-action="create" class="btn btn-info">Create Question</a> </td>
+                                    </tr>
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr class="text-info"> <td>No Questions Yet</td> </tr>
+                                    <tr>
+                                        <td><a asp-area="admin" asp-controller="question" asp-action="create" class="btn btn-info">Create Question</a> </td>
+                                    </tr>
+
+                                </tbody>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

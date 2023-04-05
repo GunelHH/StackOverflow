@@ -1,0 +1,68 @@
+.wrapper {
+  font-family: "Roboto", sans-serif; }
+  .wrapper__content__body {
+    display: flex;
+    align-items: center; }
+    .wrapper__content__body__left {
+      max-width: 410px;
+      font-size: 15px;
+      margin: 0 48px 128px 0; }
+      .wrapper__content__body__left > h1 {
+        line-height: 1;
+        font-size: 27px;
+        margin-bottom: 32px;
+        min-width: 426px;
+        font-weight: normal; }
+      .wrapper__content__body__left--flex-item {
+        display: flex;
+        margin-bottom: 24px; }
+        .wrapper__content__body__left--flex-item__icon {
+          color: #0a95ff;
+          margin-right: 8px; }
+          .wrapper__content__body__left--flex-item__icon > iconify-icon {
+            vertical-align: bottom;
+            margin-top: -2px;
+            font-size: 22px; }
+    .wrapper__content__body__right {
+      flex-shrink: 0; }
+      .wrapper__content__body__right__heading {
+        display: none;
+        max-width: calc((97.2307692rem / 12) * 4);
+        font-size: 21px;
+        text-align: center;
+        margin-bottom: 24px; }
+      .wrapper__content__body__right .wrapper__content__flex__form-container__form__flex-item__password-rule {
+        color: #6a737c;
+        font-size: 12px;
+        margin: 4px 0; }
+      .wrapper__content__body__right .wrapper__content__flex__form-container__form__flex-item {
+        position: relative; }
+        .wrapper__content__body__right .wrapper__content__flex__form-container__form__flex-item--success {
+          display: none;
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          color: #22bb33;
+          z-index: 1; }
+        .wrapper__content__body__right .wrapper__content__flex__form-container__form__flex-item--error {
+          z-index: 1;
+          display: none;
+          position: absolute;
+          top: 40%;
+          right: 10px;
+          color: #bb2124; }
+        .wrapper__content__body__right .wrapper__content__flex__form-container__form__flex-item p#p {
+          color: #bb2124; }
+        .wrapper__content__body__right .wrapper__content__flex__form-container__form__flex-item__input > input.success {
+          border: 1px solid #22bb33;
+          border-radius: 4px; }
+        .wrapper__content__body__right .wrapper__content__flex__form-container__form__flex-item__input > input.error {
+          border: 1px solid #bb2124;
+          border-radius: 4px; }
+      .wrapper__content__body__right .wrapper__content__flex__form-container__rule {
+        color: #6a737c;
+        font-size: 12px;
+        margin-top: 32px; }
+        .wrapper__content__body__right .wrapper__content__flex__form-container__rule > a {
+          text-decoration: none;
+          color: #0074cc; }

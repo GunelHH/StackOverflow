@@ -1,0 +1,129 @@
+.container__main-content__all {
+  color: #232629;
+  width: 100%; }
+  .container__main-content__all > h1 {
+    margin-bottom: 16px;
+    font-size: 27px;
+    font-weight: 600; }
+  .container__main-content__all > p {
+    max-width: 632px;
+    font-size: 15px;
+    margin-bottom: 16px; }
+  .container__main-content__all--show-all {
+    display: flex;
+    margin: -2px;
+    margin-bottom: 24px;
+    align-items: center;
+    flex-wrap: wrap; }
+    .container__main-content__all--show-all > a {
+      margin: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #0074cc;
+      font-size: 13px;
+      font-weight: 600; }
+  .container__main-content__all--filtering {
+    display: flex;
+    flex-wrap: wrap; }
+    .container__main-content__all--filtering--filter {
+      position: relative;
+      margin-bottom: 12px; }
+      .container__main-content__all--filtering--filter > input:focus {
+        border: 1px solid #6bbbf7;
+        box-shadow: #6bbbf7 0 0 10px; }
+      .container__main-content__all--filtering--filter > input {
+        outline: none;
+        padding: 8px 9px;
+        padding-left: 32px;
+        height: 100%;
+        -webkit-appearance: none;
+        width: 100%;
+        border: 1px solid #babfc4;
+        border-radius: 4px;
+        font-size: 13px; }
+      .container__main-content__all--filtering--filter > input::placeholder {
+        color: #babfc3; }
+      .container__main-content__all--filtering--filter > iconify-icon {
+        position: absolute;
+        top: 50%;
+        margin-top: -9px;
+        right: auto;
+        left: 0.7em;
+        color: #838c95; }
+    .container__main-content__all--filtering--sort {
+      display: flex;
+      margin-left: auto;
+      margin-bottom: 12px;
+      flex-wrap: wrap; }
+      .container__main-content__all--filtering--sort > a {
+        position: relative;
+        display: inline-block;
+        padding: 10px;
+        border: 1px solid #838c95;
+        margin-right: -1px;
+        color: #3b4045;
+        white-space: nowrap;
+        text-decoration: none;
+        text-align: center; }
+      .container__main-content__all--filtering--sort > a:hover {
+        background: #f8f9f9; }
+      .container__main-content__all--filtering--sort > a.is-selected {
+        background: #e3e6e8; }
+      .container__main-content__all--filtering--sort > a:first-child {
+        border-radius: 3px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0; }
+      .container__main-content__all--filtering--sort > a:last-child {
+        border-radius: 3px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0; }
+  .container__main-content__all__tags__list {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px; }
+    .container__main-content__all__tags__list__item {
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      border: 1px solid #d6d9dc;
+      background: #fff;
+      border-radius: 4px; }
+      .container__main-content__all__tags__list__item--name {
+        display: flex;
+        margin-bottom: 12px;
+        align-items: center;
+        justify-content: space-between; }
+        .container__main-content__all__tags__list__item--name--item > a {
+          font-size: 12px;
+          color: #39739d;
+          background: #e1ecf4;
+          padding: 5px 6px;
+          margin: 2px 2px 2px 0;
+          line-height: 1;
+          white-space: nowrap;
+          text-decoration: none;
+          text-align: center;
+          border-radius: 4px; }
+        .container__main-content__all__tags__list__item--name--item > a:hover {
+          background: #d0e3f1; }
+      .container__main-content__all__tags__list__item--desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #3b4045;
+        margin-bottom: 12px;
+        font-size: 13px; }
+      .container__main-content__all__tags__list__item--info {
+        display: flex;
+        font-size: 12px;
+        margin-top: auto;
+        justify-content: space-between;
+        color: #838c95; }
+        .container__main-content__all__tags__list__item--info__flex-item > a {
+          text-decoration: none;
+          color: inherit; }
+
+.float-right {
+  float: right !important; }

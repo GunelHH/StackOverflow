@@ -1,0 +1,166 @@
+@import "../utils/Colors.scss";
+
+.container {
+  &__main-content {
+    &__all {
+      color: $nav-links-hover-color;
+      width: 100%;
+      > h1 {
+        margin-bottom: 16px;
+        font-size: 27px;
+        font-weight: 600;
+      }
+      > p {
+        max-width: 632px;
+        font-size: 15px;
+        margin-bottom: 16px;
+      }
+      &--show-all {
+        display: flex;
+        margin: -2px;
+        margin-bottom: 24px;
+        align-items: center;
+        flex-wrap: wrap;
+        > a {
+          margin: 2px;
+          cursor: pointer;
+          text-decoration: none;
+          color: $a-color;
+          font-size: 13px;
+          font-weight: 600;
+        }
+      }
+      &--filtering {
+        display: flex;
+        flex-wrap: wrap;
+        &--filter {
+          position: relative;
+          margin-bottom: 12px;
+          > input:focus {
+            border: 1px solid #6bbbf7;
+            box-shadow: #6bbbf7 0 0 10px;
+          }
+          > input {
+            outline: none;
+            padding: 8px 9px;
+            padding-left: 32px;
+            height: 100%;
+            -webkit-appearance: none;
+            width: 100%;
+            border: 1px solid #babfc4;
+            border-radius: 4px;
+            font-size: 13px;
+          }
+          > input::placeholder {
+            color: #babfc3;
+          }
+          > iconify-icon {
+            position: absolute;
+            top: 50%;
+            margin-top: -9px;
+            right: auto;
+            left: 0.7em;
+            color: #838c95;
+          }
+        }
+        &--sort {
+          display: flex;
+          margin-left: auto;
+          margin-bottom: 12px;
+          flex-wrap: wrap;
+          > a {
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #838c95;
+            margin-right: -1px;
+            color: #3b4045;
+            white-space: nowrap;
+            text-decoration: none;
+            text-align: center;
+          }
+          > a:hover {
+            background: #f8f9f9;
+          }
+          > a.is-selected {
+            background: $nav-links-hover-bg;
+          }
+          > a:first-child {
+            border-radius: 3px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+          > a:last-child {
+            border-radius: 3px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+        }
+      }
+      &__tags {
+        &__list {
+          display: grid;
+          width: 100%;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 12px;
+          &__item {
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            border: 1px solid #d6d9dc;
+            background: #fff;
+            border-radius: 4px;
+            &--name {
+              display: flex;
+              margin-bottom: 12px;
+              align-items: center;
+              justify-content: space-between;
+              &--item {
+                > a {
+                  font-size: 12px;
+                  color: #39739d;
+                  background: #e1ecf4;
+                  padding: 5px 6px;
+                  margin: 2px 2px 2px 0;
+                  line-height: 1;
+                  white-space: nowrap;
+                  text-decoration: none;
+                  text-align: center;
+                  border-radius: 4px;
+                }
+                > a:hover {
+                  background: #d0e3f1;
+                }
+              }
+            }
+            &--desc {
+              display: -webkit-box;
+              -webkit-line-clamp: 4;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              color: #3b4045;
+              margin-bottom: 12px;
+              font-size: 13px;
+            }
+            &--info {
+              display: flex;
+              font-size: 12px;
+              margin-top: auto;
+              justify-content: space-between;
+              color: #838c95;
+              &__flex-item {
+                > a {
+                  text-decoration: none;
+                  color: inherit;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.float-right {
+  float: right !important;
+}

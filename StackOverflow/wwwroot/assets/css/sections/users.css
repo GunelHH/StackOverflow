@@ -1,0 +1,148 @@
+.container__main-content__all__browser {
+  display: none; }
+  .container__main-content__all__browser__in {
+    padding: 32px;
+    background: #f8f9f9;
+    border: 1px solid #e3e6e8;
+    border-radius: 5px;
+    color: #6a737c;
+    text-align: center;
+    margin: 0 auto; }
+    .container__main-content__all__browser__in > iconify-icon {
+      margin-bottom: 24px;
+      font-size: 196px;
+      vertical-align: bottom; }
+    .container__main-content__all__browser__in > p {
+      font-size: 13;
+      margin-bottom: 12px; }
+
+.container__main-content__all__filtering-bottom {
+  font-size: 12px;
+  margin-top: 8px;
+  margin-bottom: 12px; }
+  .container__main-content__all__filtering-bottom__all {
+    display: flex;
+    justify-content: space-between; }
+    .container__main-content__all__filtering-bottom__all__flex {
+      margin-left: auto; }
+      .container__main-content__all__filtering-bottom__all__flex--content {
+        float: right; }
+        .container__main-content__all__filtering-bottom__all__flex--content > a {
+          float: right;
+          display: block;
+          margin-bottom: 12px;
+          padding: 8px;
+          color: #6a737c;
+          text-decoration: none;
+          transition: all 150ms cubic-bezier(0.19, 1, 0.22, 1); }
+        .container__main-content__all__filtering-bottom__all__flex--content > a.is-selected {
+          border-bottom: 1px solid #f48225;
+          color: #3b4046;
+          font-weight: 700; }
+        .container__main-content__all__filtering-bottom__all__flex--content > a:hover {
+          border-bottom: 1px solid #f48225; }
+
+.container__main-content__users__all {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px; }
+  .container__main-content__users__all__user {
+    padding: 5px 6px 7px 7px;
+    color: #6a737c;
+    overflow: hidden; }
+    .container__main-content__users__all__user--image {
+      float: left;
+      width: 48px;
+      height: 48px; }
+      .container__main-content__users__all__user--image > a {
+        color: #0074cc;
+        text-decoration: none; }
+        .container__main-content__users__all__user--image > a .wrapper {
+          width: 48px;
+          height: 48px;
+          border-radius: 2px; }
+          .container__main-content__users__all__user--image > a .wrapper > img {
+            width: 48px;
+            height: 48px;
+            border-radius: 3px;
+            margin: 0 auto; }
+    .container__main-content__users__all__user--details {
+      margin-left: 9px;
+      width: calc(100% - 64px);
+      line-height: 1.3;
+      float: left; }
+      .container__main-content__users__all__user--details > a {
+        display: inline-block;
+        color: #0074cc;
+        text-decoration: none;
+        font-size: 15px; }
+      .container__main-content__users__all__user--details > a:hover {
+        color: #0a95ff; }
+      .container__main-content__users__all__user--details > span {
+        margin-bottom: 2px;
+        font-size: 12px;
+        display: block; }
+      .container__main-content__users__all__user--details--flair {
+        line-height: 1;
+        margin-bottom: 4px;
+        display: block; }
+        .container__main-content__users__all__user--details--flair > span {
+          font-weight: bold;
+          font-size: 12px;
+          margin-right: 2px; }
+    .container__main-content__users__all__user--tags {
+      clear: both;
+      font-size: 12px;
+      margin-left: 57px;
+      font-weight: 600; }
+      .container__main-content__users__all__user--tags > a {
+        color: #0074cc;
+        text-decoration: none; }
+
+.user-info {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s all linear;
+  position: absolute;
+  z-index: 1;
+  width: 308px;
+  height: 173px;
+  top: 246.961px;
+  left: 538.75px;
+  overflow: hidden; }
+  .user-info__menu {
+    border-radius: 2px;
+    border: 1px solid #232629;
+    background: #525960;
+    color: #e3e6e8;
+    padding: 10px;
+    position: relative;
+    width: 300px;
+    font-size: 11px;
+    line-height: 1.2; }
+    .user-info__menu__body--image {
+      float: left;
+      margin-right: 0.8em;
+      margin-bottom: 0.75em; }
+      .user-info__menu__body--image > a {
+        color: #e1ecf4;
+        text-decoration: none; }
+        .user-info__menu__body--image > a .wrapper {
+          width: 64px;
+          height: 64px;
+          border-radius: 2px;
+          overflow: hidden; }
+          .user-info__menu__body--image > a .wrapper > img {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto;
+            border-radius: 3px; }
+    .user-info__menu__body--info > a {
+      font-size: 19px;
+      color: #e3e6e8;
+      text-decoration: none; }
+    .user-info__menu__body--about-me {
+      clear: both;
+      font-size: 11px;
+      margin: 5px 0;
+      overflow: hidden; }

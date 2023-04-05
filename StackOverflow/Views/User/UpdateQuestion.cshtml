@@ -1,0 +1,952 @@
+﻿
+@model Question
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+          rel="stylesheet" />
+    <link rel="shortcut icon"
+          href="~/assets/Images/Logo/apple-touch-icon@2.png"
+          type="image/x-icon" />
+    <title>Ask a Question - Stack Overflow</title>
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+</head>
+<body>
+    <!-- nav -->
+    <header>
+        <nav class="">
+            <!-- <div class="nav-all"> -->
+            <!-- <div class="container"> -->
+            <div class="nav-all">
+                <div class="nav-burger display-none d-block">
+                    <span class="nav-burger__icon"></span>
+                    <span class="nav-burger__icon"></span>
+                    <span class="nav-burger__icon"></span>
+                </div>
+                <div class="nav-burger-toggle l-0">
+                    <ul style="width: 240px">
+                        <li><a href="Index.html">Home</a></li>
+                        <li>
+                            Public
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <iconify-icon icon="bx:world"></iconify-icon>
+                                        Questions
+                                    </a>
+                                </li>
+                                <li><a href="">Tags</a></li>
+                                <li><a href="">Users</a></li>
+                                <li><a href="">Companies</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            Collectives
+                            <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                        Explore Collectives
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Teams
+                            <div class="teams">
+                                <div class="teams-title">
+                                    <h4>Stack Overflow for Teams -</h4>
+                                </div>
+                                <div class="teams-desc">
+                                    <p style="margin-bottom: 14px">
+                                        Start collaborating and sharing organizational knowledge.
+                                    </p>
+                                </div>
+                                <div class="teams-image d-640-none">
+                                    <img src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                         alt="Stack Overflow For Teams" />
+                                </div>
+                                <div class="teams-button">
+                                    <a href="">Create a free Team</a>
+                                </div>
+                                <div class="teams-why">
+                                    <a href="">Why Teams?</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-logo">
+                    <a href="Index.html" class="nav-logo__image nav-logo-md-width">
+                        <img class="d-640-none"
+                             src="~/assets/Images/Logo/1280px-Stack_Overflow_logo.svg.png"
+                             alt="Stackoverflow Logo" />
+                        <img class="display-none d-block sm-img"
+                             src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                             alt="Stackoverflow Logo" />
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li id="products">
+                            <a href="">Products</a>
+                        </li>
+
+                        <div class="products-toggle">
+                            <div class="popover-arrow"></div>
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <span> Stack Overflow </span>
+                                        <span> Public questions & answers </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span> Stack Overflow for Teams</span>
+                                        <span>
+                                            Where deleveopers & technologists share private
+                                            knowledge with coworkers
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>Talent</span>
+                                        <span> Build your employer brand</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span> Advertising </span>
+                                        <span> Reach developers & technologists worldwide </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href=""> About the company </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+                <form class="search">
+                    <div class="nav-seacrh-select">
+                        <select name="" id="">
+                            <option value="All">All</option>
+                            <option value="All">Public</option>
+                        </select>
+                    </div>
+                    <div class="nav-search d-640-none input-sm">
+                        <input class="nav-search__input input-authenticate"
+                               type="text"
+                               placeholder="Search..." />
+                        <iconify-icon icon="charm:search"></iconify-icon>
+
+                        <div class="popover-arrow__search"></div>
+                        <div class="nav-search__input-group">
+                            <div class="nav-search__input-group__searchable flex-md-col">
+                                <div class="nav-search__input-group__searchable--flex">
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>[tag]</span>
+                                        <span>search within a tag</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>user:1234</span>
+                                        <span>search by author</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>"words here"</span>
+                                        <span>exact phrase</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>collective:"Name"</span>
+                                        <span>collective content</span>
+                                    </div>
+                                </div>
+                                <div class="nav-search__input-group__searchable--flex">
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>answers:0</span>
+                                        <span>unanswered questions </span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>score:3</span>
+                                        <span>post with a 3+ score</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>is:question</span>
+                                        <span>type of post</span>
+                                    </div>
+                                    <div class="nav-search__input-group__searchable--flex--item">
+                                        <span>isaccepted:yes</span>
+                                        <span>search within status</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nav-search__input-group__more">
+                                <div class="nav-search__input-group__more--flex">
+                                    <div class="nav-search__input-group__more--flex--item">
+                                        <a href="">Ask a question</a>
+                                    </div>
+                                    <div class="nav-search__input-group__more--flex--item">
+                                        <a href="">Search help</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <ul class="nav-all-ul">
+                    <li class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <div class="profile-photo" title="User Name">
+                                <img src="~/assets/Images/User-card/test.png"
+                                     alt="user's user avatar"
+                                     width="24"
+                                     height="24" />
+                            </div>
+                            <span>User Name Surname</span>
+                            <div class="user-card-info">
+                                <ul>
+                                    <li class="reputation" title="Your reputation: 1">
+                                        1
+                                        <span>, 1 reputation</span>
+                                    </li>
+                                    <li class="badges" title="Your badge: 1"></li>
+                                </ul>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <iconify-icon icon="bi:inbox-fill"></iconify-icon>
+                        </a>
+                    </li>
+                    <li class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <iconify-icon icon="pepicons:trophy-print"></iconify-icon>
+                        </a>
+                    </li>
+                    <li id="help-icon" class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <iconify-icon icon="bi:question-circle-fill"></iconify-icon>
+                        </a>
+                    </li>
+                    <li class="presentation">
+                        <div class="help-questions display-none">
+                            <div class="help-questions__content">
+                                <ul>
+                                    <li>
+                                        <a href="Index.html">
+                                            Tour<span>
+                                                Start here for a quick overview of the site
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            Help Center<span>
+                                                Detailed answers to any questions you might have
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            Meta<span>
+                                                Discuss the workings and policies of this site
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="About.html">
+                                            About Us<span>
+                                                Learn more about Stack Overflow the company
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Business<span> Learn more about our products </span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="burger-icon" class="nav-all-ul__li">
+                        <a href="" class="nav-all-ul__li--a">
+                            <iconify-icon icon="cib:stackexchange"></iconify-icon>
+                        </a>
+                    </li>
+                    <li class="presentation">
+                        <div class="log-out display-none">
+                            <div class="log-out__header">
+                                <h3><a href="">current community</a></h3>
+                            </div>
+                            <div class="log-out__modal-content">
+                                <ul class="log-out__modal-content__ul">
+                                    <li class="log-out__modal-content__ul__main">
+                                        <div class="log-out__modal-content__ul__main--logo">
+                                            <a href="">
+                                                <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                                <span> Stack Overflow </span>
+                                            </a>
+                                        </div>
+                                        <div class="log-out__modal-content__ul__main--links">
+                                            <a href="">help</a>
+                                            <a href="">chat</a>
+                                            <a asp-controller="account" asp-action="logout">log out</a>
+                                        </div>
+                                    </li>
+                                    <li class="log-out__modal-content__ul__related-sites">
+                                        <a href="">
+                                            <iconify-icon icon="academicons:stackoverflow"></iconify-icon>
+                                            <span> Meta Stack Overflow </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="log-out__header">
+                                <h3><a href="">your communities</a></h3>
+                                <a href="">edit</a>
+                            </div>
+                            <div class="log-out__modal-content">
+                                <ul class="last-ul">
+                                    <li>
+                                        <a href="">
+                                            <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                            <span>Stack Overflow</span>
+                                            <span>1</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- </div> -->
+            <!-- </div> -->
+        </nav>
+    </header>
+    <!-- nav end -->
+    <main>
+        <div class="ask-question">
+            <div class="ask-question__container">
+                <div class="ask-question__container__top">
+                    <div class="ask-question__container__top--title">
+                        <label for="opt-switch"> Ask a question in </label>
+                        <div class="ask-question__container__top--title--into">
+                            <div class="ask-question__container__top--title--into__select">
+                                <select name="" id="opt-switch">
+                                    <option value="" selected>Public Q&A</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ask-question__container__steps-md d-md-block">
+                    <div class="ask-question__container__steps-md__body">
+                        <div class="ask-question__container__steps-md__body__in">
+                            <div class="ask-question__container__steps-md__body__in__top">
+                                <button class="ask-question__container__steps-md__body__in__top__button">
+                                    <div class="ask-question__container__steps-md__body__in__top__button__flex-item">
+                                        Step 1: Draft your question
+                                    </div>
+                                    <div class="ask-question__container__steps-md__body__in__top__button__flex-item">
+                                        <div class="ask-question__container__steps-md__body__in__top__button__flex-item--arrow-up">
+                                            <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                        </div>
+                                        <div class="ask-question__container__steps-md__body__in__top__button__flex-item--arrow-down">
+                                            <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <div class="ask-question__container__steps-md__body__in__toggle">
+                                <div class="ask-question__container__steps-md__body__in__toggle__content">
+                                    <div class="ask-question__container__steps-md__body__in__toggle__content--into">
+                                        <div class="ask-question__container__steps-md__body__in__toggle__content--into__title">
+                                            <p>
+                                                The community is here to help you with specific
+                                                coding, algorithm, or language problems.
+                                            </p>
+                                            <p>Avoid asking opinion-based questions.</p>
+                                        </div>
+                                        <ul class="ask-question__container__steps-md__body__in__toggle__content--into__ul">
+                                            <li class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li">
+                                                <button class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button">
+                                                    <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button--name">
+                                                        <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button--name--icon">
+                                                            <iconify-icon icon="fa6-solid:1"></iconify-icon>
+                                                        </div>
+                                                        <span>Summarize the problem</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="arrow-up">
+                                                            <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                                        </div>
+                                                        <div class="arrow-down">
+                                                            <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                                <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__desc">
+                                                    <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__desc__into">
+                                                        <ul>
+                                                            <li>
+                                                                <p>Include details about your goal</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>Describe expected and actual results</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>Include any error messages</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li">
+                                                <button class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button">
+                                                    <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button--name">
+                                                        <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button--name--icon">
+                                                            <iconify-icon icon="fa6-solid:2"></iconify-icon>
+                                                        </div>
+                                                        <span>Describe what you've tried</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="arrow-up">
+                                                            <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                                        </div>
+                                                        <div class="arrow-down">
+                                                            <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                                <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__desc">
+                                                    <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__desc__into">
+                                                        Show what you've tried and tell us what you found
+                                                        (on this site or elsewhere) and why it didn't meet
+                                                        your needs. You can get better answers when you
+                                                        provide research.
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li">
+                                                <button class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button">
+                                                    <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button--name">
+                                                        <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__button--name--icon">
+                                                            <iconify-icon icon="fa6-solid:3"></iconify-icon>
+                                                        </div>
+                                                        <span>Show some code</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="arrow-up">
+                                                            <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                                        </div>
+                                                        <div class="arrow-down">
+                                                            <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                                <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__desc">
+                                                    <div class="ask-question__container__steps-md__body__in__toggle__content--into__ul__li__desc__into">
+                                                        When appropriate, share the minimum amount of code
+                                                        others need to reproduce your problem (also called
+                                                        a
+                                                        <a href="#" target="_blank">minimum, reproducible example</a>)
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ask-question__container__main flex-lg-col ai-stretch-816">
+                    <div class="ask-question__container__main__left">
+                        <div class="ask-question__container__main__left__confirm">
+                            <div class="ask-question__container__main__left__confirm__input">
+                                <input type="checkbox" name="" id="ask-public" />
+                            </div>
+                            <label for="ask-public">
+                                Confirm this is a <span>public question</span> in order to
+                                post it.
+                                <p>
+                                    Please do not post any private Team information. Even in
+                                    draft mode, content and images may be made publicly
+                                    available if you proceed.
+                                </p>
+                            </label>
+                        </div>
+                        <form class="ask-question__container__main__left__form" method="post">
+                            <div class="ask-question__container__main__left__form__question">
+                                <div class="ask-question__container__main__left__form__question__into">
+                                    <div class="post-title">
+                                        <div class="post-title__flex">
+                                            <label for="title">
+                                                Title
+                                                <div class="flex-item">
+                                                    <p>
+                                                        Be specific and imagine you're asking a question
+                                                        to another person
+                                                    </p>
+                                                    <div></div>
+                                                </div>
+                                            </label>
+                                            <div class="post-title__flex__desc">
+                                                <input asp-for="Title"
+                                                       placeholder="e.g. Is there an R function for finding the index of an element in a vector?" />
+                                                <span asp-validation-for="Title"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-editor">
+                                        <div class="post-editor__into">
+                                            <label for="wmd-input">
+                                                Body
+                                                <p>
+                                                    Include all the information someone would need to
+                                                    answer your question
+                                                </p>
+                                            </label>
+                                            <div class="post-editor__into__main">
+                                                <div class="post-editor__into__main__button-bar">
+                                                    <ul>
+                                                        <li title="Strong <strong> Ctrl+B">
+                                                            <span style="background-position: 0px 0px"></span>
+                                                        </li>
+                                                        <li title="Emphasis <em> Ctrl+I">
+                                                            <span style="background-position: -20px 0px"></span>
+                                                        </li>
+                                                        <li class="space"></li>
+                                                        <li title="Hyperlink <a> Ctrl+L">
+                                                            <span style="background-position: -40px 0px"></span>
+                                                        </li>
+                                                        <li title="Blockquote <blockquote> Ctrl+Q">
+                                                            <span style="background-position: -60px 0px"></span>
+                                                        </li>
+                                                        <li title="Code Sample <pre><code> Ctrl+K">
+                                                            <span style="background-position: -80px 0px"></span>
+                                                        </li>
+                                                        <li title="Image <img> Ctrl+G">
+                                                            <span style="background-position: -100px 0px"></span>
+                                                        </li>
+                                                        <li class="space"></li>
+                                                        <li title="Numbered List <ol> Ctrl+O">
+                                                            <span style="background-position: -120px 0px"></span>
+                                                        </li>
+                                                        <li title="Bulleted List <ul> Ctrl+U">
+                                                            <span style="background-position: -140px 0px"></span>
+                                                        </li>
+                                                        <li title="Heading <h1>/<h2> Ctrl+H">
+                                                            <span style="background-position: -160px 0px"></span>
+                                                        </li>
+                                                        <li title="Horizontal Rule <hr> Ctrl+R">
+                                                            <span style="background-position: -180px 0px"></span>
+                                                        </li>
+                                                        <li class="space"></li>
+                                                        <li title="Undo - Ctrl+Z">
+                                                            <span style="background-position: -200px -20px"></span>
+                                                        </li>
+                                                        <li title="Redo - Ctrl+Shift+Z">
+                                                            <span style="background-position: -220px -20px"></span>
+                                                        </li>
+                                                        <li class="space" style="max-width: none"></li>
+                                                        <li>
+                                                            <span style="background-position: -240px 0px"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="post-editor__into__main__validation">
+                                                    <div class="post-editor__into__main__validation__ps-relative">
+                                                        <textarea asp-for="Desc"
+                                                                  cols="92"
+                                                                  rows="15"></textarea>
+                                                        <iconify-icon icon="bi:exclamation-circle-fill"></iconify-icon>
+                                                    </div>
+                                                    <span asp-validation-for="Desc" class="alert alert-danger"></span>
+                                                </div>
+                                                <textarea asp-for="Code" style=" width: 100%; border: 1px solid #e3e3e3;resize:vertical;outline:none " cols="60" rows="10" placeholder="Your Code"></textarea>
+                                                <span asp-validation-for="Code"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tag-editor">
+                                        <div class="tag-editor__relative">
+                                            <div class="tag-editor__relative__into">
+                                                <div class="tag-editor__relative__into__flex">
+                                                    <label for="">
+                                                        Tags
+                                                        <div>
+                                                            Add up to 5 tags to describe what your question
+                                                            is about
+                                                        </div>
+                                                    </label>
+                                                    <button>
+                                                        <iconify-icon icon="ant-design:question-circle-filled"></iconify-icon>
+                                                    </button>
+                                                </div>
+                                                <div class="tag-editor__relative__into__flex">
+                                                    <div class="tag-editor__relative__into__flex__into">
+                                                        <input type="text"
+                                                               placeholder="e.g. (typescript database string)" />
+                                                        <div style="position:relative" class="tag-editor__relative__into__flex__into--content">
+                                                            <input asp-for="Tags" id="tgspn" readonly />
+                                                            <span id="tag-remove" style="position: absolute; top: 5%;right:5%;border-radius:4px; padding: 4px 8px; background-color: #FF1A1A ;color:white;cursor:pointer">x</span>
+
+                                                            <input id="search-tag" type="text"
+                                                                   placeholder="e.g. (typescript database string)" />
+                                                            <span asp-validation-for="Tags" style="color:red"></span>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="validation-message"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ask-question__container__main__left__form__buttons">
+                                <div class="ask-question__container__main__left__form__buttons__flex">
+                                    <button type="submit">Add Question</button>
+                                    <button>Discard draft</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="ask-question__container__main__right">
+                        <div class="ask-question__container__main__right__into d-md-none">
+                            <div class="ask-question__container__main__right__into--sidebarwidget">
+                                <div class="ask-question__container__main__right__into--sidebarwidget__header">
+                                    Step 1: Draft your question
+                                </div>
+                                <div class="ask-question__container__main__right__into--sidebarwidget__main">
+                                    <div>
+                                        <p>
+                                            The community is here to help you with specific coding,
+                                            algorithm, or language problems.
+                                        </p>
+                                        <p>Avoid asking opinion-based questions.</p>
+                                    </div>
+                                    <ul class="ask-question__container__main__right__into--sidebarwidget__main__ul">
+                                        <li class="ask-question__container__main__right__into--sidebarwidget__main__ul__li">
+                                            <button class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button">
+                                                <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button--name">
+                                                    <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button--name--icon">
+                                                        <iconify-icon icon="fa6-solid:1"></iconify-icon>
+                                                    </div>
+                                                    <span>Summarize the problem</span>
+                                                </div>
+                                                <div>
+                                                    <div class="arrow-up">
+                                                        <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                                    </div>
+                                                    <div class="arrow-down display-none">
+                                                        <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__desc display-none">
+                                                <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__desc__into">
+                                                    <ul>
+                                                        <li>
+                                                            <p>Include details about your goal</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Describe expected and actual results</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Include any error messages</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="ask-question__container__main__right__into--sidebarwidget__main__ul__li">
+                                            <button class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button">
+                                                <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button--name">
+                                                    <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button--name--icon">
+                                                        <iconify-icon icon="fa6-solid:2"></iconify-icon>
+                                                    </div>
+                                                    <span>Describe what you've tried</span>
+                                                </div>
+                                                <div>
+                                                    <div class="arrow-up">
+                                                        <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                                    </div>
+                                                    <div class="arrow-down display-none">
+                                                        <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__desc display-none">
+                                                <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__desc__into">
+                                                    Show what you've tried and tell us what you found
+                                                    (on this site or elsewhere) and why it didn't meet
+                                                    your needs. You can get better answers when you
+                                                    provide research.
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="ask-question__container__main__right__into--sidebarwidget__main__ul__li">
+                                            <button class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button">
+                                                <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button--name">
+                                                    <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__button--name--icon">
+                                                        <iconify-icon icon="fa6-solid:3"></iconify-icon>
+                                                    </div>
+                                                    <span>Show some code</span>
+                                                </div>
+                                                <div>
+                                                    <div class="arrow-up">
+                                                        <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                                    </div>
+                                                    <div class="arrow-down display-none">
+                                                        <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__desc display-none">
+                                                <div class="ask-question__container__main__right__into--sidebarwidget__main__ul__li__desc__into">
+                                                    When appropriate, share the minimum amount of code
+                                                    others need to reproduce your problem (also called a
+                                                    <a href="#" target="_blank">minimum, reproducible example</a>)
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="ask-question__container__main__right__into--sidebarwidget">
+                                <div class="ask-question__container__main__right__into--sidebarwidget__header">
+                                    <button type="button">
+                                        <div>Have a non-programming question?</div>
+                                        <div class="arrows">
+                                            <div class="up">
+                                                <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                            </div>
+                                            <div class="down">
+                                                <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="ask-question__container__main__right__into--sidebarwidget__other-sites">
+                                    <div class="ask-question__container__main__right__into--sidebarwidget__other-sites__content">
+                                        <div class="ask-question__container__main__right__into--sidebarwidget__other-sites__content__into">
+                                            <p>
+                                                <a href="">Super user</a>
+
+                                                Troubleshooting hardware and software issues
+                                            </p>
+                                            <p>
+                                                <a href="">Software engineer</a>
+
+                                                For software development methods and process questions
+                                            </p>
+                                            <p>
+                                                <a href="">Hardware recommendations</a>
+                                            </p>
+                                            <p>
+                                                <a href="">Software recommendations</a>
+                                            </p>
+                                            <p>
+                                                Ask questions about the site on
+                                                <a href="" target="_blank">meta</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ask-question__container__main__right__into--sidebarwidget">
+                                <div class="ask-question__container__main__right__into--sidebarwidget__header">
+                                    <button type="button">
+                                        <div>More helpful links</div>
+                                        <div class="arrows">
+                                            <div class="up">
+                                                <iconify-icon icon="dashicons:arrow-up-alt2"></iconify-icon>
+                                            </div>
+                                            <div class="down">
+                                                <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="ask-question__container__main__right__into--sidebarwidget__more-links">
+                                    <div class="ask-question__container__main__right__into--sidebarwidget__more-links__content">
+                                        <div class="ask-question__container__main__right__into--sidebarwidget__more-links__content__into">
+                                            <p>
+                                                Find more information about
+                                                <a href="">how to ask a good question here</a>
+                                            </p>
+                                            <p>Visit the <a href="">help center</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer__container p-md-24 p-sm-16">
+            <div class="footer__container__logo d-640-none">
+                <a href="Index.html">
+                    <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                         alt="Stack Overflow Logo" />
+                </a>
+            </div>
+            <div class="footer__container__nav flex-lg-col">
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Stack Overflow</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Products</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Teams</a></li>
+                        <li><a href="">Advertising</a></li>
+                        <li><a href="">Collectives</a></li>
+                        <li><a href="">Talent</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Company</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">About</a></li>
+                        <li><a href="">Press</a></li>
+                        <li><a href="">Work Here</a></li>
+                        <li><a href="">Legal</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Terms of Service</a></li>
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Cookie Settings</a></li>
+                        <li><a href="">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Technology</a></li>
+                        <li><a href="">Culture & recreation</a></li>
+                        <li><a href="">Life & arts</a></li>
+                        <li><a href="">Science</a></li>
+                        <li><a href="">Professional</a></li>
+                        <li><a href="">Business</a></li>
+                        <li class="mt-3"><a href="">API</a></li>
+                        <li><a href="">Data</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__container__copyright">
+                <ul>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="https://www.facebook.com">Facebook</a></li>
+                    <li><a href="https://www.twitter.com">Twitter</a></li>
+                    <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                    <li><a href="https://www.Instagram.com">Instagram</a></li>
+                </ul>
+                <p>
+                    Site design / logo © 2022 Stack Exchange Inc; user contributions
+                    licensed under
+                    <span>
+                        <a href="">CC BY-SA</a>
+                    </span>
+                    . <span>rev 2022.9.1.42957</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+</body>
+<!-- Jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+
+<script src="~/assets/js/script.js"></script>
+<script src="~/assets/js/sections/ask-question.js"></script>
+
+
+
+
+<script>let TagInput = document.getElementById("search-tag");
+    let spanforTag = document.getElementById("tgspn");
+
+    let removeTag = document.getElementById("tag-remove");
+
+    removeTag.addEventListener("click", () => {
+      console.log("deleted")
+        spanforTag.value = "";
+    })
+
+        TagInput.addEventListener("input", (e) => {
+
+            console.log("into");
+            $.ajax({
+                url: "/user/Get",
+                method: "Post",
+                dataType:'json',
+                data: {
+                    searchString:e.target.value
+                },
+                success: function (data) {
+
+                    if (data != "" || data == e.target.value) {
+                        if (e.target.value != "") {
+
+                            spanforTag.value = spanforTag.value+" "+data;
+
+                        }
+                    }
+                },
+
+                error: function (err) {
+                    console.log(err)
+                }
+
+            })
+
+        })</script>
+
+
+
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+
+
+

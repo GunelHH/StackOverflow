@@ -1,0 +1,573 @@
+.container__main-content__all__settings-main__edit-content {
+  width: calc(100% - 220px - 24px);
+  float: left;
+  flex-grow: 1;
+}
+.container__main-content__all__settings-main__edit-content__edit__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d6d9dc;
+  margin-bottom: 24px;
+}
+.container__main-content__all__settings-main__edit-content__edit__title__into
+  > label {
+  display: block;
+  font-size: 27px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile--title {
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main {
+  padding: 24px;
+  margin-bottom: 48px;
+  background-color: white;
+  border: 1px solid #e3e6e8;
+  border-radius: 5px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex {
+  display: flex;
+  flex-direction: column;
+  margin: -6px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item {
+  margin: 6px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in {
+  display: flex;
+  flex-direction: column;
+  margin: -2px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item {
+  margin: 2px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  > label {
+  color: #0c0d0e;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  cursor: pointer;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item__wrapper {
+  position: relative;
+  width: 164px;
+  height: 164px;
+  overflow: hidden;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item__wrapper__image {
+  width: 164px;
+  height: 164px;
+  border-radius: 4px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item__wrapper__image
+  > img {
+  width: 164px;
+  height: 164px;
+  border-radius: 3px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item__wrapper
+  > input {
+  margin: 5px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item__wrapper
+  > a {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #525960;
+  border: 0;
+  border-radius: 0 0 3px 3px;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  width: auto;
+  text-decoration: none;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item__wrapper
+  > a:hover {
+  background-color: #3b4045;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into {
+  position: absolute;
+  box-shadow: 0 1px 2px #0000000d, 0 1px 4px #0000000d, 0 2px 8px #0000000d;
+  width: 260px;
+  text-align: left;
+  border: solid 1px #c8ccd0;
+  z-index: 1;
+  padding: 16px;
+  background: white;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into
+  > h2 {
+  font-size: 19px;
+  font-weight: 400;
+  margin-bottom: 23px;
+  line-height: 1.3;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into
+  > hr {
+  border: 0;
+  color: #9fa6ad;
+  background-color: #9fa6ad;
+  height: 1px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into
+  > a {
+  display: block;
+  height: 42px;
+  padding: 4px 0;
+  margin: 8px 0;
+  position: relative;
+  text-decoration: none;
+  color: #0074cc;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into
+  > a
+  > img {
+  border: 1px solid #c8ccd0;
+  height: 42px;
+  width: 42px;
+  left: 4px;
+  position: absolute;
+  top: 4px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into
+  > a
+  > span:first-of-type {
+  line-height: 42px;
+  font-size: 17px;
+  padding-left: 56px;
+  font-weight: bold;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into
+  > a
+  > span:last-of-type {
+  width: 20px;
+  background-position: -20px -322px;
+  height: 10px;
+  position: relative;
+  top: 1px;
+  float: right;
+  margin-top: 10px;
+  background-image: url(https://cdn.sstatic.net/Img/unified/sprites.svg?v=fcc0ea44ba27);
+  background-size: initial;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into__buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  gap: 8px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into__buttons
+  > button {
+  color: #ffffff;
+  background-color: #0a95ff;
+  box-shadow: inset 0 2px 0 0 #ffffff66;
+  position: relative;
+  display: inline-block;
+  padding: 0.8em;
+  padding-bottom: 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.2;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into__buttons
+  > button
+  > input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into__buttons
+  > button:hover {
+  background-color: #0074cc;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into__buttons
+  > a {
+  position: relative;
+  display: inline-block;
+  padding: 0.8em;
+  color: #0074cc;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__item
+  .picture-popup__into__buttons
+  > a:hover {
+  color: #0a95ff;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__flex {
+  display: flex;
+  margin: 2px 0;
+  position: relative;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__flex
+  > input {
+  display: block;
+  width: 100%;
+  max-width: 421px;
+  -webkit-appearance: none;
+  padding: 0.6em 0.7em;
+  border: 1px solid #babfc4;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #0c0d0e;
+  font-size: 13px;
+  outline: none;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__flex
+  > input:focus {
+  border: 1px solid #6bbbf7;
+  box-shadow: #6bbbf7 0 0 10px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__in__flex
+  > input::placeholder {
+  color: #babfc4;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item
+  > label {
+  color: #0c0d0e;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0var 2px;
+  margin-bottom: -6px;
+  cursor: pointer;
+  display: block;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container {
+  width: 100%;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container--top {
+  clear: both;
+  background-color: transparent;
+  margin: 10px 0 0 0;
+  padding: 0;
+  width: 100%;
+  border: 1px solid #babfc4;
+  border-bottom: 0;
+  min-height: 44px;
+  overflow: hidden;
+  z-index: 2;
+  position: relative;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container--top
+  > ul {
+  padding: 0var 4px 0 8px;
+  margin: 0;
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  height: 44px;
+  border-bottom: 1px solid #babfc4;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container--top
+  > ul
+  > li {
+  max-width: 28px;
+  height: 44px;
+  flex: 10 0 23px;
+  padding-top: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container--top
+  > ul
+  > li
+  > span {
+  background-image: url(https://cdn.sstatic.net/Img/unified/wmd-buttons.svg?v=c26278fc22d9);
+  background-size: initial;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container--top
+  > ul
+  > li.space {
+  height: 44px;
+  flex: 1 0 4px;
+  max-width: 27px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
+  left: 4px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container
+  > textarea {
+  padding: 10px;
+  margin: -1px 0 0;
+  height: 200px;
+  line-height: 1.3;
+  width: 100%;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 15px;
+  outline: none;
+  -webkit-appearance: none;
+  background: white;
+  border: 1px solid #babfc4;
+  color: #0c0d0e;
+  resize: vertical;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container
+  > textarea:focus {
+  border-color: #0074cc;
+  box-shadow: 0 0 0 4px #0074cc26;
+  color: #0c0d0e;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex__item__container--bottom {
+  margin-top: -4px;
+  margin-bottom: 3px;
+  background-position: calc(50% + 34px) -364px;
+  border: 1px solid #babfc4;
+  border-width: 0 1px 1px;
+  cursor: s-resize;
+  height: 11px;
+  overflow: hidden;
+  background-color: #f1f2f3;
+  background-image: url(https://cdn.sstatic.net/Img/unified/sprites.svg?v=fcc0ea44ba27);
+  background-size: initial;
+  background-repeat: no-repeat;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex--title {
+  margin: 2px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex--title
+  > label {
+  color: #0c0d0e;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  cursor: pointer;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex--text {
+  margin: 2px 0;
+  position: relative;
+  display: flex;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex--text
+  > input {
+  display: block;
+  width: 100%;
+  max-width: 421px;
+  padding: 0.6em 0.7em;
+  border: 1px solid #babfc4;
+  border-radius: 3px;
+  background-color: white;
+  color: #0c0d0e;
+  font-size: 13px;
+  -webkit-appearance: none;
+  outline: none;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__col-flex--text
+  > input:focus {
+  border: 1px solid #6bbbf7;
+  box-shadow: #6bbbf7 0 0 10px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin: -8px;
+  flex: 1 1 0%;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links__item {
+  margin: 8px;
+  flex: 1 1 0%;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links__item__flex {
+  display: flex;
+  flex-direction: column;
+  margin: -2px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links__item__flex--title {
+  margin: 2px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links__item__flex--title
+  > label {
+  display: block;
+  color: #0c0d0e;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links__item__flex--bottom {
+  margin: 2px 0;
+  display: flex;
+  position: relative;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links__item__flex--bottom
+  > iconify-icon {
+  position: absolute;
+  top: 50%;
+  right: auto;
+  left: 0.7em;
+  color: #838c95;
+  margin-top: -9px;
+  pointer-events: none;
+  vertical-align: bottom;
+  font-size: 18px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links__item__flex--bottom
+  > input {
+  display: block;
+  width: 100%;
+  padding: 0.6em 0.7em;
+  border: 1px solid #babfc4;
+  border-radius: 3px;
+  background-color: white;
+  color: #0c0d0e;
+  font-size: 13px;
+  font-family: inherit;
+  max-width: 251px;
+  padding-left: 32px;
+  outline: none;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__main__links__item__flex--bottom
+  > input:focus {
+  border: 1px solid #6bbbf7;
+  box-shadow: #6bbbf7 0 0 10px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile--title-private {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile--title-private
+  > div:first-child {
+  font-size: 21px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile--title-private
+  > div:last-child {
+  color: #6a737c;
+  margin-left: 12px;
+  font-size: 14px;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile
+  .error-link {
+  color: #0074cc;
+  text-decoration: none;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile
+  .error-message {
+  font-size: 13px;
+  color: #ab262a;
+  font-weight: bold;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__button {
+  display: block;
+  padding: 10px 0 15px 0;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__button__into {
+  display: flex;
+  margin: -4px;
+  flex-wrap: wrap;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__button__into
+  > button {
+  position: relative;
+  display: inline-block;
+  padding: 0.8em;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.2;
+  border-radius: 3px;
+  margin: 4px;
+  color: #ffffff;
+  background-color: #0a95ff;
+  box-shadow: inset 0 2px 0 0 #ffffff66;
+  border: none;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__button__into
+  > button:hover {
+  background-color: #0074cc;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__button__into
+  > a {
+  position: relative;
+  display: inline-block;
+  padding: 0.8em;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.2;
+  border-radius: 3px;
+  margin: 4px;
+  margin-left: 6px;
+  text-decoration: none;
+  color: #0074cc;
+  text-align: center;
+}
+.container__main-content__all__settings-main__edit-content__edit__profile__button__into
+  > a:hover {
+  color: #0a95ff;
+}
+
+.container__main-content__all__settings-main__delete-content {
+  width: calc(100% - 220px - 24px);
+  flex-grow: 1;
+  float: left;
+}
+.container__main-content__all__settings-main__delete-content__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d6d9dc;
+  margin-bottom: 24px;
+}
+.container__main-content__all__settings-main__delete-content__top h1 {
+  font-size: 27px;
+  color: #0c0d0e;
+  line-height: 1.2;
+  font-weight: normal;
+}
+.container__main-content__all__settings-main__delete-content__bottom {
+  font-size: 15px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.container__main-content__all__settings-main__delete-content__bottom > p > a {
+  color: #0074cc;
+}

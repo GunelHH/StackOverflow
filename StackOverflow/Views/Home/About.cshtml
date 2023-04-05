@@ -1,0 +1,862 @@
+﻿ @{
+      Layout = null;
+
+   }
+@model AboutVM
+
+
+@if (!User.Identity.IsAuthenticated)
+{
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Font -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+              rel="stylesheet" />
+        <link rel="shortcut icon"
+              href="~/assets/Images/Logo/apple-touch-icon@2.png"
+              type="image/x-icon" />
+        <title>
+            Empowering the world to develop tecnology through collective...
+        </title>
+        <link rel="stylesheet" href="~/assets/css/style.css" />
+    </head>
+    <body class="about">
+        <div>
+            <div>
+                <main class="about__main">
+                    <header class="nav">
+                        <div class="nav__wrapper fd-md-col p-sm-5">
+                            <div class="nav__wrapper__left">
+                                <button id="btn-main" class="d-none-980">
+                                    <span id="btn">Products</span>
+                                </button>
+                                <button id="btn-main2"
+                                        class="display-none d-block-980 o-md-1 mr-md-0">
+                                    <span>Menu</span>
+                                </button>
+                                <a href="About.html">
+                                    <img src="~/assets/Images/Logo/1280px-Stack_Overflow_logo.svg.png"
+                                         alt="Stack Overflow Logo" />
+                                </a>
+                            </div>
+                            <div class="nav__wrapper__right ai-md-strech fd-md-col pt-md-12 d-none-980">
+                                <button id="our-products"
+                                        class="nav__wrapper__right__primary d-none-980">
+                                    <span>
+                                        Our products
+                                        <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                    </span>
+                                </button>
+                                <button id="our-company"
+                                        class="nav__wrapper__right__primary p-md-2">
+                                    <span>
+                                        Our Company
+                                        <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                    </span>
+                                </button>
+                                <!-- on hover -->
+                                <div id="company-toggle"
+                                     class="nav__wrapper__right__our-company">
+                                    <div class="nav__wrapper__right__our-company__all">
+                                        <a href=""
+                                           class="nav__wrapper__right__our-company__all__item">Leadership</a>
+                                        <a href=""
+                                           class="nav__wrapper__right__our-company__all__item">Press</a>
+                                        <a href=""
+                                           class="nav__wrapper__right__our-company__all__item">Research</a>
+                                    </div>
+                                </div>
+                                <a href="#" class="nav__wrapper__right__primary p-md-2">
+                                    <span>Careers</span>
+                                </a>
+                                <a href="#" class="nav__wrapper__right__primary p-md-2">
+                                    <span>Open positions</span>
+                                </a>
+                                <button id="follow-us"
+                                        class="nav__wrapper__right__primary p-md-2 ml-md-0">
+                                    <span>
+                                        Follow us
+                                        <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                                    </span>
+                                </button>
+                                <!-- on hover -->
+                                <div id="follow-us-toggle"
+                                     class="nav__wrapper__right__follow-us">
+                                    <div class="nav__wrapper__right__follow-us__all">
+                                        <a href=""
+                                           class="nav__wrapper__right__follow-us__all__item">
+                                            Blog
+                                            <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                                        </a>
+                                        <a href=""
+                                           class="nav__wrapper__right__follow-us__all__item">
+                                            Podcast
+                                            <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                                        </a>
+                                        <a href=""
+                                           class="nav__wrapper__right__follow-us__all__item">
+                                            Newsletter
+                                            <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                                <a id="contact"
+                                   class="nav__wrapper__right__primary p-md-2"
+                                   asp-controller="home" asp-action="contact">
+                                    <span>Contact</span>
+                                </a>
+                            </div>
+                            <!-- on hover -->
+                            <div id="right-toggle"
+                                 class="nav__wrapper__right__toggle mt-md-24">
+                                <div class="nav__wrapper__right__toggle__allitems fd-md-col">
+                                    <div class="nav__wrapper__right__toggle__allitems__item">
+                                        <div class="title">Enable your organization</div>
+                                        <a href="">
+                                            <iconify-icon icon="fa6-solid:people-group"></iconify-icon>
+                                            <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                                    Stack Overflow for Teams
+                                                </div>
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                                    Where developers and technologists share private
+                                                    knowledge with coworkers.
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="nav__wrapper__right__toggle__allitems__item">
+                                        <div class="title">Connect with your community</div>
+                                        <a href="">
+                                            <iconify-icon id="talent"
+                                                          icon="icon-park-twotone:message-search"></iconify-icon>
+                                            <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                                    Stack Overflow Talent
+                                                </div>
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                                    Where companies build their employer brand to attract
+                                                    top tech talent.
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="">
+                                            <iconify-icon id="advertising"
+                                                          icon="arcticons:listmyapps"></iconify-icon>
+                                            <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                                    Stack Overflow Advertising
+                                                </div>
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                                    Where companies reach the world's largest audience of
+                                                    developers and technologists.
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="">
+                                            <iconify-icon id="collectives"
+                                                          icon="eos-icons:application-outlined"></iconify-icon>
+                                            <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                                    Collectives <sup>TM</sup> on Stack Overflow
+                                                </div>
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                                    Where developer communities connect with the specific
+                                                    tachnologies they use the most.
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="nav__wrapper__right__toggle__allitems__item">
+                                        <div class="title">Join the community</div>
+                                        <a href="Index.html">
+                                            <div class="icon">
+                                                <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                            </div>
+                                            <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                                    Stack Overflow
+                                                    <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                                                </div>
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                                    Where developers and technologists go to gain and
+                                                    share knowledge
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="">
+                                            <div class="icon">
+                                                <iconify-icon id="exchange"
+                                                              icon="simple-icons:stackexchange"></iconify-icon>
+                                            </div>
+                                            <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                                    Stack Exchange
+                                                    <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                                                </div>
+                                                <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                                    Where the world explores technical topics and other
+                                                    disciplines across 170+ Q&A communities
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <main class="main-content">
+                        <!-- Hero section -->
+                        <section class="company-hero">
+                            <div class="company-hero__main pt-md-0 fd-md-col p-sm-5" style="background-image: url('/assets/images/about/bg-header-mobile.png'); background-position: 0px 30%; background-size: 45%;background-repeat:no-repeat;">
+                                <div class="company-hero__main__image d-block-md">
+                                    <img src="~/assets/Images/about/bg-header-mobile.png"
+                                         alt="Team" />
+                                </div>
+                                <div class="company-hero__main__about">
+                                    <p>Who we are</p>
+                                    <h1 class="fs-sm-28">
+                                        Empowering the world to develop technology through
+                                        collective knowledge.
+                                    </h1>
+                                    <p>
+                                        Our public platform
+                                        <strong>serves 100 million people every month</strong>,
+                                        making it one of the most popular websites in the world.
+                                    </p>
+                                    <p>
+                                        Our asynchronous knowledge management and collaboration
+                                        offering, <strong>Stack Overflow for Teams</strong>, is
+                                        transforming how people work.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="company-hero__statistics p-sm-5">
+                                <div class="company-hero__statistics__all">
+                                    <div class="company-hero__statistics__all__flex fd-md-col">
+                                        <div class="company-hero__statistics__all__flex__item p-tb-md b-bottom-md b-right-md">
+                                            <div class="company-hero__statistics__all__flex__item__title">
+                                                100+ million
+                                            </div>
+                                            <div class="company-hero__statistics__all__flex__item__desc">
+                                                Monthly visitors to our network
+                                            </div>
+                                        </div>
+                                        <div class="company-hero__statistics__all__flex__item p-tb-md b-bottom-md b-right-md">
+                                            <div class="company-hero__statistics__all__flex__item__title">
+                                                21+ million
+                                            </div>
+                                            <div class="company-hero__statistics__all__flex__item__desc">
+                                                Questions asked to-date
+                                            </div>
+                                        </div>
+                                        <div class="company-hero__statistics__all__flex__item p-tb-md b-bottom-md b-right-md">
+                                            <div class="company-hero__statistics__all__flex__item__title">
+                                                13.6 seconds
+                                            </div>
+                                            <div class="company-hero__statistics__all__flex__item__desc">
+                                                Average time between new questions
+                                            </div>
+                                        </div>
+                                        <div class="company-hero__statistics__all__flex__item p-tb-md b-bottom-md b-right-md">
+                                            <div class="company-hero__statistics__all__flex__item__title">
+                                                50.6+ billion
+                                            </div>
+                                            <div class="company-hero__statistics__all__flex__item__desc">
+                                                Times a developer got help
+                                            </div>
+                                        </div>
+                                        <div class="company-hero__statistics__all__flex__item p-tb-md b-right-md">
+                                            <div class="company-hero__statistics__all__flex__item__title">
+                                                10,000+
+                                            </div>
+                                            <div class="company-hero__statistics__all__flex__item__desc">
+                                                Customer companies for all products
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Hero section end -->
+                        <!-- Info section -->
+                        <section class="info fd-md-col">
+                            <div class="info__desc">
+                                <p>
+                                    Stack Overflow helps people find the answers they need, when
+                                    they need them. We're best known for our public Q&A platform
+                                    that over 100 million people visit every month to ask
+                                    questions, learn, and share technical knowledge.
+                                </p>
+                            </div>
+                            <div class="info__desc">
+                                <p>
+                                    Our products and tools empower people to find what they need
+                                    to develop technology at work or at home. These products
+                                    include,<a href="">Stack Overflow for Teams</a>,<a href="">
+                                        Stack Overflow Advertising
+                                    </a>, <a href="">Collectives™ on Stack Overflow</a>,and
+                                    <a href=""> Stack Overflow Talent</a>.
+                                </p>
+                            </div>
+                        </section>
+                        <!-- Info section end-->
+                        <!-- Achievements section -->
+                        <section class="achievements align-sm-center flex-md-col mb-sm-0">
+                           
+                                <a class="achievements__achievement" href="" target="_blank">
+                                    <img width="60"
+                                         src="~/assets/Images/about/webby-award.svg"
+                                         alt="Webby award" />
+                                    <div class="achievements__achievement__title">Webby Award</div>
+                                    <div class="achievements__achievement__explanation">
+                                        "The Best of the internet"
+                                    </div>
+                                    <div class="achievements__achievement__date">
+                                        <span></span>
+                                        <span>2021</span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            <a class="achievements__achievement" href="" target="_blank">
+                                    <img width="60"
+                                         src="~/assets/Images/about/appealie-saas-awards.png"
+                                         alt="Stratus Award" />
+                                    <div class="achievements__achievement__title">Stratus Award</div>
+                                    <div class="achievements__achievement__explanation">
+                                        "Cloud Collaboration"
+                                    </div>
+                                    <div class="achievements__achievement__date">
+                                        <span></span>
+                                        <span>2020</span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            <a class="achievements__achievement" href="" target="_blank">
+                                    <img width="60"
+                                         src="~/assets/Images/about/g2.svg"
+                                         alt="g2 award" />
+                                    <div class="achievements__achievement__title">G2 Awards</div>
+                                    <div class="achievements__achievement__explanation">
+                                        "We’re a seasoned winner, including Best Software for 2022"
+                                    </div>
+                                    <div class="achievements__achievement__date">
+                                        <span></span>
+                                        <span>2019-2022</span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            <a class="achievements__achievement" href="" target="_blank">
+                                    <img width="60"
+                                         src="~/assets/Images/about/remotetechbreakthrough.svg"
+                                         alt="remotetechbreakthrough" />
+                                    <div class="achievements__achievement__title">RemoteTech Awards</div>
+                                    <div class="achievements__achievement__explanation">
+                                        "Developer Collaboration Platform"
+                                    </div>
+                                    <div class="achievements__achievement__date">
+                                        <span></span>
+                                        <span>2021-2022</span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            <a class="achievements__achievement" href="" target="_blank">
+                                    <img width="60"
+                                         src="~/assets/Images/about/the-saas-awards.svg"
+                                         alt=" SaaS " />
+                                    <div class="achievements__achievement__title">The Saas Awards</div>
+                                    <div class="achievements__achievement__explanation">
+                                        "Best SaaS for Productivity"
+                                    </div>
+                                    <div class="achievements__achievement__date">
+                                        <span></span>
+                                        <span>2021</span>
+                                        <span></span>
+                                    </div>
+                                </a> <a class="achievements__achievement" href="" target="_blank">
+                                    <img width="60"
+                                         src="~/assets/Images/about/appealie-saas-awards.png"
+                                         alt=" SaaS " />
+                                    <div class="achievements__achievement__title">APPEALIE SaaS Awards</div>
+                                    <div class="achievements__achievement__explanation">
+                                        "Collaboration + Productivity"
+                                    </div>
+                                    <div class="achievements__achievement__date">
+                                        <span></span>
+                                        <span>2021</span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            
+
+                        </section>
+                        <!-- Achievements section end-->
+                        <!-- About all -->
+                        <section class="about-platform p-sm-5">
+                            <div class="about-platform__all">
+                                <h2>
+                                    <span>Our products</span>
+                                    <span></span>
+                                </h2>
+                                <!-- platforms start -->
+                                <div class="about-platform__all__platforms fd-lg-col">
+                                    <div class="about-platform__all__platforms__item">
+                                        <a class="about-platform__all__platforms__item__a mt-md-0 mb-md-0"
+                                           href="">
+                                            <div class="about-platform__all__platforms__item__a__in m-o-auto">
+                                                <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                                <h3>Our Public Platform</h3>
+                                                <p class="fs-sm-17">
+                                                    Where developers and technologists go to gain and
+                                                    share knowledge.
+                                                </p>
+                                                <div class="about-platform__all__platforms__item__a__in--button">
+                                                    Participate
+                                                    <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="about-platform__all__platforms__item">
+                                        <a class="about-platform__all__platforms__item__a mt-md-0 mb-md-0"
+                                           href="">
+                                            <div class="about-platform__all__platforms__item__a__in">
+                                                <h3>
+                                                    <img src="~/assets/Images/Logo/teams-logo-compact.png"
+                                                         alt="Stack Overflow for Teams" />
+                                                </h3>
+                                                <p class="fs-sm-17">
+                                                    Where developers and technologists share private
+                                                    knowledge with coworkers.
+                                                </p>
+                                                <div class="about-platform__all__platforms__item__a__in--button">
+                                                    Learn more
+                                                </div>
+                                            </div>
+                                            <img class="d-640-none"
+                                                 src="~/assets/Images/about/abstract-teams.png"
+                                                 alt="For Teams" />
+                                        </a>
+                                    </div>
+                                    <div class="about-platform__all__platforms__item">
+                                        <a class="about-platform__all__platforms__item__a mt-md-0 mb-md-0"
+                                           href="">
+                                            <div class="about-platform__all__platforms__item__a__in">
+                                                <h3>
+                                                    <img src="~/assets/Images/Logo/Talent.png"
+                                                         alt="Talent" />
+                                                </h3>
+                                                <p class="fs-sm-17">
+                                                    Where companies build their employer brand to attract
+                                                    top <br />
+                                                    tech talent.
+                                                </p>
+                                                <div class="about-platform__all__platforms__item__a__in--button">
+                                                    Learn more
+                                                </div>
+                                            </div>
+                                            <img class="d-640-none"
+                                                 src="~/assets/Images/about/abstract-talent.png"
+                                                 alt="Talent" />
+                                        </a>
+                                    </div>
+                                    <div class="about-platform__all__platforms__item">
+                                        <a class="about-platform__all__platforms__item__a mt-md-0 mb-md-0"
+                                           href="">
+                                            <div class="about-platform__all__platforms__item__a__in">
+                                                <h3>
+                                                    <img src="~/assets/Images/Logo/Advertising.png"
+                                                         alt="Advertising" />
+                                                </h3>
+                                                <p class="fs-sm-17">
+                                                    Where companies reach the world's largest audience of
+                                                    developers and technologists.
+                                                </p>
+                                                <div class="about-platform__all__platforms__item__a__in--button">
+                                                    Learn more
+                                                </div>
+                                            </div>
+                                            <img class="d-640-none"
+                                                 src="~/assets/Images/about/abstract-advertising.png"
+                                                 alt="advertising" />
+                                        </a>
+                                    </div>
+                                    <div class="about-platform__all__platforms__item">
+                                        <a class="about-platform__all__platforms__item__a mt-md-0 mb-md-0"
+                                           href="">
+                                            <div class="about-platform__all__platforms__item__a__in">
+                                                <h3>
+                                                    <img src="~/assets/Images/Logo/Collectives.png"
+                                                         alt="Collectives" />
+                                                </h3>
+                                                <p class="fs-sm-17">
+                                                    Where developer communities connect with the specific
+                                                    technologies they use the most.
+                                                </p>
+                                                <div class="about-platform__all__platforms__item__a__in--button">
+                                                    Learn more
+                                                </div>
+                                            </div>
+                                            <img class="d-640-none"
+                                                 src="~/assets/Images/about/abstract-public-platform.png"
+                                                 alt="public platform" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--platforms end -->
+                                <!-- carousel -->
+                                <div class="about-platform__all__carousel">
+                                    <h4>Used by thousands of organizations around the globe</h4>
+                                    <div class="about-platform__all__carousel__marquee">
+                                        <div class="about-platform__all__carousel__marquee__content">
+                                            <div class="about-platform__all__carousel__marquee__content__flex">
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="65"
+                                                         height="35"
+                                                         src="~/assets/Images/Carousel/box-alt.svg"
+                                                         alt="Box" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="165"
+                                                         height="37"
+                                                         src="~/assets/Images/Carousel/expensify-alt.svg"
+                                                         alt="Expencify" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="140"
+                                                         height="35"
+                                                         src="~/assets/Images/Carousel/intercom-alt.svg"
+                                                         alt="Intercom" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="165"
+                                                         height="41"
+                                                         src="~/assets/Images/Carousel/microsoft-alt.svg"
+                                                         alt="Microsoft" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="175"
+                                                         height="32"
+                                                         src="~/assets/Images/Carousel/bloomberg-alt.svg"
+                                                         alt="Bloomberg" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="185"
+                                                         height="37"
+                                                         src="~/assets/Images/Carousel/instacart-alt.svg"
+                                                         alt="Instacart" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="120"
+                                                         height="27"
+                                                         src="~/assets/Images/Carousel/barkbox-alt.svg"
+                                                         alt="BarkBox" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="139"
+                                                         height="42"
+                                                         src="~/assets/Images/Carousel/logitech-alt.svg"
+                                                         alt="Logitech" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="181"
+                                                         height="32"
+                                                         src="~/assets/Images/Carousel/overstock-alt.svg"
+                                                         alt="Overstock" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="49"
+                                                         height="55"
+                                                         src="~/assets/Images/Carousel/chevron-alt.svg"
+                                                         alt="Chevron" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="136"
+                                                         height="25"
+                                                         src="~/assets/Images/Carousel/philips-alt.svg"
+                                                         alt="Philips" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="103"
+                                                         height="45"
+                                                         src="~/assets/Images/Carousel/verizon-media-alt.svg"
+                                                         alt="Verizon" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="139"
+                                                         height="43"
+                                                         src="~/assets/Images/Carousel/wisetech-global-alt.svg"
+                                                         alt="Wisetech" />
+                                                </div>
+                                                <!--  -->
+
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="65"
+                                                         height="35"
+                                                         src="~/assets/Images/Carousel/box-alt.svg"
+                                                         alt="Box" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="165"
+                                                         height="37"
+                                                         src="~/assets/Images/Carousel/expensify-alt.svg"
+                                                         alt="Expencify" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="140"
+                                                         height="35"
+                                                         src="~/assets/Images/Carousel/intercom-alt.svg"
+                                                         alt="Intercom" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="165"
+                                                         height="41"
+                                                         src="~/assets/Images/Carousel/microsoft-alt.svg"
+                                                         alt="Microsoft" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="175"
+                                                         height="32"
+                                                         src="~/assets/Images/Carousel/bloomberg-alt.svg"
+                                                         alt="Bloomberg" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="185"
+                                                         height="37"
+                                                         src="~/assets/Images/Carousel/instacart-alt.svg"
+                                                         alt="Instacart" />
+                                                </div>
+                                                <div class="about-platform__all__carousel__marquee__content__flex__item">
+                                                    <img width="120"
+                                                         height="27"
+                                                         src="~/assets/Images/Carousel/barkbox-alt.svg"
+                                                         alt="BarkBox" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- carousel end -->
+                                <h2>
+                                    <span> Our core values </span>
+                                    <span></span>
+                                </h2>
+                                <div class="about-platform__all__core-values flex-md-col">
+                                    <div class="about-platform__all__core-values__item">
+                                        <iconify-icon icon="pepicons:heart-print"></iconify-icon>
+
+                                        <h3>Adopt a customer-first mindset</h3>
+                                        <p>
+                                            Authentically serve our customers by empowering,
+                                            listening, and collaborating with our fellow Stackers.
+                                        </p>
+                                    </div>
+                                    <div class="about-platform__all__core-values__item">
+                                        <iconify-icon icon="emojione-monotone:waving-hand"></iconify-icon>
+                                        <h3>Be flexible and inclusive</h3>
+                                        <p>
+                                            We do our best work when a diverse group of people
+                                            collaborate in an environment of respect and trust. Create
+                                            space for different voices to be heard, and allow
+                                            flexibility in how people work.
+                                        </p>
+                                    </div>
+                                    <div class="about-platform__all__core-values__item">
+                                        <iconify-icon icon="clarity:compass-line"></iconify-icon>
+                                        <h3>Be transparent</h3>
+                                        <p>
+                                            Communicate openly and honestly, both inside and outside
+                                            the company. Encourage transparency from others by being
+                                            empathetic, reliable, and acting with integrity.
+                                        </p>
+                                    </div>
+                                    <div class="about-platform__all__core-values__item">
+                                        <iconify-icon icon="gis:network-o"></iconify-icon>
+                                        <h3>Empower people to deliver outstanding results</h3>
+                                        <p>
+                                            Give people space to get their job done, support them when
+                                            they need it, and practice blameless accountability.
+                                        </p>
+                                    </div>
+                                    <div class="about-platform__all__core-values__item">
+                                        <iconify-icon icon="fa6-solid:people-group"></iconify-icon>
+                                        <h3>Keep community at our center</h3>
+                                        <p>
+                                            Community is at the heart of everything we do. Nurture
+                                            healthy communities where everyone is encouraged to learn
+                                            and give back.
+                                        </p>
+                                    </div>
+                                    <div class="about-platform__all__core-values__item">
+                                        <iconify-icon icon="cil:graph"></iconify-icon>
+                                        <h3>Learn, share, grow</h3>
+                                        <p>
+                                            Adopt a Growth Mindset. Be curious and eager to learn. Aim
+                                            for ethical, sustainable, long-term growth, both
+                                            personally and in the company.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- About all end-->
+                        <!-- Location section -->
+                        <section class="location pt-sm-32 p-sm-5">
+                            <div class="location__all fd-lg-col">
+                                <div class="location__all__item mr-sm-0 t-sm-center">
+                                    <h2>Where we work</h2>
+                                    <p>
+                                        We're proud to be a remote first company working across many
+                                        timezones, with offices in New York, London, Austin and
+                                        Munich
+                                        <span><sup>*</sup></span>
+                                    </p>
+                                    <a href=""> Current job openings </a>
+                                    <a href="">Contact us</a>
+                                </div>
+                                <div class="location__all__item">
+                                    <div class="location__all__item__flex">
+                                        <div class="location__all__item__flex__image">
+                                            <img width="165"
+                                                 src="~/assets/Images/about/illo-new-york.png"
+                                                 alt="New York" />
+                                        </div>
+                                        <address class="location__all__item__flex__desc">
+                                            <div>HQ</div>
+                                            <h3>New York</h3>
+                                            <p>
+                                                Stack Exchange Inc.
+                                                <br />
+                                                110 William Street
+                                                <br />
+                                                28th Floor
+                                                <br />
+                                                New York, NY 10038
+                                            </p>
+                                        </address>
+                                    </div>
+                                    <p>
+                                        * All employees are currently
+                                        <a href=""> working fully remote </a>
+                                        .
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Location section end-->
+                        <!-- footer section-->
+                        <footer class="footer-section pb-md-64">
+                            <div class="footer-section__all p-sm-5">
+                                <div class="footer-section__all__flex t-center-980 fd-md-col">
+                                    <a href=""
+                                       class="footer-section__all__flex__item a-center-980 pb-md-16">
+                                        <iconify-icon icon="jam:quora-square"></iconify-icon>
+                                        <p>
+                                            Check out our
+                                            <strong> FAQ about how Stack Overflow </strong>
+                                            works.
+                                        </p>
+                                        <div class="footer-section__all__flex__item--button">
+                                            Get help
+                                        </div>
+                                    </a>
+                                    <a href=""
+                                       class="footer-section__all__flex__item a-center-980 pb-md-16">
+                                        <iconify-icon icon="gis:network-o"></iconify-icon>
+                                        <p>
+                                            To share
+                                            <strong> feedback about our platform </strong>
+                                            , please visit our meta community.
+                                        </p>
+                                        <div class="footer-section__all__flex__item--button">
+                                            Visit Meta
+                                        </div>
+                                    </a>
+                                    <a href=""
+                                       class="footer-section__all__flex__item a-center-980 pb-md-16">
+                                        <iconify-icon icon="fa6-solid:people-group"></iconify-icon>
+                                        <p>
+                                            Looking for help with
+                                            <strong> Stack Overflow for Teams? </strong>
+                                        </p>
+                                        <div class="footer-section__all__flex__item--button">
+                                            Teams help
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- footer section end-->
+                    </main>
+                    <footer class="footer-about">
+                        <div class="footer-about__all">
+                            <div class="footer-about__all__flex flex-md-col">
+                                <div class="footer-about__all__flex__item mb-md-32">
+                                    <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                </div>
+                                <div class="footer-about__all__flex__item mb-md-32">
+                                    <div class="footer-about__all__flex__item--links">
+                                        <h3>Stack Overflow</h3>
+                                        <a href="About.html">About</a>
+                                        <a href="About.html">Press</a>
+                                        <a href="About.html">Work Here</a>
+                                        <a href="About.html">Contact us</a>
+                                        <a href="About.html">Questions</a>
+                                    </div>
+                                    <div class="footer-about__all__flex__item--links">
+                                        <h3>Products</h3>
+                                        <a href="About.html">Teams</a>
+                                        <a href="About.html">Advertising</a>
+                                        <a href="About.html">Collectives</a>
+                                        <a href="About.html">Talent</a>
+                                    </div>
+                                </div>
+                                <div class="footer-about__all__flex__item mb-md-32">
+                                    <div class="footer-about__all__flex__item--links">
+                                        <h3>Policies</h3>
+                                        <a href="About.html">Legal</a>
+                                        <a href="About.html">Privacy Policy</a>
+                                        <a href="About.html"> Terms of Service </a>
+                                        <a href="About.html"> Cookie Settings </a>
+                                        <a href="About.html"> Cookie Policy </a>
+                                    </div>
+                                    <div class="footer-about__all__flex__item--links">
+                                        <h3>Channels</h3>
+                                        <a href="About.html">Blog</a>
+                                        <a href="About.html">Podcast</a>
+                                        <a href="About.html">Newsletter</a>
+                                        <a href="About.html">Twitter</a>
+                                        <a href="About.html">LinkedIn</a>
+                                        <a href="About.html">Instagram</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </main>
+            </div>
+        </div>
+    </body>
+
+    <script src="~/assets/js/sections/about.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+            integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+
+}

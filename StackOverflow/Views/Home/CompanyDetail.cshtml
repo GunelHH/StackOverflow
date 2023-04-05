@@ -1,0 +1,707 @@
+﻿@model Company 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+          rel="stylesheet" />
+    <link rel="shortcut icon"
+          href="~/assets/Images/Logo/apple-touch-icon@2.png"
+          type="image/x-icon" />
+
+    <title>Company Name - Stack Overflow</title>
+
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+</head>
+<body>
+    <main class="container">
+        <div class="container__left-sidebar d-640-none">
+            <div class="container__left-sidebar__sticky">
+                <div class="container__left-sidebar__sticky__nav">
+                    <ul>
+                        <li>
+                            <a href="Index.html">
+                                <div class="d-flex">
+                                    <div class="d-flex--item">Home</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="fw">Public</li>
+                                <li id="p-o" class="sticky-li">
+                                    <a asp-controller="home" asp-action="questions">
+                                        <iconify-icon icon="bx:world"></iconify-icon>
+                                        Questions
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a asp-controller="home" asp-action="tags">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Tags</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a asp-controller="home" asp-action="users">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Users</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sticky-li">
+                                    <a asp-controller="home" asp-action="companies">
+                                        <div class="d-flex">
+                                            <div class="d-flex--item">Companies</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li id="collectives" class="sticky-li fw">
+                                    <div class="sticky-li__collectives">Collectives</div>
+                                    <div class="sticky-li__icon">
+                                        <a href="">
+                                            <iconify-icon icon="bxs:info-circle"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li id="p-o" class="sticky-li">
+                                    <a href="">
+                                        <iconify-icon icon="arcticons:questionnaire-star"></iconify-icon>
+                                        <span>Explore Collectives</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <div class="Teams-title fw">Teams</div>
+                                    <div class="Teams-body">
+                                        <strong>Stack Overflow for Teams</strong>
+                                        - Start collaborating and sharing organizational
+                                        knowledge.
+                                        <img width="139"
+                                             height="114"
+                                             src="~/assets/Images/Teams/teams-illo-free-sidebar-promo.svg"
+                                             alt="Stack Overflow For Teams" />
+                                        <a href="">Create a free Team</a>
+                                        <a href="">Why Teams?</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container__company plr-md-16 w-sm-100">
+            <div class="container__company__all">
+                <div class="container__company__all__header">
+                    <div class="container__company__all__header__body">
+                        <div class="container__company__all__header__body__image">
+                            <img src="~/assets/Images/Companies/@Model.Image"
+                                 alt="Comnpany Image" />
+                        </div>
+                        <div class="container__company__all__header__body__content">
+                            <h1 class="main-head">@Model.Name</h1>
+                            <p class="fade-p">
+                               @Model.Title
+                            </p>
+                            <div class="container__company__all__header__body__content__buttons d-640-none">
+                                <div class="container__company__all__header__body__content__buttons__flex">
+                                    <div class="container__company__all__header__body__content__buttons__flex__item">
+                                        <form asp-controller="user" asp-action="follow" method="post">
+                                            <input type="hidden" name="@Model.Id" />
+                                            @*<input type="hidden" name="@Model.CompanyUserFollows.FirstOrDefault().AppUser.Id" />*@
+                                            <button type="submit">Following</button>
+                                        </form>
+                                    </div>
+                                    <div class="container__company__all__header__body__content__buttons__flex__item">
+                                        <button id="btn-popover" type="button">
+                                            <iconify-icon icon="fe:elipsis-h"></iconify-icon>
+                                        </button>
+                                        <div id="main-btn"
+                                             class="container__company__all__header__body__content__buttons__flex__item__popover display-none">
+                                            <div class="container__company__all__header__body__content__buttons__flex__item__popover--arrow"></div>
+                                            <a href="mailto:">Share via email</a>
+                                            <a href="https://www.twitter.com">Share via Twitter</a>
+                                            <a href="https://www.facebook.com">Share via Facebook</a>
+                                            <a href="#">Report</a>
+                                            <a href="#">Dismiss</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container__company__all__header__body__sticky d-640-none">
+                            <div class="container__company__all__header__body__sticky__buttons__flex">
+                                <div class="container__company__all__header__body__sticky__buttons__flex__item">
+                                    <form action="">
+                                        <input type="hidden" name="" />
+                                        <input type="hidden" name="" />
+                                        <button type="submit">Follow</button>
+                                    </form>
+                                </div>
+                                <div class="container__company__all__header__body__sticky__buttons__flex__item">
+                                    <button id="btn-popover" type="button">
+                                        <iconify-icon icon="fe:elipsis-h"></iconify-icon>
+                                    </button>
+                                    <div id="stick-btn"
+                                         class="container__company__all__header__body__content__buttons__flex__item__popover display-none">
+                                        <div class="container__company__all__header__body__content__buttons__flex__item__popover--arrow"></div>
+                                        <a href="mailto:">Share via email</a>
+                                        <a href="https://www.twitter.com">Share via Twitter</a>
+                                        <a href="https://www.facebook.com">Share via Facebook</a>
+                                        <a href="#">Report</a>
+                                        <a href="#">Dismiss</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container__company__all__header__buttons d-block">
+                        <div class="container__company__all__header__buttons__flex">
+                            <div class="container__company__all__header__buttons__flex__item f-md-1">
+                                <form action="">
+                                    <input type="hidden" name="" />
+                                    <input type="hidden" name="" />
+                                    <button class="w-sm-100" type="submit">Follow</button>
+                                </form>
+                            </div>
+                            <div class="container__company__all__header__buttons__flex__item">
+                                <button id="btn-popover" type="button">
+                                    <iconify-icon icon="fe:elipsis-h"></iconify-icon>
+                                </button>
+                                <div id="sm-btn"
+                                     class="container__company__all__header__body__content__buttons__flex__item__popover display-none">
+                                    <div class="container__company__all__header__body__content__buttons__flex__item__popover--arrow"></div>
+                                    <a href="mailto:">Share via email</a>
+                                    <a href="https://www.twitter.com">Share via Twitter</a>
+                                    <a href="https://www.facebook.com">Share via Facebook</a>
+                                    <a href="#">Report</a>
+                                    <a href="#">Dismiss</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container__company__all__header__nav">
+                        <a id="up" href="#updates-company" class="is-selected">Updates</a>
+                        <a id="at" href="#about-company">About</a>
+                        <a id="ts" href="#tech-stack">Tech Stack</a>
+                        <a id="vc" href="#videos-company">Videos</a>
+                    </div>
+                </div>
+                <div class="container__company__all__body fd-md-col">
+                    <div class="container__company__all__body__left">
+                        <div class="container__company__all__body__left__into">
+                            <section id="updates-company"
+                                     class="container__company__all__body__left__into__updates">
+                                <h2>Updates</h2>
+                                <div class="container__company__all__body__left__into__updates__content">
+                                    <div class="container__company__all__body__left__into__updates__content__articles">
+                                        <div class="container__company__all__body__left__into__updates__content__articles__article">
+                                            <div class="container__company__all__body__left__into__updates__content__articles__article__in">
+                                                <div class="container__company__all__body__left__into__updates__content__articles__article__in__header">
+                                                    <img width="48"
+                                                         height="48"
+                                                         src="~/assets/Images/Companies/@Model.Image"
+                                                         alt="Fidelity Company" />
+                                                    <div class="container__company__all__body__left__into__updates__content__articles__article__in__header--text">
+                                                        <p>@Model.Name</p>
+                                                        <p>4 days ago</p>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                  @Model.PostDesc
+                                                </p>
+                                                <div class="container__company__all__body__left__into__updates__content__articles__article__in__image">
+                                                    <a href="">
+                                                        <img src="~/assets/Images/Companies/@Model.PostImage" />
+                                                        <div>
+                                                            <h3>
+                                                                Why Choose Fidelity for a Tech Internship?
+                                                            </h3>
+                                                            <p>jobs.fidelity.com</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__company__all__body__left__into__updates__content__articles__article">
+                                            <div class="container__company__all__body__left__into__updates__content__articles__article__in">
+                                                <div class="container__company__all__body__left__into__updates__content__articles__article__in__header">
+                                                    <img width="48"
+                                                         height="48"
+                                                         src="~/assets/Images/Companies/@Model.Image"
+                                                         alt="Fidelity Company" />
+                                                    <div class="container__company__all__body__left__into__updates__content__articles__article__in__header--text">
+                                                        <p>@Model.Name</p>
+                                                        <p>4 days ago</p>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                  @Model.About
+                                                </p>
+                                                <div class="container__company__all__body__left__into__updates__content__articles__article__in__image">
+                                                    <a href="">
+                                                        <img src="~/assets/Images/Companies/Nrjgh.png" />
+                                                        <div>
+                                                            <h3>
+                                                                Why Choose Fidelity for a Tech Internship?
+                                                            </h3>
+                                                            <p>jobs.fidelity.com</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container__company__all__body__left__into__updates__content__articles__article">
+                                            <div class="container__company__all__body__left__into__updates__content__articles__article__in">
+                                                <div class="container__company__all__body__left__into__updates__content__articles__article__in__header">
+                                                    <img width="48"
+                                                         height="48"
+                                                         src="~/assets/Images/Companies/@Model.Image"
+                                                         alt="Fidelity Company" />
+                                                    <div class="container__company__all__body__left__into__updates__content__articles__article__in__header--text">
+                                                        <p>@Model.Name</p>
+                                                        <p>4 days ago</p>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                   @Model.About
+                                                </p>
+                                                <div class="container__company__all__body__left__into__updates__content__articles__article__in__image">
+                                                    <a href="">
+                                                        <img src="~/assets/Images/Companies/Nrjgh.png" />
+                                                        <div>
+                                                            <h3>
+                                                                Why Choose Fidelity for a Tech Internship?
+                                                            </h3>
+                                                            <p>jobs.fidelity.com</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <d
+                                        <button>Show 5 more</button>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="about-company"
+                                     class="container__company__all__body__left__into__about">
+                                <div class="container__company__all__body__left__into__about__title">
+                                    <h2>@Model.About</h2>
+                                </div>
+                                <div class="container__company__all__body__left__into__about__image">
+                                    <div>
+                                        <img src="~/assets/Images/Companies/@Model.AboutImage" />
+                                    </div>
+                                </div>
+                                <div class="container__company__all__body__left__into__about__desc">
+                                    <p></p>
+                                    <p>
+                                        <strong>Fidelity is hiring technologists.&nbsp;</strong>
+                                        <a href="" target="_blank">
+                                            <strong>APPLY NOW</strong>
+                                        </a>
+                                    </p>
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        We create the technology that fuels our mission to help
+                                        people live the lives they want.
+                                    </p>
+                                    <p>
+                                       @Model.About
+                                    </p>
+                                   
+                                    <p>
+                                        <strong> <br />FIDELITY LABS</strong>
+                                        <br />An in-house incubator for fintech startups that
+                                        create new businesses, drive growth, and deliver on
+                                        Fidelity's mission. We respond to our customers' most
+                                        complex challenges with new solutions—and bring these to
+                                        scale.
+                                    </p>
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        <strong>FIDELITY DIGITAL ASSETS <br /></strong>
+                                        In pursuit of a future where all types of assets are
+                                        issued natively on blockchains or in tokenized format - we
+                                        deliver a full-service, enterprise-grade platform for
+                                        securing, trading, and supporting investments in digital
+                                        assets.
+                                    </p>
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        <strong>
+                                            FIDELITY CENTER FOR APPLIED TECHNOLOGY <br />
+                                        </strong>
+                                        The Fidelity Center for Applied Technology (FCAT) is a
+                                        catalyst for research and tech breakthroughs - we assess,
+                                        test, and scale concepts that advance Fidelity's market
+                                        leadership and enhance every customer's experience.
+                                    </p>
+                                </div>
+                            </section>
+                            <section id="tech-stack"
+                                     class="container__company__all__body__left__into__tech-stack">
+                                <h2>Fidelity's Tech Stack</h2>
+                                <div class="container__company__all__body__left__into__tech-stack__tags">
+                                    <a href="#" target="_blank">javascripttypescript</a>
+                                    <a href="#" target="_blank">nodejsexpress</a>
+                                    <a href="#" target="_blank">java</a>
+                                    <a href="#" target="_blank">javascripttypescript</a>
+                                    <a href="#" target="_blank">c#</a>
+                                    <a href="#" target="_blank">javascripttypescript</a>
+                                    <a href="#" target="_blank">javascripttypescript</a>
+                                    <a href="#" target="_blank">javascripttypescript</a>
+                                    <a href="#" target="_blank">nodejsexpress</a>
+                                    <a href="#" target="_blank">nodejsexpress</a>
+                                    <a href="#" target="_blank">nodejsexpress</a>
+                                </div>
+                            </section>
+                            <section id="videos-company"
+                                     class="container__company__all__body__left__into__videos">
+                                <h2>Videos</h2>
+                                <div class="container__company__all__body__left__into__videos__video">
+                                    <div class="container__company__all__body__left__into__videos__video--thumbnail">
+                                        <a href="#" title="Welcome to ..." target="_blank">
+                                            <img width="100%"
+                                                 height="100%"
+                                                 src="~/assets/Images/Companies/maxresdefault.jpeg"
+                                                 alt="video-thumbnail" />
+                                            <div class="center-icon">
+                                                <iconify-icon icon="ant-design:play-circle-outlined"></iconify-icon>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="container__company__all__body__left__into__videos__button">
+                                    <button type="button">See 6 more videos</button>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="container__company__all__body__right">
+                        <div class="container__company__all__body__right__about">
+                            <div class="container__company__all__body__right__about--title">
+                                <h2>About</h2>
+                                <a href="#" target="_blank">Learn more</a>
+                            </div>
+                            <div class="container__company__all__body__right__about--main">
+                                <div class="container__company__all__body__right__about--main__website">
+                                    <p>Website</p>
+                                    <span>
+                                        <a href="#" target="_blank">
+                                            Fidelity Investments
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="container__company__all__body__right__about--main__industry">
+                                    <p>Industry</p>
+                                    <span>
+                                        Finance, Financial Services, Financial Technology
+                                    </span>
+                                </div>
+                                <div class="container__company__all__body__right__about--main__size">
+                                    <div class="container__company__all__body__right__about--main__size--item">
+                                        <p>Size</p>
+                                        <span> 10k+ employees </span>
+                                    </div>
+                                    <div class="container__company__all__body__right__about--main__size--item">
+                                        <p>Status</p>
+                                        <span>Private</span>
+                                    </div>
+                                </div>
+                                <div class="container__company__all__body__right__about--main__followers">
+                                    <div class="container__company__all__body__right__about--main__followers__item">
+                                        <p>Followers</p>
+                                        <span>32</span>
+                                    </div>
+                                    <div class="container__company__all__body__right__about--main__followers__item">
+                                        <p>Social</p>
+                                        <a href="https://www.twitter.com">
+                                            <iconify-icon icon="akar-icons:twitter-fill"></iconify-icon>
+                                        </a>
+                                        <a href="https://www.instagram.com">
+                                            <iconify-icon icon="akar-icons:instagram-fill"></iconify-icon>
+                                        </a>
+                                        <a href="https://www.facebook.com">
+                                            <iconify-icon icon="ant-design:facebook-filled"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container__company__all__body__right__location">
+                            <h2>Office Locations</h2>
+                            <article class="container__company__all__body__right__location__article">
+                                <div class="container__company__all__body__right__location__article__flex">
+                                    <div class="container__company__all__body__right__location__article__flex__item">
+                                        <span>
+                                            <a href="">
+                                                <div class="flex-icon">
+                                                    <iconify-icon icon="entypo:location-pin"></iconify-icon>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <p>@Model.Location</p>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="container__company__all__body__right__location__article__flex__item">
+                                        <span>
+                                            <a href="">
+                                                <div class="flex-icon">
+                                                    <iconify-icon icon="entypo:location-pin"></iconify-icon>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <p>2211 Elliott Ave Suite 400. Seattle, WA 98121</p>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="container__company__all__body__right__location__article__flex__item">
+                                        <span>
+                                            <a href="">
+                                                <div class="flex-icon">
+                                                    <iconify-icon icon="entypo:location-pin"></iconify-icon>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <p>2211 Elliott Ave Suite 400. Seattle, WA 98121</p>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="container__company__all__body__right__location__article__flex__item">
+                                        <span>
+                                            <a href="">
+                                                <div class="flex-icon">
+                                                    <iconify-icon icon="entypo:location-pin"></iconify-icon>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <p>2211 Elliott Ave Suite 400. Seattle, WA 98121</p>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="container__company__all__body__right__location__article__flex__item">
+                                        <span>
+                                            <a href="">
+                                                <div class="flex-icon">
+                                                    <iconify-icon icon="entypo:location-pin"></iconify-icon>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <p>2211 Elliott Ave Suite 400. Seattle, WA 98121</p>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="container__company__all__body__right__location__article__flex__item">
+                                        <span>
+                                            <a href="">
+                                                <div class="flex-icon">
+                                                    <iconify-icon icon="entypo:location-pin"></iconify-icon>
+                                                </div>
+                                                <div class="flex-item">
+                                                    <p>2211 Elliott Ave Suite 400. Seattle, WA 98121</p>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                            <div class="container__company__all__body__right__location__button">
+                                <button type="button">See 1 more location</button>
+                            </div>
+                        </div>
+                        <div class="container__company__all__body__right__benefits">
+                            <h2>Company Benefits</h2>
+                            <ul>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="material-symbols:health-and-safety"></iconify-icon>
+                                        </div>
+                                        <div>Medical</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="material-symbols:health-and-safety"></iconify-icon>
+                                        </div>
+                                        <div>Dental</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="material-symbols:health-and-safety"></iconify-icon>
+                                        </div>
+                                        <div>Vision</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="mdi:umbrella-beach"></iconify-icon>
+                                        </div>
+                                        <div>Generous Time Off Programs</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="material-symbols:fitness-center"></iconify-icon>
+                                        </div>
+                                        <div>ClassPass Membership</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="icon-park-twotone:boy-stroller"></iconify-icon>
+                                        </div>
+                                        <div>18 Week Paid Parental Leave</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="dashicons:money-alt"></iconify-icon>
+                                        </div>
+                                        <div>401(k) Retirement Plans</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="ph:smiley-duotone"></iconify-icon>
+                                        </div>
+                                        <div>Academy and Learning</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="la:heart-solid"></iconify-icon>
+                                        </div>
+                                        <div>Wellness Program</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="benefit-flex">
+                                        <div class="benefir-flex__icon">
+                                            <iconify-icon icon="codicon:star-full"></iconify-icon>
+                                        </div>
+                                        <div>Pet Insurance</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer__container p-md-24 p-sm-16">
+            <div class="footer__container__logo d-640-none">
+                <a href="Index.html">
+                    <img src="~/assets/Images/Logo/apple-touch-icon@2.png"
+                         alt="Stack Overflow Logo" />
+                </a>
+            </div>
+            <div class="footer__container__nav flex-lg-col">
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Stack Overflow</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Products</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Teams</a></li>
+                        <li><a href="">Advertising</a></li>
+                        <li><a href="">Collectives</a></li>
+                        <li><a href="">Talent</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">Company</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">About</a></li>
+                        <li><a href="">Press</a></li>
+                        <li><a href="">Work Here</a></li>
+                        <li><a href="">Legal</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Terms of Service</a></li>
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Cookie Settings</a></li>
+                        <li><a href="">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__container__nav--col">
+                    <h5 class="mb-md-8">
+                        <a href="Index.html">STACK EXCHANGE NETWORK</a>
+                    </h5>
+                    <ul class="nav-md-ul">
+                        <li><a href="">Technology</a></li>
+                        <li><a href="">Culture & recreation</a></li>
+                        <li><a href="">Life & arts</a></li>
+                        <li><a href="">Science</a></li>
+                        <li><a href="">Professional</a></li>
+                        <li><a href="">Business</a></li>
+                        <li class="mt-3"><a href="">API</a></li>
+                        <li><a href="">Data</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__container__copyright">
+                <ul>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="https://www.facebook.com">Facebook</a></li>
+                    <li><a href="https://www.twitter.com">Twitter</a></li>
+                    <li><a href="https://www.LinkedIn.com">LinkedIn</a></li>
+                    <li><a href="https://www.Instagram.com">Instagram</a></li>
+                </ul>
+                <p>
+                    Site design / logo © 2022 Stack Exchange Inc; user contributions
+                    licensed under
+                    <span>
+                        <a href="">CC BY-SA</a>
+                    </span>
+                    . <span>rev 2022.9.1.42957</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+</body>
+<script src="~/assets/js/script.js"></script>
+<script src="~/assets/js/sections/company-single.js"></script>
+
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+
+

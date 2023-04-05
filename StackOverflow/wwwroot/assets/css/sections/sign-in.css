@@ -1,0 +1,53 @@
+.sign-in {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #2d2d2d; }
+  .sign-in__left {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 90%;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: #e8bb78 0px 48px 100px 0px;
+    margin-left: 40px; }
+  .sign-in__container {
+    box-shadow: #e8bb78 0px 48px 100px 0px;
+    margin: 0 auto;
+    background: white;
+    max-width: 400px;
+    width: 50%;
+    border-radius: 4px;
+    padding: 32px 32px 56px;
+    z-index: 1; }
+    .sign-in__container form {
+      display: flex;
+      flex-direction: column;
+      gap: 32px; }
+      .sign-in__container form .sign-in-img {
+        max-width: 200px;
+        margin: 0 auto;
+        border-radius: 50%; }
+        .sign-in__container form .sign-in-img > img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%; }
+      .sign-in__container form > input {
+        padding: 10px;
+        border: 1px solid #d2d2d2;
+        border-radius: 6px;
+        outline: none; }
+      .sign-in__container form > input::placeholder {
+        color: #838c95; }
+      .sign-in__container form > input:valid {
+        color: #f2740d; }
+      .sign-in__container form > button {
+        padding: 10px;
+        border: 1px solid #d2d2d2;
+        border-radius: 6px;
+        cursor: pointer;
+        background: linear-gradient(90deg, #70a2b1f2 0%, #f2740d 50%, #70a2b1f2 100%);
+        color: white;
+        font-weight: 600; }

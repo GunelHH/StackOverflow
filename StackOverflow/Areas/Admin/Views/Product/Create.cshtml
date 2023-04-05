@@ -1,0 +1,42 @@
+﻿@model Product
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Create Product</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Logo:</label><br />
+                                <input asp-for="LogoPhoto" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="LogoPhoto"></span>
+                            </div>
+                            <div>
+                                <label>Image:</label><br />
+                                <input asp-for="PhotoImage" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="PhotoImage"></span>
+                            </div>
+                            <div>
+                                <label>Description:</label><br />
+                                <textarea asp-for="Desc" class="form-control"></textarea><br />
+                                <span class="text-danger" asp-validation-for="Desc"></span>
+                            </div>
+                            <div>
+                                <label>Button:</label><br />
+                                <input asp-for="Button" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Button"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

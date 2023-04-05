@@ -1,0 +1,32 @@
+﻿@model MainSentence
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Create Sentence</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Sentence:</label><br />
+                                <input asp-for="Sentence" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Sentence"></span>
+                            </div>
+                            <div>
+                                <label>Word:</label><br />
+                                <input asp-for="ChangableWords" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="ChangableWords"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

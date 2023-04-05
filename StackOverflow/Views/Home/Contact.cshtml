@@ -1,0 +1,386 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Font -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+              rel="stylesheet" />
+        <link rel="shortcut icon"
+              href="~/assets/Images/Logo/apple-touch-icon@2.png"
+              type="image/x-icon" />
+        <title>Contact information - contack us today - Stack Overflow</title>
+        <link rel="stylesheet" href="~/assets/css/style.css" />
+    </head>
+    <body class="contact-body">
+        <header class="nav">
+            <div class="nav__wrapper fd-md-col p-sm-5">
+                <div class="nav__wrapper__left">
+                    <button id="btn-main" class="d-none-980">
+                        <span id="btn">Products</span>
+                    </button>
+                    <button id="btn-main2"
+                            class="display-none d-block-980 o-md-1 mr-md-0">
+                        <span>Menu</span>
+                    </button>
+                    <a href="Index.html">
+                        <img src="~/assets/Images/Logo/1280px-Stack_Overflow_logo.svg.png"
+                             alt="Stack Overflow Logo" />
+                    </a>
+                </div>
+                <div class="nav__wrapper__right ai-md-strech fd-md-col pt-md-12 d-none-980">
+                    <button id="our-products"
+                            class="nav__wrapper__right__primary d-none-980">
+                        <span>
+                            Our products
+                            <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                        </span>
+                    </button>
+                    <button id="our-company" class="nav__wrapper__right__primary p-md-2">
+                        <span>
+                            Our Company
+                            <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                        </span>
+                    </button>
+                    <!-- on hover -->
+                    <div id="company-toggle" class="nav__wrapper__right__our-company">
+                        <div class="nav__wrapper__right__our-company__all">
+                            <a href="" class="nav__wrapper__right__our-company__all__item">Leadership</a>
+                            <a href="" class="nav__wrapper__right__our-company__all__item">Press</a>
+                            <a href="" class="nav__wrapper__right__our-company__all__item">Research</a>
+                        </div>
+                    </div>
+                    <a href="#" class="nav__wrapper__right__primary p-md-2">
+                        <span>Careers</span>
+                    </a>
+                    <a href="#" class="nav__wrapper__right__primary p-md-2">
+                        <span>Open positions</span>
+                    </a>
+                    <button id="follow-us"
+                            class="nav__wrapper__right__primary p-md-2 ml-md-0">
+                        <span>
+                            Follow us
+                            <iconify-icon icon="dashicons:arrow-down-alt2"></iconify-icon>
+                        </span>
+                    </button>
+                    <!-- on hover -->
+                    <div id="follow-us-toggle" class="nav__wrapper__right__follow-us">
+                        <div class="nav__wrapper__right__follow-us__all">
+                            <a href="" class="nav__wrapper__right__follow-us__all__item">
+                                Blog
+                                <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                            </a>
+                            <a href="" class="nav__wrapper__right__follow-us__all__item">
+                                Podcast
+                                <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                            </a>
+                            <a href="" class="nav__wrapper__right__follow-us__all__item">
+                                Newsletter
+                                <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+                    <a id="contact" class="nav__wrapper__right__primary p-md-2" href="#">
+                        <span>Contact</span>
+                    </a>
+                </div>
+                <!-- on hover -->
+                <div id="right-toggle" class="nav__wrapper__right__toggle mt-md-24">
+                    <div class="nav__wrapper__right__toggle__allitems fd-md-col">
+                        <div class="nav__wrapper__right__toggle__allitems__item">
+                            <div class="title">Enable your organization</div>
+                            <a href="">
+                                <iconify-icon icon="fa6-solid:people-group"></iconify-icon>
+                                <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                        Stack Overflow for Teams
+                                    </div>
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                        Where developers and technologists share private knowledge
+                                        with coworkers.
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="nav__wrapper__right__toggle__allitems__item">
+                            <div class="title">Connect with your community</div>
+                            <a href="">
+                                <iconify-icon id="talent"
+                                              icon="icon-park-twotone:message-search"></iconify-icon>
+                                <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                        Stack Overflow Talent
+                                    </div>
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                        Where companies build their employer brand to attract top
+                                        tech talent.
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="">
+                                <iconify-icon id="advertising"
+                                              icon="arcticons:listmyapps"></iconify-icon>
+                                <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                        Stack Overflow Advertising
+                                    </div>
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                        Where companies reach the world's largest audience of
+                                        developers and technologists.
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="">
+                                <iconify-icon id="collectives"
+                                              icon="eos-icons:application-outlined"></iconify-icon>
+                                <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                        Collectives <sup>TM</sup> on Stack Overflow
+                                    </div>
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                        Where developer communities connect with the specific
+                                        tachnologies they use the most.
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="nav__wrapper__right__toggle__allitems__item">
+                            <div class="title">Join the community</div>
+                            <a href="">
+                                <div class="icon">
+                                    <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                                </div>
+                                <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                        Stack Overflow
+                                        <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                                    </div>
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                        Where developers and technologists go to gain and share
+                                        knowledge
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="icon">
+                                    <iconify-icon id="exchange"
+                                                  icon="simple-icons:stackexchange"></iconify-icon>
+                                </div>
+                                <div class="nav__wrapper__right__toggle__allitems__item__desc">
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--top">
+                                        Stack Exchange
+                                        <iconify-icon icon="ri:share-box-line"></iconify-icon>
+                                    </div>
+                                    <div class="nav__wrapper__right__toggle__allitems__item__desc--bottom">
+                                        Where the world explores technical topics and other
+                                        disciplines across 170+ Q&A communities
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="contact">
+            <section class="contact-main">
+                <iconify-icon icon="emojione-monotone:love-letter"></iconify-icon>
+                <h2 class="fs-sm-28">Support & Feedback</h2>
+                <p class="fs-md-17">
+                    If you need help, please
+                    <a asp-controller="home" asp-action="HelpCenter"> contact us </a>
+                    . To share product feedback on our products, please
+                    <a href="">visit our community here</a>.
+                </p>
+            </section>
+            <section class="contact-services">
+                <h2>Our products & services</h2>
+                <div class="contact-services__flex flex-md-col">
+                    <div class="contact-services__flex__item">
+                        <h3>
+                            <a href="">Teams</a>
+                        </h3>
+                        <p>
+                            A private, secure home for your team's questions and answers.
+                            Perfect for teams of 10-500 members. No more digging through stale
+                            wikis and lost emails—give your team back the time it needs to
+                            build better products.
+                        </p>
+                        <a href="">
+                            <iconify-icon icon="akar-icons:light-bulb"></iconify-icon> Learn
+                            more
+                        </a>
+                    </div>
+                    <div class="contact-services__flex__item">
+                        <h3>
+                            <a href=""> Bigger organization? </a>
+                        </h3>
+                        <p>
+                            Stack Overflow Enterprise is a private, secure home for your
+                            organization's questions and answers. Empower your teams to find
+                            and share information without disrupting their workflows.
+                        </p>
+                        <a href="">
+                            <iconify-icon icon="fluent:mail-16-filled"></iconify-icon>
+                            Get in touch
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-services__flex flex-md-col">
+                    <div class="contact-services__flex__item">
+                        <h3>
+                            <a href="">Talent</a>
+                        </h3>
+                        <p>
+                            Employer branding solutions for technology teams. Reach the
+                            world's largest collection of tech talent.
+                        </p>
+                        <a href="">
+                            <iconify-icon icon="akar-icons:light-bulb"></iconify-icon>
+                            Request a demo
+                        </a>
+                        <div class="contact-services__flex__item--numbers">
+                            <p>
+                                <iconify-icon icon="carbon:phone-filled"></iconify-icon>
+                                <span>US</span>
+                                <span>+1 (212)232-8294</span>
+                                <small>9am-5pm U.S. Eastern Time </small>
+                            </p>
+                            <p>
+                                <iconify-icon icon="carbon:phone-filled"></iconify-icon>
+                                <span>UK</span>
+                                <span>+44 800 048 8989</span>
+                                <small>9am-5pm GMT/BST </small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-services__flex__item">
+                        <h3>
+                            <a href="">Advertising </a>
+                        </h3>
+                        <p>
+                            Stack Overflow Advertising provides a highly relevant and brand
+                            safe environment to engage with developers and the technical
+                            community. Find out how we can build an advertising strategy that
+                            supports your marketing and business goals.
+                        </p>
+                        <a href="">
+                            <iconify-icon icon="fluent:mail-16-filled"></iconify-icon>
+                            Talk to an expert
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="contact-legal-questions">
+                <h2>Legal questions and requests for user information</h2>
+                <p>
+                    If you believe that content residing or accessible on Stack Exchange
+                    infringes a copyright, please send a notice of copyright infringement
+                    according to
+                    <a href=""> the instructions for reporting copyright infringement </a>
+                    . For any other legal issues, or if you are a member of law
+                    enforcement requesting information about Stack Exchange users, please
+                    see the
+                    <a href=""> full instructions for contacting the legal team </a>.
+                </p>
+                <a href="">
+                    <iconify-icon icon="fluent:mail-16-filled"></iconify-icon>
+                    legal@stackoverflow.com
+                </a>
+            </section>
+            <section class="contact-location">
+                <h2>Offices</h2>
+                <div class="contact-location__flex flex-md-col">
+                    <div class="contact-location__flex__item">
+                        <h3><strong>New York (HQ)</strong></h3>
+                        <address>
+                            <span>Stack Exchange Inc.</span>
+                            <br />
+                            110 William Street
+                            <br />
+                            28th Floor
+                            <br />
+                            New York, NY 10038
+                        </address>
+                    </div>
+                    <div class="contact-location__flex__item">
+                        <h3><strong>London</strong></h3>
+                        <address>
+                            <span>Stack Overflow Ltd.</span>
+                            <br />
+                            Bentima House
+                            <br />
+                            168-172 Old Street
+                            <br />
+                            London, EC1V 9BP
+                        </address>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer-about">
+            <div class="footer-about__all">
+                <div class="footer-about__all__flex flex-md-col">
+                    <div class="footer-about__all__flex__item mb-md-32">
+                        <iconify-icon icon="logos:stackoverflow-icon"></iconify-icon>
+                    </div>
+                    <div class="footer-about__all__flex__item mb-md-32">
+                        <div class="footer-about__all__flex__item--links">
+                            <h3>Stack Overflow</h3>
+                            <a href="About.html">About</a>
+                            <a href="About.html">Press</a>
+                            <a href="About.html">Work Here</a>
+                            <a href="About.html">Contact us</a>
+                            <a href="About.html">Questions</a>
+                        </div>
+                        <div class="footer-about__all__flex__item--links">
+                            <h3>Products</h3>
+                            <a href="About.html">Teams</a>
+                            <a href="About.html">Advertising</a>
+                            <a href="About.html">Collectives</a>
+                            <a href="About.html">Talent</a>
+                        </div>
+                    </div>
+                    <div class="footer-about__all__flex__item mb-md-32">
+                        <div class="footer-about__all__flex__item--links">
+                            <h3>Policies</h3>
+                            <a href="About.html">Legal</a>
+                            <a href="About.html">Privacy Policy</a>
+                            <a href="About.html"> Terms of Service </a>
+                            <a href="About.html"> Cookie Settings </a>
+                            <a href="About.html"> Cookie Policy </a>
+                        </div>
+                        <div class="footer-about__all__flex__item--links">
+                            <h3>Channels</h3>
+                            <a href="About.html">Blog</a>
+                            <a href="About.html">Podcast</a>
+                            <a href="About.html">Newsletter</a>
+                            <a href="About.html">Twitter</a>
+                            <a href="About.html">LinkedIn</a>
+                            <a href="About.html">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+    <script src="~/assets/js/sections/about.js"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
+
+
+

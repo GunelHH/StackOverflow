@@ -1,0 +1,39 @@
+﻿@model Answer
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title"> Create Answer</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Description:</label><br />
+                                <input asp-for="Desc" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Desc"></span>
+                            </div>
+                            <div>
+                                <label>Code:</label><br />
+                                <input asp-for="Code" class="form-control" /><br />
+                                <span class="text-danger" asp-validation-for="Code"></span>
+                            </div>
+                            <div>
+                                <label>Is the Best?:</label><br />
+                                <textarea class="form-control" asp-for="IsTheBest"></textarea>
+                                <span class="text-danger" asp-validation-for="IsTheBest"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

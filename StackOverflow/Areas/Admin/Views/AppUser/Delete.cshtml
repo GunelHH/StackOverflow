@@ -1,0 +1,35 @@
+﻿@model AppUser
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title">Are you sure delete @Model.UserName ?</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <div>
+                                <label>Image:</label><br />
+                                <img src="~/assets/images/about/@Model.ProfilePhoto" width="100" height="100" style="object-fit:cover" />
+                            </div>
+                            <div>
+                                <label>Name:</label><br /><br />
+                               <label>@Model.UserName</label>
+                               
+                            </div>
+                            <div>
+                                <label>Email:</label><br />
+                                <label>@Model.Email</label>
+                            </div>
+                            <button type="submit" class="btn btn-info">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
