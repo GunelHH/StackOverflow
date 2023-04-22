@@ -33,8 +33,7 @@ namespace StackOverflow
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<AppDbContext>(options =>
-            {
+            services.AddDbContext<AppDbContext>(options =>            {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 

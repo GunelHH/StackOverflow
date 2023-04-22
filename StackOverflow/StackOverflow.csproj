@@ -67,6 +67,7 @@
     <Folder Include="wwwroot\assets\Images\tag\" />
     <Folder Include="wwwroot\assets\confirm\" />
     <Folder Include="Areas\Admin\Views\Contact\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\" />
@@ -117,6 +118,7 @@
     <None Remove="Areas\Admin\Views\AdminAccount\" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Areas\Admin\Views\Contact\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />

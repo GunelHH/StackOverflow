@@ -17,9 +17,42 @@
           type="image/x-icon" />
     <title>Ask a Question - Stack Overflow</title>
     <link rel="stylesheet" href="~/assets/css/style.css" />
+
+    <style>
+        .TagBag .tagSing {
+            font-size: 13px;
+            display: inline-block;
+            padding: 0.4em 0.5em;
+            margin: 2px 2px 2px 0;
+            line-height: 1;
+            white-space: nowrap;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 3px;
+            color: #39739d;
+            background-color: #e1ecf4;
+            
+        }
+        .spsns {
+            width: 14px;
+            height: 14px;
+            vertical-align: middle;
+            display: inline-block;
+            background-position: -40px -340px;
+            cursor: pointer;
+            margin-left: 3px;
+            margin-top: -2px;
+            margin-bottom: -1px;
+            background-image: url(https://cdn.sstatic.net/Img/unified/sprites.svg?v=fcc0ea44ba27);
+            background-size: initial;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+    </style>
+
 </head>
 <body>
-   
+
     <main>
         <div class="ask-question">
             <div class="ask-question__container">
@@ -160,7 +193,7 @@
                     <div class="ask-question__container__main__left">
                         <div class="ask-question__container__main__left__confirm">
                             <div class="ask-question__container__main__left__confirm__input">
-                                <input type="checkbox" name="" id="ask-public" />
+                                <input type="checkbox" style="appearance:revert;" id="ask-public" />
                             </div>
                             <label for="ask-public">
                                 Confirm this is a <span>public question</span> in order to
@@ -285,9 +318,13 @@
                                                         <input type="text"
                                                                placeholder="e.g. (typescript database string)" />
                                                         <div class="tag-editor__relative__into__flex__into--content">
-                                                            <input asp-for="Tags" id="tgspn" readonly />
-
-                                                            <span id="tag-remove" style="position: absolute; top: 5%;right:5%;border-radius:4px; padding: 4px 8px; background-color: #FF1A1A ;color:white;cursor:pointer">x</span>
+                                                            <div class="TagBag">
+                                                                <span class="spntag"></span>
+                                                                <input asp-for="Tags" readonly style="border:none;outline:none" id="tgspn" size="3" />
+                                                                  
+                                                               
+                                                            </div>
+                                                           
                                                             <input id="search-tag" type="text"
                                                                    placeholder="e.g. (typescript database string)" />
                                                             <span asp-validation-for="Tags" style="color:red"></span>
@@ -576,51 +613,57 @@
 <script src="~/assets/js/script.js"></script>
 <script src="~/assets/js/sections/ask-question.js"></script>
 
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</html>
 
+@section Scripts{
 
-  
-<script>
+    <script>
         let TagInput = document.getElementById("search-tag");
-        let spanforTag = document.getElementById("tgspn")
+        let spanforTag = document.getElementById("spntag");
+        const TagBag = document.getElementsByClassName("TagBag");
         TagInput.addEventListener("input", (e) => {
 
             $.ajax({
                 url: "/user/Get",
                 method: "Post",
-                dataType:'json',
+                dataType: 'json',
                 data: {
-                    searchString:e.target.value
+                    searchString: e.target.value
                 },
                 success: function (data) {
-
                     if (data != "" || data == e.target.value) {
+
                         if (e.target.value != "") {
+                            //const code =`<input asp-for="Tags" readonly style="border:none;outline:none" id="tgspn" size="3" />`
 
-                            //let d = JSON.stringify(data);
 
-                            //let result = Object.entries(d).map(keyValue => Object.fromEntries([keyValue]));
-                          
-                            //let d=JSON.stringify(data);
 
-                            spanforTag.value = spanforTag.value+" "+data;
+                            const parent = spanforTag.parentNode;
+                            const tagSingle = document.createElement('div');
+                            tagSingle.classList.add("tagSing");
 
-                        
+
+                            parent.replaceChild(tagSingle, spanforTag);
+                            tagSingle.appendChild(spanforTag);
+
+
+
+                            
+                            spanforTag.value = spanforTag.value + " " + data;
                         }
                     }
                 },
 
                 error: function (err) {
-                    console.log(err)
+                    console.log(err);
                 }
 
             })
 
-        })
-</script>
+        })</script>
 
+}
 
-
-<!-- Iconify -->
-<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
-</html>
 
