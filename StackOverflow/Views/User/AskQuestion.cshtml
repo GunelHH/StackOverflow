@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="~/assets/css/style.css" />
 
     <style>
-        .TagBag .tagSing {
+         .tagSing {
             font-size: 13px;
             display: inline-block;
             padding: 0.4em 0.5em;
@@ -33,7 +33,7 @@
             background-color: #e1ecf4;
             
         }
-        .spsns {
+        .spnX {
             width: 14px;
             height: 14px;
             vertical-align: middle;
@@ -317,16 +317,13 @@
                                                     <div class="tag-editor__relative__into__flex__into">
                                                         <input type="text"
                                                                placeholder="e.g. (typescript database string)" />
-                                                        <div class="tag-editor__relative__into__flex__into--content">
-                                                            <div class="TagBag">
-                                                                <span class="spntag"></span>
-                                                                <input asp-for="Tags" readonly style="border:none;outline:none" id="tgspn" size="3" />
-                                                                  
-                                                               
-                                                            </div>
-                                                           
+                                                        <div style="display:flex;flex-wrap:wrap;" class="tag-editor__relative__into__flex__into--content">
+                                                        
+
+                                                            <span class="spntag"></span>
+
                                                             <input id="search-tag" type="text"
-                                                                   placeholder="e.g. (typescript database string)" />
+                                                                   placeholder="e.g. (typescript database string)"  />
                                                             <span asp-validation-for="Tags" style="color:red"></span>
                                                         </div>
                                                     </div>
@@ -621,8 +618,7 @@
 
     <script>
         let TagInput = document.getElementById("search-tag");
-        let spanforTag = document.getElementById("spntag");
-        const TagBag = document.getElementsByClassName("TagBag");
+        let spanforTag = document.getElementsByClassName("spntag");
         TagInput.addEventListener("input", (e) => {
 
             $.ajax({
@@ -636,22 +632,18 @@
                     if (data != "" || data == e.target.value) {
 
                         if (e.target.value != "") {
-                            //const code =`<input asp-for="Tags" readonly style="border:none;outline:none" id="tgspn" size="3" />`
 
+                            const spnChild = document.createElement("span");
+                            const spnX = document.createElement("span");
+                            spnChild.classList.add("tagSing");
+                            spnX.classList.add("spnX");
+                     
 
+                            $(spanforTag).append(spnChild);
+                            spnChild.innerText = data;
 
-                            const parent = spanforTag.parentNode;
-                            const tagSingle = document.createElement('div');
-                            tagSingle.classList.add("tagSing");
+                            $(spnChild).append(spnX);
 
-
-                            parent.replaceChild(tagSingle, spanforTag);
-                            tagSingle.appendChild(spanforTag);
-
-
-
-                            
-                            spanforTag.value = spanforTag.value + " " + data;
                         }
                     }
                 },
