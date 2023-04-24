@@ -37,12 +37,12 @@ namespace StackOverflow.Controllers
 
         public IActionResult AskQuestion()
         {
-
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("login", "account");
             }
             ViewBag.User = context.AppUsers.FirstOrDefault();
+            ViewBag.Tags = context.Tags.ToList();
 
             return View();
         }
@@ -224,26 +224,18 @@ namespace StackOverflow.Controllers
 
 
         [HttpPost]
-        public JsonResult Get(string searchString)
-        {
-            //List<Tag> tags = await context.Tags.ToListAsync();
-            //string json = "";
-            //foreach (Tag tag in tags)
-            //{
-            //    json = JsonConvert.SerializeObject(tag.Name);
-            //}
-
-
-            //return Json(json);
-
+        public JsonResult Get(string searchString)        {
             TempData["searchstring"] = searchString;
 
             var tag = from name in context.Tags select name;
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                tag = tag.Where(t => t.Name == searchString);
+                tag = tag.Where(t => t.Name.Trim().ToLower() == searchString.ToLower().Trim());
+                //List<Tag> tags = context.Tags.Where(t=>t.Name==searchString).ToList();
             }
+
+            ViewBag.Tags = context.Tags.ToList();
 
             return Json(tag.Select(t=>t.Name));
         }
