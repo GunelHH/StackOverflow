@@ -321,7 +321,7 @@
                                                         <div style="display:flex;flex-wrap:wrap;" class="tag-editor__relative__into__flex__into--content">
                                                         
 
-                                                            <span class="spntag"></span>
+                                                            <span class="spntag" id="spntag"></span>
 
                                                             <input id="search-tag" type="text"
                                                                    placeholder="e.g. (typescript database string)"  />
@@ -620,7 +620,17 @@
 
     <script>
         let TagInput = document.getElementById("search-tag");
-        let spanforTag = document.getElementsByClassName("spntag");
+        let spanforTag = document.getElementById("spntag");
+
+
+        const closeButtons = document.querySelectorAll(".spnX");
+
+        closeButtons.forEach(c => {
+            c.addEventListener("click", (e) => {
+                console.log(e.target)
+            })
+        })
+
         TagInput.addEventListener("input", (e) => {
 
             $.ajax({
@@ -632,7 +642,19 @@
                 },
                 success: function (data) {
                     let value = e.target.value;
-                    for (let i = 0; i <)
+                   
+                    if (spanforTag.hasChildNodes() )
+                    {
+                        let existed = document.querySelectorAll(".tagSing");
+
+                        existed.forEach(e => {
+                            if (e.textContent == data) {
+                                data = '';
+                            }
+                               
+                        })
+                    }
+                        
                     if (data != "" || data == value) {
 
                         if (value != "") {
@@ -647,27 +669,11 @@
                             spnChild.innerText = data;
 
                             $(spnChild).append(spnX);
-
-
+                           
+                           console.log(e.value)
                         }
                     }
-
-
-                    //for (let data of datas) {
-                    //    data = data.toLowerCase();
-                    //    if (data.startsWith(value)) {
-
-                    //        const spnChild = document.createElement("span");
-                    //        const spnX = document.createElement("span");
-                    //        spnChild.classList.add("tagSing");
-                    //        spnX.classList.add("spnX");
-
-                    //        $(spanforTag).append(spnChild);
-                    //        spnChild.innerText = data;
-
-                    //        $(spnChild).append(spnX);
-                    //    }
-                    //}
+                    
                 },
 
                 error: function (err) {
@@ -677,7 +683,6 @@
             })
 
         })</script>
-
-}
+    }
 
 
