@@ -1,5 +1,7 @@
 ﻿@model Question
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +22,7 @@
     <link rel="stylesheet" href="~/assets/css/style.css" />
 
     <style>
-         .tagSing {
+        .tagSing {
             font-size: 13px;
             display: inline-block;
             padding: 0.4em 0.5em;
@@ -32,8 +34,8 @@
             border-radius: 3px;
             color: #39739d;
             background-color: #e1ecf4;
-            
         }
+
         .spnX {
             width: 14px;
             height: 14px;
@@ -319,12 +321,15 @@
                                                         <input type="text"
                                                                placeholder="e.g. (typescript database string)" />
                                                         <div style="display:flex;flex-wrap:wrap;" class="tag-editor__relative__into__flex__into--content">
-                                                        
 
-                                                            <span class="spntag" id="spntag"></span>
 
-                                                            <input id="search-tag" type="text"
-                                                                   placeholder="e.g. (typescript database string)"  />
+                                                            <span class="Tags" id="Tags">
+
+                                                            </span>
+                                                            
+                                                            <input  id="search-tag" type="text"
+                                                                   placeholder="e.g. (typescript database string)" />
+                                                            <input  type="hidden" />
                                                             <span asp-validation-for="Tags" style="color:red"></span>
                                                         </div>
                                                     </div>
@@ -618,9 +623,8 @@
 
 @section Scripts{
 
-    <script>
-        let TagInput = document.getElementById("search-tag");
-        let spanforTag = document.getElementById("spntag");
+    <script>let TagInput = document.getElementById("search-tag");
+        let spanforTag = document.getElementById("Tags");
 
 
         const closeButtons = document.querySelectorAll(".spnX");
@@ -642,19 +646,21 @@
                 },
                 success: function (data) {
                     let value = e.target.value;
-                   
-                    if (spanforTag.hasChildNodes() )
-                    {
+
+                    console.log(TagInput.nodeValue)
+                    console.log(TagInput.value)
+
+                    if (spanforTag.hasChildNodes()) {
                         let existed = document.querySelectorAll(".tagSing");
 
                         existed.forEach(e => {
                             if (e.textContent == data) {
                                 data = '';
                             }
-                               
+
                         })
                     }
-                        
+
                     if (data != "" || data == value) {
 
                         if (value != "") {
@@ -669,11 +675,12 @@
                             spnChild.innerText = data;
 
                             $(spnChild).append(spnX);
-                           
-                           console.log(e.value)
+
+                            e.target.value = '';
+
                         }
                     }
-                    
+
                 },
 
                 error: function (err) {
@@ -681,8 +688,7 @@
                 }
 
             })
-
         })</script>
-    }
+}
 
 

@@ -57,9 +57,9 @@ namespace StackOverflow.Controllers
 
             if (!ModelState.IsValid) return View();
 
-            if (question.Tags==null)
+            if (question.Tags == null)
             {
-                ModelState.AddModelError("Tags", "Tag's required!");
+                ModelState.AddModelError("Tags", "Tag is required!");
                 return View();
 
             }
@@ -73,12 +73,11 @@ namespace StackOverflow.Controllers
                 ModelState.AddModelError("Title", "This Title is already exist,you may check existed question");
             }
 
-
             question.AppUserId = userId;
 
 
             context.Questions.Add(question);
-            await context.SaveChangesAsync();
+            //await context.SaveChangesAsync();
 
             QuestionTag questionTag = new QuestionTag();
             foreach (var tag in question.Tags)
