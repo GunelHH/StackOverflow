@@ -1,5 +1,4 @@
 ﻿<Properties StartupConfiguration="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations>
     <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
       <Items>
@@ -7,28 +6,32 @@
       </Items>
     </MultiItemSolutionRunConfiguration>
   </MultiItemStartupConfigurations>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/appsettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/Views/User/AskQuestion.cshtml">
     <Files>
-      <File FileName="StackOverflow/Views/Shared/_Layout.cshtml" />
-      <File FileName="StackOverflow/Controllers/UserController.cs" />
-      <File FileName="StackOverflow/Views/User/AskQuestion.cshtml" Line="673" Column="47" />
-      <File FileName="StackOverflow/appsettings.json" Line="1" Column="1" />
+      <File FileName="StackOverflow/Views/User/AskQuestion.cshtml" Line="341" Column="39" />
+      <File FileName="StackOverflow/Controllers/UserController.cs" Line="86" Column="1" />
+      <File FileName="StackOverflow/Models/Question.cs" Line="38" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StackOverflow" expanded="True">
             <Node name="StackOverflow" expanded="True">
-              <Node name="appsettings.json" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="User" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
