@@ -6,11 +6,14 @@
       </Items>
     </MultiItemSolutionRunConfiguration>
   </MultiItemStartupConfigurations>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/Views/User/AskQuestion.cshtml">
     <Files>
       <File FileName="StackOverflow/Views/User/AskQuestion.cshtml" Line="341" Column="39" />
-      <File FileName="StackOverflow/Controllers/UserController.cs" Line="86" Column="1" />
-      <File FileName="StackOverflow/Models/Question.cs" Line="38" Column="41" />
+      <File FileName="StackOverflow/Controllers/UserController.cs" />
+      <File FileName="StackOverflow/Models/Question.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,10 +31,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
