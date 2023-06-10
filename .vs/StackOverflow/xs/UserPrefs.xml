@@ -1,17 +1,11 @@
 ﻿<Properties StartupConfiguration="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}|Default">
-  <MultiItemStartupConfigurations>
-    <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
-      <Items>
-        <StartupItem ItemId="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}" ItemName="StackOverflow" ConfigurationId="Default" />
-      </Items>
-    </MultiItemSolutionRunConfiguration>
-  </MultiItemStartupConfigurations>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/Views/User/AskQuestion.cshtml">
     <Files>
-      <File FileName="StackOverflow/Views/User/AskQuestion.cshtml" Line="341" Column="39" />
+      <File FileName="StackOverflow/Views/User/AskQuestion.cshtml" Line="326" Column="90" />
       <File FileName="StackOverflow/Controllers/UserController.cs" />
       <File FileName="StackOverflow/Models/Question.cs" />
     </Files>
@@ -19,19 +13,19 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StackOverflow" expanded="True">
-            <Node name="StackOverflow" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="User" expanded="True" />
-              </Node>
-            </Node>
+            <Node name="StackOverflow" expanded="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
+      <Items>
+        <StartupItem ItemId="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}" ItemName="StackOverflow" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
+  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
