@@ -35,7 +35,7 @@ namespace StackOverflow.Models
 		public string AppUserId { get; set; }
 
 		[NotMapped]
-		public List<string> Tags { get; set; }
+		public List<string> Tags { get; set; } 
 
 	}
 }

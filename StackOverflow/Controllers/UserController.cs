@@ -49,6 +49,7 @@ namespace StackOverflow.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> AskQuestion(Question question)
         {
+            ViewBag.User = context.AppUsers.FirstOrDefault();
 
             string userId = userManager.GetUserId(HttpContext.User);
             AppUser user = await userManager.FindByIdAsync(userId);
@@ -71,6 +72,7 @@ namespace StackOverflow.Controllers
             if (exist!=null)
             {
                 ModelState.AddModelError("Title", "This Title is already exist,you may check existed question");
+                return View();
             }
 
             question.AppUserId = userId;

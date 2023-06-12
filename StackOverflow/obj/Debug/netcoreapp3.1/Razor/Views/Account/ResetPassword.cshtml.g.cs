@@ -13,21 +13,21 @@ namespace StackOverflow.Views.Account
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 4 "/Users/gunelhesenova/Desktop/Projects/StackOverflow/StackOverflow/Views/_ViewImports.cshtml"
+#line 5 "/Users/gunelhesenova/Desktop/Projects/StackOverflow/StackOverflow/Views/_ViewImports.cshtml"
 using StackOverflow.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "/Users/gunelhesenova/Desktop/Projects/StackOverflow/StackOverflow/Views/_ViewImports.cshtml"
+#line 7 "/Users/gunelhesenova/Desktop/Projects/StackOverflow/StackOverflow/Views/_ViewImports.cshtml"
 using StackOverflow.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1ea8e53a8e16958f4b5647a9d7cf50235e2f2bac", @"/Views/Account/ResetPassword.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"290f5e5d97cd38b38483d63e542698479ef0a8d8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"661b931919988ff7faf2aee51c62b81c7b0bf63b", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_ResetPassword : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<AccountVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("rel", new global::Microsoft.AspNetCore.Html.HtmlString("shortcut icon"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
