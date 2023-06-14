@@ -17,7 +17,7 @@ namespace StackOverflow.Models
 		public string Desc { get; set; }
 
 		public DateTime PostDate { get; set; } = DateTime.Now;
-
+		
 		public DateTime EditDate { get; set; }
 
 		public string Code { get; set; }
@@ -35,7 +35,7 @@ namespace StackOverflow.Models
 		public string AppUserId { get; set; }
 
 		[NotMapped]
-		public List<string> Tags { get; set; } 
+		public List<int> TagIds { get; set; } 
 
 	}
 }

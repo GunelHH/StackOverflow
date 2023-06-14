@@ -58,7 +58,7 @@ namespace StackOverflow.Controllers
 
             if (!ModelState.IsValid) return View();
 
-            if (question.Tags == null)
+            if (question.TagIds == null)
             {
                 ModelState.AddModelError("Tags", "Tag is required!");
                 return View();
@@ -76,34 +76,29 @@ namespace StackOverflow.Controllers
             }
 
             question.AppUserId = userId;
-
-
             context.Questions.Add(question);
-            //await context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
-            QuestionTag questionTag = new QuestionTag();
-            foreach (var tag in question.Tags)
+
+
+            QuestionTag questionTag;
+
+            foreach (int tag in question.TagIds)
             {
+                Tag existTag = await context.Tags.FirstOrDefaultAsync(t => t.Id == tag);
 
-                string[] tags = tag.Split(" ");
-
-                foreach (var item in tags)
+                if (existTag != null)
                 {
-
-                    Tag existTag = await context.Tags.FirstOrDefaultAsync(t => t.Name == item);
-
-                    if (existTag != null)
+                    questionTag = new QuestionTag
                     {
-                        questionTag = new QuestionTag
-                        {
-                            TagId=existTag.Id,
-                            QuestionId=question.Id
-                        };
-                        context.questionTags.Add(questionTag);
+                        TagId = existTag.Id,
+                        QuestionId = question.Id
+                    };
+                    context.questionTags.Add(questionTag);
 
-                    }
                 }
             }
+
             await context.SaveChangesAsync();
 
             return RedirectToAction("questions","home");
@@ -124,61 +119,61 @@ namespace StackOverflow.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> UpdateQuestion(int? id, Question newQuestion)
         {
-            Question exist = await context.Questions.FirstOrDefaultAsync(q => q.Id == id);
-            if (exist is null) return RedirectToAction("notfound", "error");
+            //Question exist = await context.Questions.FirstOrDefaultAsync(q => q.Id == id);
+            //if (exist is null) return RedirectToAction("notfound", "error");
 
-            if (!ModelState.IsValid) return View(exist);
+            //if (!ModelState.IsValid) return View(exist);
 
-            if (newQuestion.Tags == null)
-            {
-                ModelState.AddModelError("Tags", "Tag's required!");
-                return View();
+            //if (newQuestion.Tags == null)
+            //{
+            //    ModelState.AddModelError("Tags", "Tag's required!");
+            //    return View();
 
-            }
-            if (exist.Tags!=newQuestion.Tags)
-            {
-                foreach (QuestionTag tag in context.questionTags)
-                {
-                    if (tag.QuestionId==exist.Id)
-                    {
-                        context.questionTags.Remove(tag);
-                    }
-                }
-            }
+            //}
+            //if (exist.Tags!=newQuestion.Tags)
+            //{
+            //    foreach (QuestionTag tag in context.questionTags)
+            //    {
+            //        if (tag.QuestionId==exist.Id)
+            //        {
+            //            context.questionTags.Remove(tag);
+            //        }
+            //    }
+            //}
 
-            QuestionTag questionTag = new QuestionTag();
-            foreach (var tag in newQuestion.Tags)
-            {
+            //QuestionTag questionTag = new QuestionTag();
+            //foreach (var tag in newQuestion.Tags)
+            //{
 
-                string[] tags = tag.Split(" ");
+            //    string[] tags = tag.Split(" ");
 
-                foreach (var item in tags)
-                {
+            //    foreach (var item in tags)
+            //    {
 
-                    Tag existTag = await context.Tags.FirstOrDefaultAsync(t => t.Name == item);
+            //        Tag existTag = await context.Tags.FirstOrDefaultAsync(t => t.Name == item);
 
-                    if (existTag != null)
-                    {
-                        questionTag = new QuestionTag
-                        {
-                            TagId = existTag.Id,
-                            QuestionId = newQuestion.Id
-                        };
-                        context.questionTags.Add(questionTag);
+            //        if (existTag != null)
+            //        {
+            //            questionTag = new QuestionTag
+            //            {
+            //                TagId = existTag.Id,
+            //                QuestionId = newQuestion.Id
+            //            };
+            //            context.questionTags.Add(questionTag);
 
-                    }
-                }
-            }
-            if (newQuestion.Code!=null)
-            {
-                exist.Code = newQuestion.Code;
-            }
-            exist.Title = newQuestion.Title;
-            exist.Desc = newQuestion.Desc;
-            exist.EditDate = DateTime.Now;       
-            exist.Title = newQuestion.Title;
+            //        }
+            //    }
+            //}
+            //if (newQuestion.Code!=null)
+            //{
+            //    exist.Code = newQuestion.Code;
+            //}
+            //exist.Title = newQuestion.Title;
+            //exist.Desc = newQuestion.Desc;
+            //exist.EditDate = DateTime.Now;       
+            //exist.Title = newQuestion.Title;
 
-            await context.SaveChangesAsync();
+            //await context.SaveChangesAsync();
 
             return RedirectToAction("questions", "home");
 
@@ -219,12 +214,17 @@ namespace StackOverflow.Controllers
             return RedirectToAction("company", "home");
         }
 
+        [HttpPost]
+        public async Task<int> GetId(string data)
+        {
+            Tag tag = await context.Tags.FirstOrDefaultAsync(q=>q.Name==data);
 
+            return tag.Id;
+        }
 
 
         [HttpPost]
         public JsonResult Get(string searchString)        {
-            TempData["searchstring"] = searchString;
 
             var tag = from name in context.Tags select name;
 
@@ -232,6 +232,8 @@ namespace StackOverflow.Controllers
             {
                 tag = tag.Where(t => t.Name.Trim().ToLower() == searchString.ToLower().Trim());
             }
+
+            ViewBag.Tagid = tag.Select(t=>t.Id);
 
             return Json(tag.Select(t=>t.Name));
         }
