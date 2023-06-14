@@ -49,6 +49,7 @@
             background-size: initial;
             background-repeat: no-repeat;
             overflow: hidden;
+            cursor:pointer;
         }
     </style>
 
@@ -323,8 +324,6 @@
                                                             <span  class="spnTag" id="spnTag">
 
                                                             </span>
-                                                            @*<input name="TagIds" class="TagIds" type="hidden" />*@
-
                                                             <input id="search-tag" type="text"
                                                                    placeholder="e.g. (typescript database string)" />
 
@@ -623,14 +622,8 @@
     <script>
         let TagInput = document.getElementById("search-tag");
         let spanforTag = document.getElementById("spnTag");
-        const closeButtons = document.querySelectorAll(".spnX");
+        const parentOfCloseButtons = document.querySelectorAll(".tagSing");
         let parent = document.getElementsByClassName("tag-editor__relative__into__flex__into--content");
-
-        closeButtons.forEach(c => {
-            c.addEventListener("click", (e) => {
-                console.log(e.target)
-            })
-        })
 
         TagInput.addEventListener("input", (e) => {
 
@@ -700,10 +693,10 @@
                 success: function (data) {
 
                     const hiddenInput = document.createElement("input");
-                    hiddenInput.setAttribute("name","TagIds")
-                    hiddenInput.setAttribute("class", "TagIds")
-                    hiddenInput.type = "hidden"
-                    hiddenInput.value+=data + " "
+                    hiddenInput.setAttribute("name", "TagIds");
+                    hiddenInput.setAttribute("class", "TagIds");
+                    hiddenInput.type = "hidden";
+                    hiddenInput.value = data;
 
                     $(parent).prepend(hiddenInput);
                 },
@@ -713,6 +706,41 @@
             })
         }
 
+        function getRemovedId(data) {
+
+            $.ajax({
+                url: "/user/GetId",
+                method: "Post",
+                dataType: 'json',
+                data: {
+                    data: data
+                },
+                success: function (data) {
+                    const hiddenInput = document.querySelectorAll(".TagIds");
+
+                    hiddenInput.forEach((e) => {
+                        console.log(e.value)
+                        if (e.value == data) {
+
+                            e.remove();
+                        }
+                        
+                    })
+                    
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+
+        document.addEventListener("click", (e) => {
+            if (e.target.className == "spnX") {
+                getRemovedId(e.target.parentElement.innerText)
+                e.target.parentElement.remove();
+            }
+        })
+     
 
      </script>
     }
