@@ -86,13 +86,23 @@ namespace StackOverflow.Controllers
 
         public async Task<IActionResult> Questions(int page=1)
         {
-            List<Question> questions = await context.Questions.Include(c => c.AppUser).Skip((page - 1) * 10).Take(10).ToListAsync();
+            List<Question> questions = await context.Questions.Include(c => c.AppUser)
+                .Include(q=>q.questionTags)
+                .ThenInclude(qt=>qt.Tag)
+                .Include(q=>q.questionTags)
+                .ThenInclude(qt=>qt.Question)
+                .OrderByDescending(q => q.Id)
+                .Skip((page - 1) * 10)
+                .Take(10)
+                .ToListAsync();
 
         
             ViewBag.Page = page;
             ViewBag.TotalPage = Math.Ceiling((decimal)context.Questions.Count() / 10); ;
 
             ViewBag.User =  context.AppUsers.FirstOrDefault();
+            //ViewBag.Tags = await context.Tags.ToListAsync();
+
 
             return View(questions);
         }

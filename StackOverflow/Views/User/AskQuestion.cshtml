@@ -288,16 +288,17 @@
                                                     </ul>
                                                 </div>
                                                 <div class="post-editor__into__main__validation">
+                                                    <span asp-validation-for="Desc" style="color:red"></span>
                                                     <div class="post-editor__into__main__validation__ps-relative">
                                                         <textarea asp-for="Desc"
                                                                   cols="92"
                                                                   rows="15"></textarea>
                                                         <iconify-icon icon="bi:exclamation-circle-fill"></iconify-icon>
                                                     </div>
-                                                    <span asp-validation-for="Desc" class="alert alert-danger"></span>
                                                 </div>
+                                                <span asp-validation-for="Code" style="color:red"></span>
+
                                                 <textarea asp-for="Code" style=" width: 100%; border: 1px solid #e3e3e3;resize:vertical;outline:none " cols="60" rows="10" placeholder="Your Code"></textarea>
-                                                <span asp-validation-for="Code"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -719,7 +720,7 @@
                     const hiddenInput = document.querySelectorAll(".TagIds");
 
                     hiddenInput.forEach((e) => {
-                        console.log(e.value)
+
                         if (e.value == data) {
 
                             e.remove();

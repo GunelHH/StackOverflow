@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- Font -->
+         Font 
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -120,9 +120,9 @@
                             </div>
                             <div class="container__main-content__questions__about__flex__item">
                                 <div class="container__main-content__questions__about__flex__item__filter">
-                                    <!-- <div
+                                     <div
                                       class="container__main-content__questions__about__flex__item__filter__all"
-                                    > -->
+                                    > 
                                     <div class="container__main-content__questions__about__flex__item__filter--navigation">
                                         <a class="is-selected" href="">
                                             <div class="link">Newest</div>
@@ -154,7 +154,7 @@
                                             Filter
                                         </button>
                                     </div>
-                                    <!-- </div> -->
+                                     </div> 
                                 </div>
                             </div>
                         </div>
@@ -316,22 +316,15 @@
                                     </div>
                                     <div class="meta">
                                         <div class="tags">
-                                            @*<a href="">
-                                                    <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
-                                                    amazon-web-services
-                                                </a>
-                                                <a href="">
-                                                    <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
-                                                    aws-lambda
-                                                </a>
-                                                <a href="">
-                                                    <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
-                                                    amazon-cloudformation
-                                                </a>
-                                                <a href="">
-                                                    <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
-                                                    amazon-cloudwatch
-                                                </a>*@
+
+                                            @foreach (var tag in question.questionTags)
+                                            {
+                                                @if (tag.Tag.Image != null)
+                                                {
+                                                    <img src="@tag.Tag.Image" alt="@tag.Tag.Name" />
+                                                }
+                                                <a>@tag.Tag.Name</a>
+                                            }
                                         </div>
                                         <div class="user-card-minimal">
                                             <a class="user-card" href="">
@@ -346,19 +339,17 @@
                                                 <div class="name">
                                                     <a href="">@question.AppUser.UserName</a>
                                                 </div>
-                                                <ul class="awards">
-                                                    <li><span>1</span></li>
-                                                </ul>
                                             </div>
                                             <div class="user-card-time">
                                                 asked
-                                                <span>@question.PostDate</span>
+                                                <span>@question.PostDate.ToString("dd.mm.yyyy   hh:mm")</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         }
+
 
                     </div>
                     <br />
@@ -968,7 +959,7 @@
             </div>
         </main>
 
-        <!-- footer -->
+         footer 
         <footer class="footer">
             <div class="footer__container p-md-24 p-sm-16">
                 <div class="footer__container__logo d-640-none">
@@ -1049,13 +1040,13 @@
                 </div>
             </div>
         </footer>
-        <!-- footer end -->
+         footer end 
     </body>
 
     <script src="~/assets/js/script.js"></script>
     <script src="~/assets/js/sections/questions.js"></script>
 
-    <!-- Iconify -->
+     Iconify 
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
 </html>
 }
@@ -1173,7 +1164,7 @@ else
                 <div class="container__main-content__questions__about">
                     <div class="container__main-content__questions__about__flex ai-sm-strech flex-md-col">
                         <div class="container__main-content__questions__about__flex__item">
-                            22,977,237 questions
+                            @Model.Count() questions
                         </div>
                         <div class="container__main-content__questions__about__flex__item">
                             <div class="container__main-content__questions__about__flex__item__filter">
@@ -1373,22 +1364,15 @@ else
                                 </div>
                                 <div class="meta">
                                     <div class="tags">
-                                        @*<a href="">
-                                                <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
-                                                amazon-web-services
-                                            </a>
-                                            <a href="">
-                                                <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
-                                                aws-lambda
-                                            </a>
-                                            <a href="">
-                                                <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
-                                                amazon-cloudformation
-                                            </a>
-                                            <a href="">
-                                                <img src="https://i.stack.imgur.com/baRMT.png" alt="" />
-                                                amazon-cloudwatch
-                                            </a>*@
+                                     
+                                        @foreach (var tag in question.questionTags)
+                                            {
+                                               @if (tag.Tag.Image!=null)
+                                                {
+                                                    <img src="@tag.Tag.Image" alt="@tag.Tag.Name" />
+                                                }
+                                            <a>@tag.Tag.Name</a>     
+                                         }
                                     </div>
                                     <div class="user-card-minimal">
                                         <a class="user-card" href="">
@@ -1403,13 +1387,13 @@ else
                                             <div class="name">
                                                 <a href="">@question.AppUser.UserName</a>
                                             </div>
-                                            <ul class="awards">
+                                            @*<ul class="awards">
                                                 <li><span>1</span></li>
-                                            </ul>
+                                            </ul>*@
                                         </div>
                                         <div class="user-card-time">
                                             asked
-                                            <span>@question.PostDate</span>
+                                            <span>@question.PostDate.ToString("dd.mm.yyyy   hh:mm")</span>
                                         </div>
                                     </div>
                                 </div>
