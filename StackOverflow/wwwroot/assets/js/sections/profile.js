@@ -59,8 +59,8 @@ inp.addEventListener("click", () => {
     mainContent.style.border = "none";
   }, 300);
 
-  let result = localStorage.setItem("test", inp.value);
-});
+//  let result = localStorage.setItem("test", inp.value);
+//});
 
 // calendar
 // const calendar = document.querySelector(

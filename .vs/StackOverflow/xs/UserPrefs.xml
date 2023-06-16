@@ -1,25 +1,23 @@
 ﻿<Properties StartupConfiguration="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
+      <Items>
+        <StartupItem ItemId="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}" ItemName="StackOverflow" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
+  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/Views/Home/Questions.cshtml">
-    <Files>
-      <File FileName="StackOverflow/Views/Home/Questions.cshtml" Line="1368" Column="43" />
-      <File FileName="StackOverflow/Controllers/HomeController.cs" Line="96" Column="15" />
-      <File FileName="StackOverflow/Models/Question.cs" Line="25" Column="20" />
-    </Files>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StackOverflow" expanded="True">
             <Node name="StackOverflow" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="DAL">
-                <Node name="AppDbContext.cs" selected="True" />
-              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
@@ -30,11 +28,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations>
-    <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
-      <Items>
-        <StartupItem ItemId="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}" ItemName="StackOverflow" ConfigurationId="Default" />
-      </Items>
-    </MultiItemSolutionRunConfiguration>
-  </MultiItemStartupConfigurations>
 </Properties>

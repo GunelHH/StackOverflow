@@ -121,6 +121,12 @@ namespace StackOverflow.Controllers
          }
 
         [HttpPost]
+        public async Task<JsonResult> WatchTag()
+        {
+            return 
+        }
+
+        [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Answer(int id ,Answer answer)
         {
