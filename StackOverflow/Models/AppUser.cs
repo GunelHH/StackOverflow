@@ -38,6 +38,8 @@ namespace StackOverflow.Models
 
 		public List<Answer> Answers { get; set; }
 
+		public List<UserTag> UserTags { get; set; }
+
 
 		[NotMapped]
 		public IFormFile ProfileImg { get; set; }

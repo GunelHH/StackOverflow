@@ -21,6 +21,8 @@ namespace StackOverflow.Models
 
 		public List<QuestionTag> questionTags { get; set; }
 
+		public List<UserTag> UserTags { get; set; }
+
 		[NotMapped]
 		public IFormFile Photo { get; set; }
 

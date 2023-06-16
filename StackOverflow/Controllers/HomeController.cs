@@ -121,12 +121,6 @@ namespace StackOverflow.Controllers
          }
 
         [HttpPost]
-        public async Task<JsonResult> WatchTag()
-        {
-            return 
-        }
-
-        [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Answer(int id ,Answer answer)
         {
@@ -204,6 +198,28 @@ namespace StackOverflow.Controllers
         public IActionResult Tags()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> SearchedTags(string searchedString)
+        {
+            if(string.IsNullOrEmpty(searchedString) || string.IsNullOrWhiteSpace(searchedString))
+            {
+                return Json("");
+            }
+            searchedString = searchedString.Trim().ToLower();
+
+            List<string> tags = await context.Tags.Include(t => t.UserTags).Select(t=>t.Name.Trim().ToLower()).ToListAsync();
+            List<string> tagsToView = new List<string>();
+
+            foreach (string tag in tags)
+            {
+                if (tag.Contains(searchedString))
+                {
+                    tagsToView.Add(tag);
+                }
+            }
+            return Json(tagsToView);
         }
 
         public IActionResult Users()

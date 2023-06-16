@@ -56,6 +56,8 @@ namespace StackOverflow.DAL
 
 		public DbSet<Contact> Contacts { get; set; }
 
+		public DbSet<UserTag> UserTags { get; set; }
+
 
 
 

@@ -1364,15 +1364,15 @@ else
                                 </div>
                                 <div class="meta">
                                     <div class="tags">
-                                     
+
                                         @foreach (var tag in question.questionTags)
+                                        {
+                                            @if (tag.Tag.Image != null)
                                             {
-                                               @if (tag.Tag.Image!=null)
-                                                {
-                                                    <img src="@tag.Tag.Image" alt="@tag.Tag.Name" />
-                                                }
-                                            <a>@tag.Tag.Name</a>     
-                                         }
+                                                <img src="@tag.Tag.Image" alt="@tag.Tag.Name" />
+                                            }
+                                            <a>@tag.Tag.Name</a>
+                                        }
                                     </div>
                                     <div class="user-card-minimal">
                                         <a class="user-card" href="">
@@ -1388,8 +1388,8 @@ else
                                                 <a href="">@question.AppUser.UserName</a>
                                             </div>
                                             @*<ul class="awards">
-                                                <li><span>1</span></li>
-                                            </ul>*@
+                                                    <li><span>1</span></li>
+                                                </ul>*@
                                         </div>
                                         <div class="user-card-time">
                                             asked
@@ -1506,15 +1506,15 @@ else
                             <a href="">edit</a>
                         </div>
 
-@*This Zone*@
+                        @*This Zone*@
                         <div class="container__main-content__right-sidebar__watch__watched__content">
                             <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
                                 @*<div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
-                                    <a href="" title="show questions tagged 'c#'">
-                                        c#
-                                        <span title="Remove tag" class="delete-tag"></span>
-                                    </a>
-                                </div>*@
+                                        <a href="" title="show questions tagged 'c#'">
+                                            c#
+                                            <span title="Remove tag" class="delete-tag"></span>
+                                        </a>
+                                    </div>*@
                             </div>
                             <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
                                 <form method="post" asp-action="WatchTag" style="position:relative">
@@ -1522,12 +1522,12 @@ else
                                     <button type="submit">Add</button>
 
                                     @*<div class="ac_results" style="position: absolute; width: 83%; top: 100%;  padding: 0; border: 1px solid ; background-color: white; overflow: hidden; z-index: 10000; text-align: left; ">
-                                        <ul style="max-height: 300px; width: 100%; ">
-                                            <li>
-                                                <strong></strong>
-                                            </li>
-                                        </ul>
-                                    </div>*@
+                                            <ul style="max-height: 300px; width: 100%; ">
+                                                <li>
+                                                    <strong></strong>
+                                                </li>
+                                            </ul>
+                                        </div>*@
                                 </form>
                             </div>
                             <div class="container__main-content__right-sidebar__watch__watched__content__no-content">
@@ -2018,7 +2018,7 @@ else
             </div>
         </div>
     </main>
-   
+
 
 
     <!-- footer -->
@@ -2105,6 +2105,12 @@ else
     <!-- footer end -->
 </body>
 
+<!-- Jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+
 <script src="~/assets/js/script.js"></script>
 <script src="~/assets/js/sections/questions.js"></script>
 @*<script src="~/assets/js/sections/profile.js"></script>*@
@@ -2124,23 +2130,23 @@ else
 
         tagSearchInput.addEventListener("input", (e) => {
 
-            
+            $.ajax({
+                url: "/home/SearchedTags",
+                method: "Post",
+                dataType: 'json',
+                data: {
+                    searchedString: e.target.value
+                },
+                success: function (data) {
+                    if (data != '' || data != ' ') {
+                        console.log(data)
+                    }
 
-
-
-
-
-
-            //$.ajax({
-            //    url: "/user/Get",
-            //    method: "Post",
-            //    dataType: 'json',
-            //    data: {
-            //        searchString: e.target.value
-            //    },
-            //    success: function (data) {
-            //    }
-            //}
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
         })
 
 
