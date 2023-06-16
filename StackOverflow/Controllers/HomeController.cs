@@ -203,10 +203,6 @@ namespace StackOverflow.Controllers
         [HttpPost]
         public async Task<JsonResult> SearchedTags(string searchedString)
         {
-            if(string.IsNullOrEmpty(searchedString) || string.IsNullOrWhiteSpace(searchedString))
-            {
-                return Json("");
-            }
             searchedString = searchedString.Trim().ToLower();
 
             List<string> tags = await context.Tags.Include(t => t.UserTags).Select(t=>t.Name.Trim().ToLower()).ToListAsync();
