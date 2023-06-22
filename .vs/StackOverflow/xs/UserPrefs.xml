@@ -1,18 +1,18 @@
 ﻿<Properties StartupConfiguration="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/Views/Home/Questions.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/wwwroot/assets/js/sections/questions.js">
     <Files>
-      <File FileName="StackOverflow/Views/Home/Questions.cshtml" Line="2137" Column="24" />
-      <File FileName="StackOverflow/Controllers/HomeController.cs" Line="208" Column="33" />
-      <File FileName="StackOverflow/Models/AppUser.cs" Line="41" Column="46" />
-      <File FileName="StackOverflow/Models/UserTag.cs" Line="15" Column="1" />
-      <File FileName="StackOverflow/Models/Tag.cs" Line="24" Column="24" />
+      <File FileName="StackOverflow/Views/Home/Questions.cshtml" Line="1563" Column="37" />
+      <File FileName="StackOverflow/Controllers/HomeController.cs" Line="223" Column="10" />
+      <File FileName="StackOverflow/Models/AppUser.cs" Line="1" Column="1" />
+      <File FileName="StackOverflow/Models/UserTag.cs" Line="17" Column="2" />
+      <File FileName="StackOverflow/Models/Tag.cs" Line="1" Column="1" />
       <File FileName="StackOverflow/Views/User/AskQuestion.cshtml" Line="608" Column="1" />
-      <File FileName="StackOverflow/wwwroot/assets/js/sections/users.js" Line="43" Column="1" />
-      <File FileName="StackOverflow/Startup.cs" Line="37" Column="1" />
-      <File FileName="StackOverflow/DAL/AppDbContext.cs" Line="16" Column="1" />
+      <File FileName="StackOverflow/wwwroot/assets/js/sections/questions.js" Line="103" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,12 +20,18 @@
           <Node name="StackOverflow" expanded="True">
             <Node name="StackOverflow" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="DAL" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="assets" expanded="True">
+                  <Node name="css" expanded="True">
+                    <Node name="sections" expanded="True">
+                      <Node name="questions.css" selected="True" />
+                    </Node>
+                  </Node>
                   <Node name="js" expanded="True">
                     <Node name="sections" expanded="True" />
                   </Node>
@@ -37,6 +43,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations>
     <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
       <Items>
@@ -44,7 +51,4 @@
       </Items>
     </MultiItemSolutionRunConfiguration>
   </MultiItemStartupConfigurations>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

@@ -27,7 +27,7 @@ using StackOverflow.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ed130ee8cb29445f3834a042a26651ccac56d5db", @"/Views/Home/Companies.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"661b931919988ff7faf2aee51c62b81c7b0bf63b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"523611217ddf14398e44428b5c5f577fa3fa487a", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Companies : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Company>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("rel", new global::Microsoft.AspNetCore.Html.HtmlString("shortcut icon"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

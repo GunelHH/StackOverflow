@@ -1,5 +1,4 @@
-﻿@model List<Question>
-
+﻿@model QuestionVM
 
 @if (!User.Identity.IsAuthenticated)
 {
@@ -11,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-         Font 
+        Font
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -116,45 +115,43 @@
                         <div class="container__main-content__questions__about__flex ai-sm-strech flex-md-col">
                             <div class="container__main-content__questions__about__flex__item">
 
-                                @Model.Count() questions
+                                @Model.questions.Count() questions
                             </div>
                             <div class="container__main-content__questions__about__flex__item">
                                 <div class="container__main-content__questions__about__flex__item__filter">
-                                     <div
-                                      class="container__main-content__questions__about__flex__item__filter__all"
-                                    > 
-                                    <div class="container__main-content__questions__about__flex__item__filter--navigation">
-                                        <a class="is-selected" href="">
-                                            <div class="link">Newest</div>
-                                        </a>
-                                        <a href="">
-                                            <div class="link">Active</div>
-                                        </a>
-                                        <a class="d-11-none d-77-none d-607-none" href="">
-                                            <div class="link">Bountied</div>
-                                            <div class="bounties-count">273</div>
-                                        </a>
-                                        <a class="d-11-none d-77-none d-607-none" href="">
-                                            <div class="link">Unanswered</div>
-                                        </a>
-                                        <button class="more-button">More</button>
+                                    <div class="container__main-content__questions__about__flex__item__filter__all">
+                                        <div class="container__main-content__questions__about__flex__item__filter--navigation">
+                                            <a class="is-selected" href="">
+                                                <div class="link">Newest</div>
+                                            </a>
+                                            <a href="">
+                                                <div class="link">Active</div>
+                                            </a>
+                                            <a class="d-11-none d-77-none d-607-none" href="">
+                                                <div class="link">Bountied</div>
+                                                <div class="bounties-count">273</div>
+                                            </a>
+                                            <a class="d-11-none d-77-none d-607-none" href="">
+                                                <div class="link">Unanswered</div>
+                                            </a>
+                                            <button class="more-button">More</button>
+                                        </div>
+                                        <div class="container__main-content__questions__about__flex__item__filter--popover display-none l-lg-11 l-md-11 l-sm-38 l-sm-6">
+                                            <div class="popover-arrow"></div>
+                                            <ul>
+                                                <li><a href=""> Frequent </a></li>
+                                                <li><a href=""> Score </a></li>
+                                                <li class="line"></li>
+                                                <li><span>Unanswered (my tags)</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="container__main-content__questions__about__flex__item__filter--filter">
+                                            <button class="filter-button">
+                                                <iconify-icon icon="bi:filter"></iconify-icon>
+                                                Filter
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="container__main-content__questions__about__flex__item__filter--popover display-none l-lg-11 l-md-11 l-sm-38 l-sm-6">
-                                        <div class="popover-arrow"></div>
-                                        <ul>
-                                            <li><a href=""> Frequent </a></li>
-                                            <li><a href=""> Score </a></li>
-                                            <li class="line"></li>
-                                            <li><span>Unanswered (my tags)</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="container__main-content__questions__about__flex__item__filter--filter">
-                                        <button class="filter-button">
-                                            <iconify-icon icon="bi:filter"></iconify-icon>
-                                            Filter
-                                        </button>
-                                    </div>
-                                     </div> 
                                 </div>
                             </div>
                         </div>
@@ -286,7 +283,7 @@
                         </form>
                     </div>
                     <div class="container__main-content__questions--questions">
-                        @foreach (Question question in Model)
+                        @foreach (Question question in Model.questions)
                         {
                             <div class="flex fd-md-col">
                                 <div class="stats">
@@ -457,12 +454,12 @@
                             </div>
                             <div class="container__main-content__right-sidebar__watch__watched__content">
                                 <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
-                                    <div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
-                                        <a href="" title="show questions tagged 'c#'">
-                                            c#
-                                            <span title="Remove tag" class="delete-tag"></span>
-                                        </a>
-                                    </div>
+                                    @*<div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
+                                            <a href="" title="show questions tagged 'c#'">
+                                                c#
+                                                <span title="Remove tag" class="delete-tag"></span>
+                                            </a>
+                                        </div>*@
                                 </div>
                                 <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
                                     <form action="">
@@ -959,7 +956,7 @@
             </div>
         </main>
 
-         footer 
+        footer
         <footer class="footer">
             <div class="footer__container p-md-24 p-sm-16">
                 <div class="footer__container__logo d-640-none">
@@ -1040,13 +1037,13 @@
                 </div>
             </div>
         </footer>
-         footer end 
+        footer end
     </body>
 
     <script src="~/assets/js/script.js"></script>
     <script src="~/assets/js/sections/questions.js"></script>
 
-     Iconify 
+    Iconify
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
 </html>
 }
@@ -1074,27 +1071,40 @@ else
 
 
     <style>
-            .ac_results{
-                position: absolute;
-                width: 83%;
-                top: 100%;
-                padding: 0;
-                border: 1px dashed;
-                border-radius:2px;
-                background-color: white;
-                overflow: hidden;
-                z-index: 10000;
-                text-align: left;
-                cursor:pointer;
-            }
-            .result_ul {
-                max-height: 300px;
-                width: 100%;
-            
-            }
+        .ac_results {
+            position: absolute;
+            width: 83%;
+            top: 100%;
+            padding: 0;
+            border: 1px dotted;
+            border-radius: 2px;
+            background-color: white;
+            overflow: hidden;
+            z-index: 10000;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .result_ul {
+            max-height: 300px;
+            width: 100%;
+        }
+
             .result_ul > li {
-                border-bottom: 1px solid #f2740e;
+                border-bottom: 1px dotted black;
+                padding: 5px 10px;
             }
+
+        .tagLi:hover {
+            background: #f2740e;
+        }
+
+        .ac_results > span {
+            color: #c61a1a;
+            font-size: 16px;
+        }
+
+        
     </style>
 
 
@@ -1193,7 +1203,7 @@ else
                 <div class="container__main-content__questions__about">
                     <div class="container__main-content__questions__about__flex ai-sm-strech flex-md-col">
                         <div class="container__main-content__questions__about__flex__item">
-                            @Model.Count() questions
+                            @Model.questions.Count() questions
                         </div>
                         <div class="container__main-content__questions__about__flex__item">
                             <div class="container__main-content__questions__about__flex__item__filter">
@@ -1363,7 +1373,7 @@ else
                     </form>
                 </div>
                 <div class="container__main-content__questions--questions">
-                    @foreach (Question question in Model)
+                    @foreach (Question question in Model.questions)
                     {
                         <div class="flex fd-md-col">
                             <div class="stats">
@@ -1536,32 +1546,39 @@ else
                         </div>
 
                         @*This Zone*@
-                        <div class="container__main-content__right-sidebar__watch__watched__content">
-                            <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
-                                @*<div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
-                                        <a href="" title="show questions tagged 'c#'">
-                                            c#
-                                            <span title="Remove tag" class="delete-tag"></span>
-                                        </a>
-                                    </div>*@
-                            </div>
-                            <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
-                                <form method="post" asp-action="WatchTag" class="tagForm" style="position:relative">
-                                    <input id="tagSearchInput" type="text" autocomplete="off" />
-                                    <button type="submit">Add</button>
-                                </form>
-                            </div>
-                            <div class="container__main-content__right-sidebar__watch__watched__content__no-content">
-                                <div class="container__main-content__right-sidebar__watch__watched__content__no-content--icon">
-                                    <iconify-icon icon="wpf:search"></iconify-icon>
+                    <div class="container__main-content__right-sidebar__watch__watched__content">
+                        <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
+
+                            @foreach (UserTag tag in Model.userTags)
+                            {
+                                <div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
+                                    <a href="" title="show questions tagged '@tag.Tag.Name'">
+                                        @tag.Tag.Name
+                                        <span title="Remove tag" class="delete-tag"></span>
+                                    </a>
                                 </div>
-                                <p>Watch tags to curate your list of questions.</p>
-                                <a>
-                                    <iconify-icon icon="bi:eye-fill"></iconify-icon> Watch a
-                                    tag
-                                </a>
-                            </div>
+
+                            }
                         </div>
+                        <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
+                            <form method="post" class="tagForm" style="position:relative">
+                                <input id="tagSearchInput" name="userTags.FirstOrDefault().Tag.Name" type="text" autocomplete="off" />
+                                <button id="tagAdd" type="submit">Add</button>
+                            </form>
+                        </div>
+                       
+                        <div class="container__main-content__right-sidebar__watch__watched__content__no-content">
+                            <div class="container__main-content__right-sidebar__watch__watched__content__no-content--icon">
+                                <iconify-icon icon="wpf:search"></iconify-icon>
+                            </div>
+                            <p>Watch tags to curate your list of questions.</p>
+                            <a>
+                                <iconify-icon icon="bi:eye-fill"></iconify-icon> Watch a
+                                tag
+                            </a>
+                        </div>
+                         
+                    </div>
                     </div>
                     <div class="container__main-content__right-sidebar__watch__ignored">
                         <div class="container__main-content__right-sidebar__watch__ignored__title">
@@ -2146,77 +2163,49 @@ else
 @section Scripts{
     <script>
 
-        const tagSearchInput = document.getElementById("tagSearchInput");
-        let tagForm = document.getElementsByClassName("tagForm");
+      //remove watchedTag
+        function RemoveWatchedTag() {
+            if ($(watchList).children().length > 0) {
 
-        const div = document.createElement("div");
-        const ul = document.createElement("ul");
+                const RemoveTagButtons = document.querySelectorAll(".delete-tag")
+                RemoveTagButtons.forEach(rb => {
+                    rb.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        $.ajax({
+                            url: "/home/RemoveWatchedTag",
+                            method: "Post",
+                            dataType: 'json',
+                            data: {
+                                data: e.target.parentElement.innerText
+                            }, success: function () {
+                                e.target.parentElement.parentElement.remove();
+                                check()
+                            }, error: function () {
 
-        $(div).append(ul);
-
-        div.classList.add("ac_results");
-        ul.classList.add("result_ul");
-
-
-        tagSearchInput.addEventListener("input", (e) => {
-            $(ul).empty()
-            let value = e.target.value;
-
-            if (value == null || value == undefined || value == "" || value == " ") {
-                div.style.display="none"
-
-            } else {
-                $.ajax({
-                    url: "/home/SearchedTags",
-                    method: "Post",
-                    dataType: 'json',
-                    data: {
-                        searchedString: e.target.value
-                    },
-                    success: function (data) {
-                        div.style.display = "block"
-                        data.forEach(e => {
-
-                            let li = document.createElement("li");
-
-                            $(ul).append(li);
-
-                            li.innerHTML = e;
+                            }
                         })
-
-                        $(tagForm).append(div)
-                    },
-                    error: function (err) {
-                        console.log(err);
-                    }
+                    })
                 })
-            }
-        })
+            } 
+        }
+        RemoveWatchedTag();
 
+        //const pagButtons = document.querySelectorAll(".pagination-item");
 
-
-
-
-
-
-
-
-        const pagButtons = document.querySelectorAll(".pagination-item");
-
-        pagButtons.forEach(item => {
-            item.addEventListener('click', (e) => {
+        //pagButtons.forEach(item => {
+        //    item.addEventListener('click', (e) => {
                 //e.preventDefault();
 
 
-                let questions = document.getElementsByClassName('container__main-content__questions--questions');
-                const href = e.currentTarget.getAttribute("href");
+                //let questions = document.getElementsByClassName('container__main-content__questions--questions');
+                //const href = e.currentTarget.getAttribute("href");
 
                 //fetch(href)
                 //    .then(res => res.text())
                 //    .then(data => { questions.innerHTML = data })
 
-            })
-        })
+        //    })
+        //})
     </script>
 }
 

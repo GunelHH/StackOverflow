@@ -86,22 +86,26 @@ namespace StackOverflow.Controllers
 
         public async Task<IActionResult> Questions(int page=1)
         {
-            List<Question> questions = await context.Questions.Include(c => c.AppUser)
-                .Include(q=>q.questionTags)
-                .ThenInclude(qt=>qt.Tag)
-                .Include(q=>q.questionTags)
-                .ThenInclude(qt=>qt.Question)
+            QuestionVM questions = new QuestionVM
+            {
+                questions = await context.Questions.Include(c => c.AppUser)
+                .Include(q => q.questionTags)
+                .ThenInclude(qt => qt.Tag)
+                .Include(q => q.questionTags)
+                .ThenInclude(qt => qt.Question)
                 .OrderByDescending(q => q.Id)
                 .Skip((page - 1) * 10)
                 .Take(10)
-                .ToListAsync();
+                .ToListAsync(),
+                userTags = await context.UserTags.Include(u=>u.user).Include(u=>u.Tag).ToListAsync(),
+            };
 
         
             ViewBag.Page = page;
             ViewBag.TotalPage = Math.Ceiling((decimal)context.Questions.Count() / 10); ;
 
             ViewBag.User =  context.AppUsers.FirstOrDefault();
-            //ViewBag.Tags = await context.Tags.ToListAsync();
+            ViewBag.UserId =  context.AppUsers.FirstOrDefault().Id;
 
 
             return View(questions);
@@ -216,6 +220,60 @@ namespace StackOverflow.Controllers
                 }
             }
             return Json(tagsToView);
+        }
+
+        
+        public async Task<bool> IsExist(string data)
+        {
+            Tag tag = await context.Tags.FirstOrDefaultAsync(t=>t.Name==data);
+
+            if (tag is null)
+            {
+                return false;
+            }
+            else
+            {
+                string userId = userManager.GetUserId(HttpContext.User);
+
+                UserTag existed = await context.UserTags.Include(e=>e.Tag).FirstOrDefaultAsync(u => (u.AppUserId == userId));
+                if(existed != null)
+                {
+                    if (existed.TagId == tag.Id)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        public async Task<bool> RemoveWatchedTag(string data)
+        {
+            UserTag userTag = await context.UserTags.FirstOrDefaultAsync(ut=>ut.Tag.Name==data);
+            context.UserTags.Remove(userTag);
+            await context.SaveChangesAsync();
+            return true;
+
+        }
+
+        public async Task<bool> WatchTag(string tagName)
+        {
+            if(!string.IsNullOrEmpty(tagName))
+            {
+                Tag tag = await context.Tags.FirstOrDefaultAsync(t=>t.Name==tagName);
+
+                string userId = userManager.GetUserId(HttpContext.User);
+
+                UserTag userTag = new UserTag()
+                {
+                    TagId = tag.Id,
+                    AppUserId = userId
+
+                };
+                context.UserTags.Add(userTag);
+                await context.SaveChangesAsync();
+            }
+            return true;
         }
 
         public IActionResult Users()
