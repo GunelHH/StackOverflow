@@ -69,7 +69,6 @@ function check() {
         if (watchNoContent.classList.contains("display-none")) {
             watchNoContent.classList.remove("display-none")
         }
-        console.log("else")
     }
 
 }
@@ -163,54 +162,50 @@ watchInputElement.addEventListener("input", (e) => {
         div.style.display = "none"
 
     } else {
-        $.ajax({
-            url: "/home/SearchedTags",
-            method: "Post",
-            dataType: 'json',
-            data: {
-                searchedString: e.target.value
-            },
-            success: function (data) {
-                div.style.display = "block"
-                data.forEach(e => {
-
-                    let li = document.createElement("li");
-                    li.classList.add("tagLi");
-
-                    $(ul).append(li);
-
-                    li.innerHTML = e;
-                })
-
-                $(tagForm).append(div);
-
-
-
-                let returnedValue = document.querySelectorAll(".tagLi");
-
-                returnedValue.forEach(val => {
-
-                    val.addEventListener("click", (v) => {
-                        let tagName = v.target.innerText
-                        e.target.value = tagName
-                    })
-                })
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        })
+        ListOfTags(e,div,ul,tagForm)
     }
 })
+
+
+function ListOfTags(e,div,ul,form) {
+    $.ajax({
+        url: "/home/SearchedTags",
+        method: "Post",
+        dataType: 'json',
+        data: {
+            searchedString: e.target.value
+        },
+        success: function (data) {
+            div.style.display = "block"
+            data.forEach(e => {
+
+                let li = document.createElement("li");
+                li.classList.add("tagLi");
+
+                $(ul).append(li);
+
+                li.innerHTML = e;
+            })
+
+            $(form).append(div);
+
+
+            ChangeValue(e)
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+}
 
 function ChangeValue(input) {
     var returnedValue = document.querySelectorAll(".tagLi");
 
     returnedValue.forEach(val => {
 
-        val.addEventListener("click", (e) => {
-            let vl = e.target.innerText
-            input = vl
+        val.addEventListener("click", (v) => {
+            let vl = v.target.innerText;
+            input.target.value = vl;
         })
     })
 }
@@ -222,27 +217,35 @@ addButton.addEventListener("click", (e) => {
     let inputResult = watchInputElement.value;
     if (watchInputElement.value !== "") {
 
+
         $.ajax({
-            url: "/home/IsExist",
+            url: "/home/WatchTag",
             method: "Post",
             dataType: 'json',
             data: {
                 data: watchInputElement.value
             },
             success: function (data) {
-                if (data == false) {
-                    let alertSpan = document.createElement("span");
-                    alertSpan.innerText = "This tag does't exits in this site or already added"
-                    let resultDiv = document.getElementsByClassName("ac_results");
+                let alertSpan = document.createElement("span");
+                let resultDiv = document.getElementsByClassName("ac_results");
+                if (data == null) {
+                    alertSpan.innerText = "This tag does't exits in this site"
                     $(resultDiv).append(alertSpan)
                     setTimeout(() => {
                         $(alertSpan).remove();
                     }, 1000);
-                } else {
-                    fetchWatchTag()
+                } else if (data == false) {
+                    alertSpan.innerText = "This tag already is exist in list above";
+                    $(resultDiv).append(alertSpan)
+                    setTimeout(() => {
+                        $(alertSpan).remove();
+                    }, 1000);
+                }
+                else {
                     addTag()
                     RemoveWatchedTag()
                 }
+                
 
                 watchInputElement.value = ""
             },
@@ -255,43 +258,10 @@ addButton.addEventListener("click", (e) => {
 
 })
 
-function fetchWatchTag() {
-    let tagName = document.getElementById("tagSearchInput")
-
-    $.ajax({
-        url: "/home/WatchTag",
-        method: "Post",
-        dataType: 'json',
-        data: {
-            tagName: tagName.value
-        }, success: function () {
-            
-        }, error: function () {
-
-        }
-    })
-}
 
 
 // ignored
 
-let ignoredInput = document.querySelector(
-  ".container__main-content__right-sidebar__watch__ignored__content__input"
-);
-let ignoredButton = document.querySelector(
-  ".container__main-content__right-sidebar__watch__ignored__content--button"
-);
-let ignoredVisible = document.querySelector(
-  ".container__main-content__right-sidebar__watch__ignored__content__visible"
-);
-
-ignoredButton.addEventListener("click", () => {
-  ignoredButton.classList.add("display-none");
-  ignoredInput.classList.remove("display-none");
-  ignoredVisible.classList.remove("display-none");
-
-  ignoredInput.firstElementChild.firstChild.nextElementSibling.focus();
-});
 
 
 

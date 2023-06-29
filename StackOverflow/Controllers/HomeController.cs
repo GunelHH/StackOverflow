@@ -100,7 +100,6 @@ namespace StackOverflow.Controllers
                 userTags = await context.UserTags.Include(u=>u.user).Include(u=>u.Tag).ToListAsync(),
             };
 
-        
             ViewBag.Page = page;
             ViewBag.TotalPage = Math.Ceiling((decimal)context.Questions.Count() / 10); ;
 
@@ -222,47 +221,34 @@ namespace StackOverflow.Controllers
             return Json(tagsToView);
         }
 
-        
-        public async Task<bool> IsExist(string data)
+        public bool AlreadyExist(string id, int tagId)
         {
-            Tag tag = await context.Tags.FirstOrDefaultAsync(t=>t.Name==data);
-
-            if (tag is null)
+            UserTag existed = context.UserTags.Include(e => e.Tag).FirstOrDefault(u => (u.AppUserId == id));
+            if (existed != null)
             {
-                return false;
-            }
-            else
-            {
-                string userId = userManager.GetUserId(HttpContext.User);
-
-                UserTag existed = await context.UserTags.Include(e=>e.Tag).FirstOrDefaultAsync(u => (u.AppUserId == userId));
-                if(existed != null)
+                if (existed.TagId == tagId)
                 {
-                    if (existed.TagId == tag.Id)
-                    {
-                        return false;
-                    }
+                    return true;
                 }
-                return true;
             }
+            return false;
         }
 
-        public async Task<bool> RemoveWatchedTag(string data)
+        public async Task<bool?> WatchTag(string data)
         {
-            UserTag userTag = await context.UserTags.FirstOrDefaultAsync(ut=>ut.Tag.Name==data);
-            context.UserTags.Remove(userTag);
-            await context.SaveChangesAsync();
-            return true;
-
-        }
-
-        public async Task<bool> WatchTag(string tagName)
-        {
-            if(!string.IsNullOrEmpty(tagName))
+            if(!string.IsNullOrEmpty(data))
             {
-                Tag tag = await context.Tags.FirstOrDefaultAsync(t=>t.Name==tagName);
+                Tag tag = await context.Tags.FirstOrDefaultAsync(t=>t.Name== data);
+                if (tag is null)
+                {
+                    return null;
+                }
 
                 string userId = userManager.GetUserId(HttpContext.User);
+                if (AlreadyExist(userId,tag.Id))
+                {
+                    return false;
+                }
 
                 UserTag userTag = new UserTag()
                 {
@@ -274,6 +260,15 @@ namespace StackOverflow.Controllers
                 await context.SaveChangesAsync();
             }
             return true;
+        }
+
+        public async Task<bool> RemoveWatchedTag(string data)
+        {
+            UserTag userTag = await context.UserTags.FirstOrDefaultAsync(ut => ut.Tag.Name == data);
+            context.UserTags.Remove(userTag);
+            await context.SaveChangesAsync();
+            return true;
+
         }
 
         public IActionResult Users()

@@ -350,14 +350,14 @@
 
                     </div>
                     <br />
-                    <div class="container__main-content__sidebar pagination-right">
+                    @*<div class="container__main-content__sidebar pagination-right">
                         <a href=""
                            class="pagination-item is-selected"
                            title="Show 15 items per page">15</a>
                         <a href="" class="pagination-item" title="Show 30 items per page">30</a>
                         <a href="" class="pagination-item" title="Show 50 items per page">50</a>
                         <span>per page</span>
-                    </div>
+                    </div>*@
                     <div class="container__main-content__sidebar pagination-left">
                         @if (ViewBag.Page > 1)
                         {
@@ -454,12 +454,7 @@
                             </div>
                             <div class="container__main-content__right-sidebar__watch__watched__content">
                                 <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
-                                    @*<div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
-                                            <a href="" title="show questions tagged 'c#'">
-                                                c#
-                                                <span title="Remove tag" class="delete-tag"></span>
-                                            </a>
-                                        </div>*@
+                               
                                 </div>
                                 <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
                                     <form action="">
@@ -1090,11 +1085,10 @@ else
             width: 100%;
         }
 
-            .result_ul > li {
-                border-bottom: 1px dotted black;
-                padding: 5px 10px;
-            }
-
+        .result_ul > li {
+            border-bottom: 1px dotted black;
+            padding: 5px 10px;
+        }
         .tagLi:hover {
             background: #f2740e;
         }
@@ -1442,14 +1436,6 @@ else
 
                 </div>
                 <br />
-                <div class="container__main-content__sidebar pagination-right">
-                    <a href=""
-                       class="pagination-item is-selected"
-                       title="Show 15 items per page">15</a>
-                    <a href="" class="pagination-item" title="Show 30 items per page">30</a>
-                    <a href="" class="pagination-item" title="Show 50 items per page">50</a>
-                    <span>per page</span>
-                </div>
                 <div class="container__main-content__sidebar pagination-left">
                     @if (ViewBag.Page > 1)
                     {
@@ -1545,7 +1531,6 @@ else
                             <a href="">edit</a>
                         </div>
 
-                        @*This Zone*@
                     <div class="container__main-content__right-sidebar__watch__watched__content">
                         <div class="container__main-content__right-sidebar__watch__watched__content__tags-list">
 
@@ -1586,18 +1571,18 @@ else
                             <a>edit</a>
                         </div>
                         <div class="container__main-content__right-sidebar__watch__ignored__content">
-                            <div class="container__main-content__right-sidebar__watch__ignored__content__list display-none">
+                            @*<div class="container__main-content__right-sidebar__watch__ignored__content__list display-none">
                                 <div class="container__main-content__right-sidebar__watch__ignored__content__list__tag">
                                     <a>
                                         c#
                                         <span class="delete-tag" title="Remove tag"></span>
                                     </a>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="container__main-content__right-sidebar__watch__ignored__content__input display-none">
-                                <form action="">
-                                    <input type="text" autocomplete="off" />
-                                    <button>Add</button>
+                                <form class="IgnoreForm" style="position:relative" action="">
+                                    <input class="IgnoreInput" type="text" autocomplete="off" />
+                                    <button id="IgnoreAddButton">Add</button>
                                 </form>
                             </div>
                             <button class="container__main-content__right-sidebar__watch__ignored__content--button">
@@ -2163,11 +2148,12 @@ else
 @section Scripts{
     <script>
 
-      //remove watchedTag
+
+        //remove watchedTag
         function RemoveWatchedTag() {
             if ($(watchList).children().length > 0) {
 
-                const RemoveTagButtons = document.querySelectorAll(".delete-tag")
+                const RemoveTagButtons = document.querySelectorAll(".delete-tag");
                 RemoveTagButtons.forEach(rb => {
                     rb.addEventListener("click", (e) => {
                         e.preventDefault();
@@ -2186,11 +2172,76 @@ else
                         })
                     })
                 })
-            } 
+            }
         }
         RemoveWatchedTag();
 
-        //const pagButtons = document.querySelectorAll(".pagination-item");
+        //ignoreee
+
+        let ignoredInputDiv = document.querySelector(
+            ".container__main-content__right-sidebar__watch__ignored__content__input"
+        );
+        let ignoredButton = document.querySelector(
+            ".container__main-content__right-sidebar__watch__ignored__content--button"
+        );
+        let ignoredVisible = document.querySelector(".container__main-content__righsidebar__watch__ignored__content__visible");
+
+        let ignoredInput = document.querySelector(".IgnoreInput");
+
+        const IgnoreForm = document.getElementsByClassName("IgnoreForm");
+
+        const IgnoreAddButton = document.getElementById("IgnoreAddButton")
+
+
+        const IgnoredInputListDiv = document.createElement('div');
+        const IgnoredInputListUl = document.createElement("ul");
+
+        $(IgnoredInputListDiv).append(IgnoredInputListUl);
+
+        IgnoredInputListDiv.classList.add("ac_results");
+        IgnoredInputListUl.classList.add("result_ul");
+
+        ignoredInput.addEventListener("input", (e) => {
+            $(IgnoredInputListUl).empty()
+            let value = e.target.value;
+
+            if (value == null || value == undefined || value == "" || value == " ") {
+                IgnoredInputListDiv.style.display = "none"
+
+            } else {
+                ListOfTags(e,IgnoredInputListDiv,IgnoredInputListUl,IgnoreForm)
+            }
+        })
+
+        //ignoreAdd
+
+        IgnoreAddButton.addEventListener("click", (e) => {
+            e.preventDefault();
+
+
+        })
+
+
+
+
+
+
+
+        ignoredButton.classList.add("display-none");
+        ignoredInputDiv.classList.remove("display-none");
+        ignoredVisible.classList.remove("display-none");
+
+      // ignoredButton.addEventListener("click", () => {
+      //   ignoredButton.classList.add("display-none");
+      //   ignoredInput.classList.remove("display-none");
+      //   ignoredVisible.classList.remove("display-none");
+      //
+      //   ignoredInput.firstElementChild.firstChild.nextElementSibling.focus();
+      // });
+
+
+
+       // const pagButtons = document.querySelectorAll(".pagination-item");
 
         //pagButtons.forEach(item => {
         //    item.addEventListener('click', (e) => {

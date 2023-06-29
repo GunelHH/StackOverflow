@@ -13,6 +13,8 @@ namespace StackOverflow.Models
 
         public AppUser user { get; set; }
 
+        public bool IsIgnored { get; set; } = false;
+
     }
 }
 
