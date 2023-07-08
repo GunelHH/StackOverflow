@@ -221,18 +221,18 @@ namespace StackOverflow.Controllers
             return Json(tagsToView);
         }
 
-        public bool AlreadyExist(string id, int tagId)
-        {
-            UserTag existed = context.UserTags.Include(e => e.Tag).FirstOrDefault(u => (u.AppUserId == id));
-            if (existed != null)
-            {
-                if (existed.TagId == tagId)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        //public bool AlreadyExist(string id, int tagId)
+        //{
+        //    UserTag existed = context.UserTags.Include(e => e.Tag).FirstOrDefault(u => u.AppUserId == id);
+        //    if (existed != null)
+        //    {
+        //        if (existed.TagId == tagId)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
 
         public async Task<bool?> WatchTag(string data)
         {

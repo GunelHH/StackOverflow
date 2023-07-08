@@ -2218,6 +2218,16 @@ else
         IgnoreAddButton.addEventListener("click", (e) => {
             e.preventDefault();
 
+            $.ajax({
+                url: "/home/WatchTag",
+                method: "Post",
+                dataType: 'json',
+                data: {
+                    data: watchInputElement.value
+                },
+                success: function (data) { }
+            })
+
 
         })
 
