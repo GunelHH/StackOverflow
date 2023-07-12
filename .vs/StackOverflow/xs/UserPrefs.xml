@@ -1,21 +1,32 @@
 ﻿<Properties StartupConfiguration="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
+      <Items>
+        <StartupItem ItemId="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}" ItemName="StackOverflow" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="StackOverflow/Views/Home/Questions.cshtml">
     <Files>
-      <File FileName="StackOverflow/Views/Home/Questions.cshtml" Line="2194" Column="74" />
-      <File FileName="StackOverflow/Controllers/HomeController.cs" Line="285" Column="50" />
-      <File FileName="StackOverflow/wwwroot/assets/js/sections/questions.js" Line="228" Column="1" />
+      <File FileName="StackOverflow/Views/Home/Questions.cshtml" Line="1608" Column="18" />
+      <File FileName="StackOverflow/Controllers/HomeController.cs" Line="267" Column="31" />
+      <File FileName="StackOverflow/wwwroot/assets/js/sections/questions.js" Line="77" Column="3" />
       <File FileName="StackOverflow/Models/UserTag.cs" />
-      <File FileName="StackOverflow/Views/Shared/_Layout.cshtml" Line="543" Column="1" />
+      <File FileName="StackOverflow/Views/Shared/_Layout.cshtml" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StackOverflow" expanded="True">
-            <Node name="StackOverflow" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
+          <Node name="StackOverflow">
+            <Node name="StackOverflow">
+              <Node name="Views">
+                <Node name="Home">
+                  <Node name="Questions.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="assets" expanded="True">
@@ -30,17 +41,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations>
-    <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
-      <Items>
-        <StartupItem ItemId="{5D5DED0B-97DA-4A78-A09E-E966C59AF23B}" ItemName="StackOverflow" ConfigurationId="Default" />
-      </Items>
-    </MultiItemSolutionRunConfiguration>
-  </MultiItemStartupConfigurations>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.StackOverflow PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

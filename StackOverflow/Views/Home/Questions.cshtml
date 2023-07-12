@@ -1536,13 +1536,16 @@ else
 
                             @foreach (UserTag tag in Model.userTags)
                             {
-                                <div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
-                                    <a href="" title="show questions tagged '@tag.Tag.Name'">
-                                        @tag.Tag.Name
-                                        <span title="Remove tag" class="delete-tag"></span>
-                                    </a>
-                                </div>
+                                @if (tag.IsIgnored == false)
+                                {
+                                    <div class="container__main-content__right-sidebar__watch__watched__content__tags-list__tag">
+                                        <a href="" title="show questions tagged '@tag.Tag.Name'">
+                                            @tag.Tag.Name
+                                            <span title="Remove tag" class="delete-tag"></span>
+                                        </a>
+                                    </div>
 
+                                 }
                             }
                         </div>
                         <div class="container__main-content__right-sidebar__watch__watched__content__input display-none">
@@ -1571,14 +1574,22 @@ else
                             <a>edit</a>
                         </div>
                         <div class="container__main-content__right-sidebar__watch__ignored__content">
-                            @*<div class="container__main-content__right-sidebar__watch__ignored__content__list display-none">
-                                <div class="container__main-content__right-sidebar__watch__ignored__content__list__tag">
-                                    <a>
-                                        c#
-                                        <span class="delete-tag" title="Remove tag"></span>
-                                    </a>
-                                </div>
-                            </div>*@
+                            <div class="container__main-content__right-sidebar__watch__ignored__content__list">
+                                @foreach (UserTag tag in Model.userTags)
+                                 {
+                                    @if (tag.IsIgnored == true)
+                                     {
+                                        <div class="container__main-content__right-sidebar__watch__ignored__content__list__tag">
+                                            <a>
+                                                c#
+                                                <span class="delete-tag" title="Remove tag"></span>
+                                            </a>
+
+                                        </div>
+                                     }
+                                 }
+
+                            </div>
                             <div class="container__main-content__right-sidebar__watch__ignored__content__input display-none">
                                 <form class="IgnoreForm" style="position:relative" action="">
                                     <input class="IgnoreInput" type="text" autocomplete="off" />
@@ -2186,6 +2197,8 @@ else
         );
         let ignoredVisible = document.querySelector(".container__main-content__righsidebar__watch__ignored__content__visible");
 
+        let IgnoreList = document.getElementsByClassName("container__main-content__right-sidebar__watch__ignored__content__list")
+
         let ignoredInput = document.querySelector(".IgnoreInput");
 
         const IgnoreForm = document.getElementsByClassName("IgnoreForm");
@@ -2218,28 +2231,54 @@ else
         IgnoreAddButton.addEventListener("click", (e) => {
             e.preventDefault();
 
+
             $.ajax({
-                url: "/home/WatchTag",
+                url: "/home/IgnoreTag",
                 method: "Post",
                 dataType: 'json',
                 data: {
-                    data: watchInputElement.value
+                    tagName: ignoredInput.value
                 },
-                success: function (data) { }
+                success: function (data) {
+                    if (data == null) {
+                        console.log("data is null")
+                    }
+                    if (data == ignoredInput.value) {
+                        addIgnoredTag()
+                    } else {
+                        let li = document.getElementsByClassName("tagLi")
+                        console.log(data)
+                        //console.log(JSON.stringify(data.tagName))
+                        //li.innerText = JSON.stringify(data)
+                    }
+                }
             })
 
 
         })
 
 
+        function addIgnoredTag() {
+            let div = document.createElement("div");
+            div.classList.add(
+                "container__main-content__right-sidebar__watch__ignored__content__list__tag"
+            );
+            let a = document.createElement("a");
+            let value = ignoredInput.value;
 
+            a.innerText = value;
 
+            let span = document.createElement("span");
+            span.classList.add("delete-tag");
 
-
+            IgnoreList.appendChild(div);
+            div.appendChild(a);
+            a.appendChild(span);
+        }
 
         ignoredButton.classList.add("display-none");
         ignoredInputDiv.classList.remove("display-none");
-        ignoredVisible.classList.remove("display-none");
+        //ignoredVisible.classList.remove("display-none");
 
       // ignoredButton.addEventListener("click", () => {
       //   ignoredButton.classList.add("display-none");

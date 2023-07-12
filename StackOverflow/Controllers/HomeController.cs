@@ -221,18 +221,18 @@ namespace StackOverflow.Controllers
             return Json(tagsToView);
         }
 
-        //public bool AlreadyExist(string id, int tagId)
-        //{
-        //    UserTag existed = context.UserTags.Include(e => e.Tag).FirstOrDefault(u => u.AppUserId == id);
-        //    if (existed != null)
-        //    {
-        //        if (existed.TagId == tagId)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+        public bool AlreadyExist(string id, int tagId)
+        {
+            UserTag existed = context.UserTags.Include(e => e.Tag).FirstOrDefault(u => u.AppUserId == id);
+            if (existed != null)
+            {
+                if (existed.TagId == tagId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public async Task<bool?> WatchTag(string data)
         {
@@ -261,6 +261,47 @@ namespace StackOverflow.Controllers
             }
             return true;
         }
+
+        public async Task<JsonResult> IgnoreTag(string tagName)
+        {
+            if (string.IsNullOrEmpty(tagName) || string.IsNullOrWhiteSpace(tagName))
+                return null;
+
+            Tag tag = await context.Tags.FirstOrDefaultAsync(t=>t.Name==tagName);
+
+            if (tag is null) return Json("This tag doesn't exist");
+
+            if (!alreadyExistInList(tagName, true))
+            {
+                return Json("This tag is already exist");
+            }
+
+            string userId = userManager.GetUserId(HttpContext.User);
+
+            UserTag userTag = new UserTag()
+            {
+                TagId = tag.Id,
+                AppUserId = userId,
+                IsIgnored = true
+            };
+
+            await context.UserTags.AddAsync(userTag);
+            await context.SaveChangesAsync();
+
+            return Json(userTag);
+        }
+
+        public  bool alreadyExistInList(string tagName,bool ignoreCase)
+        {
+            UserTag tag =context.UserTags.Include(ut=>ut.Tag).FirstOrDefault(ut=>ut.Tag.Name==tagName && ut.IsIgnored==ignoreCase);
+
+            if (tag != null)
+            {
+                return false;
+            }
+            return true;
+        }
+
 
         public async Task<bool> RemoveWatchedTag(string data)
         {
