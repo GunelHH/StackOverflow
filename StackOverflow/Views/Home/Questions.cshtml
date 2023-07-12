@@ -1581,7 +1581,7 @@ else
                                      {
                                         <div class="container__main-content__right-sidebar__watch__ignored__content__list__tag">
                                             <a>
-                                                c#
+                                                @tag.Tag.Name
                                                 <span class="delete-tag" title="Remove tag"></span>
                                             </a>
 
@@ -2271,7 +2271,9 @@ else
             let span = document.createElement("span");
             span.classList.add("delete-tag");
 
-            IgnoreList.appendChild(div);
+            console.log(IgnoreList)
+
+            $(IgnoreList).append(div);
             div.appendChild(a);
             a.appendChild(span);
         }

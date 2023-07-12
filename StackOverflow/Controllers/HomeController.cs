@@ -288,7 +288,7 @@ namespace StackOverflow.Controllers
             await context.UserTags.AddAsync(userTag);
             await context.SaveChangesAsync();
 
-            return Json(userTag);
+            return Json(tagName);
         }
 
         public  bool alreadyExistInList(string tagName,bool ignoreCase)
