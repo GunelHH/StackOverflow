@@ -243,7 +243,7 @@ addButton.addEventListener("click", (e) => {
                 }
                 else {
                     addTag()
-                    RemoveWatchedTag()
+                    RemoveWatchedTag(watchList)
                 }
                 
 

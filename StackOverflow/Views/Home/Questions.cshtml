@@ -2161,9 +2161,8 @@ else
 
 
         //remove watchedTag
-        function RemoveWatchedTag() {
-            if ($(watchList).children().length > 0) {
-
+        function RemoveWatchedTag(list) {
+            if ($(list).children().length > 0) {
                 const RemoveTagButtons = document.querySelectorAll(".delete-tag");
                 RemoveTagButtons.forEach(rb => {
                     rb.addEventListener("click", (e) => {
@@ -2177,15 +2176,13 @@ else
                             }, success: function () {
                                 e.target.parentElement.parentElement.remove();
                                 check()
-                            }, error: function () {
-
                             }
                         })
                     })
                 })
             }
         }
-        RemoveWatchedTag();
+        RemoveWatchedTag(watchList); 
 
         //ignoreee
 
@@ -2195,6 +2192,8 @@ else
         let ignoredButton = document.querySelector(
             ".container__main-content__right-sidebar__watch__ignored__content--button"
         );
+
+        const ignoreList = document.getElementsByClassName("container__main-content__right-sidebar__watch__ignored__content__list");
         let ignoredVisible = document.querySelector(".container__main-content__righsidebar__watch__ignored__content__visible");
 
         let IgnoreList = document.getElementsByClassName("container__main-content__right-sidebar__watch__ignored__content__list")
@@ -2230,32 +2229,49 @@ else
 
         IgnoreAddButton.addEventListener("click", (e) => {
             e.preventDefault();
+            if (ignoredInput.value!='' || ignoreInput.value!=" ")
+            {
+                $.ajax({
+                    url: "/home/IgnoreTag",
+                    method: "Post",
+                    dataType: 'json',
+                    data: {
+                        tagName: ignoredInput.value
+                    },
+                    success: function (data) {
+                        if (data == null) {
+                            console.log("data is null")
+                        }
+                        if (data == ignoredInput.value) {
+                            addIgnoredTag()
+                        } else {
+                            const ul = document.getElementsByClassName("result_ul")
+                            $(ul).empty()
 
+                            AddFailMessage(ul, data);
 
-            $.ajax({
-                url: "/home/IgnoreTag",
-                method: "Post",
-                dataType: 'json',
-                data: {
-                    tagName: ignoredInput.value
-                },
-                success: function (data) {
-                    if (data == null) {
-                        console.log("data is null")
+                            EmptyUl(ul);
+                        }
                     }
-                    if (data == ignoredInput.value) {
-                        addIgnoredTag()
-                    } else {
-                        let li = document.getElementsByClassName("tagLi")
-                        console.log(data)
-                        //console.log(JSON.stringify(data.tagName))
-                        //li.innerText = JSON.stringify(data)
-                    }
-                }
-            })
-
-
+                })
+            }
         })
+        RemoveWatchedTag(ignoreList);
+
+
+        function AddFailMessage(ul,data)
+        {
+            let li = document.createElement("li");
+            li.style.color="red"
+            li.innerText = data;
+            $(ul).append(li)
+        }
+        function EmptyUl(ul) {
+            setTimeout(() => {
+                $(ul).empty()
+            }, 1000);
+        }
+
 
 
         function addIgnoredTag() {
@@ -2271,7 +2287,6 @@ else
             let span = document.createElement("span");
             span.classList.add("delete-tag");
 
-            console.log(IgnoreList)
 
             $(IgnoreList).append(div);
             div.appendChild(a);
