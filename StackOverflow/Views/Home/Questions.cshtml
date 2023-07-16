@@ -2243,7 +2243,10 @@ else
                             console.log("data is null")
                         }
                         if (data == ignoredInput.value) {
-                            addIgnoredTag()
+                            addIgnoredTag();
+                            let listofWatched = document.querySelectorAll(".container__main-content__right-sidebar__watch__watched__content__tags-list .container__main-content__right-sidebar__watch__watched__content__tags-list__tag a")
+                            RemoveIfExistBothCases(listofWatched);
+
                         } else {
                             const ul = document.getElementsByClassName("result_ul")
                             $(ul).empty()
@@ -2272,6 +2275,33 @@ else
             }, 1000);
         }
 
+        function RemoveIfExistBothCases(list) {
+            for (let i = 0; i < list.length; i++) {
+                $.ajax({
+                    url: "/home/CheckTagsInView",   
+                    method: "Post",
+                    dataType: 'json',
+                    data: {
+                        tagName:list[i].innerText,
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        console.log("success")                        
+                        if (data != null) {
+                            console.log("not null")
+                            console.log(data)
+
+                            if (data == list[i].innerText) {
+                                console.log()
+                               //$(list[i]).closest().remove();
+                            }
+                        }
+                    }, Error: function () {
+                        console.log("error")
+                    }
+                })
+            }
+        }
 
 
         function addIgnoredTag() {

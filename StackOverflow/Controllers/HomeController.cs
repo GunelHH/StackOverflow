@@ -22,6 +22,7 @@ namespace StackOverflow.Controllers
             this.context = context;
             this.userManager = userManager;
         }
+
         public IActionResult Index()
         {
             HomeVM homeVM = new HomeVM
@@ -276,9 +277,11 @@ namespace StackOverflow.Controllers
                 return Json("This tag is already exist");
             }
 
+            ExistInBothCases(tagName, true);
+
             string userId = userManager.GetUserId(HttpContext.User);
 
-            UserTag userTag = new()
+            UserTag userTag = new UserTag()
             {
                 TagId = tag.Id,
                 AppUserId = userId,
@@ -311,6 +314,16 @@ namespace StackOverflow.Controllers
                 context.SaveChanges();
             }
             return true;
+        }
+
+        public async Task<string> CheckTagsInView(string tagName)
+        {
+            UserTag userTag = await context.UserTags.Include(ut=>ut.Tag).FirstOrDefaultAsync(t=>t.Tag.Name.Trim().ToLower()==tagName.Trim().ToLower());
+            if (userTag==null)
+            {
+                return null;
+            }
+            return userTag.Tag.Name;
         }
 
 
